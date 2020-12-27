@@ -37,15 +37,21 @@ connection.on("connect", err => {
 });
 
 app.get("/", (req, res) => {
-  fs.readFile('public/index.html', function(err, data) {
+  fs.readFile('public/FrontendDev/index.html', function(err, data) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write(data);
     return res.end();
   });
 });
-
+app.get("/environment", (req, res) => {
+  fs.readFile('public/CompetitionEnvironment/index.html', function(err, data) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    return res.end();
+  });
+});
 app.get('*', function(req, res){
-  fs.readFile('public/404.html', function(err, data) {
+  fs.readFile('public/FrontendDev/404.html', function(err, data) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write(data);
     return res.end();
