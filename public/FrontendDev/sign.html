@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<h1>Basic Signup </h1>
+	Username:<input id="username"></input><br>
+	First Name:<input id="f_name"></input><br>
+	Last Name:<input id="l_name"></input><br>
+	Password:<input type="password" id="pwd"></input><br>
+	<button onclick="create()"> Create Account </button>
+	<h1>Sign In</h1>
+	Username:<input id="s_username"></input><br>
+	Password:<input type="password" id="s_pwd"></input><br>
+	<button onclick="login()"> Login </button>
+	<script>
+		function create() {
+			var usr = document.getElementById("username").value;
+			var fName = document.getElementById("f_name").value;
+			var lName = document.getElementById("l_name").value;
+			var pwd = document.getElementById("pwd").value;
+			var values = {Key: Math.floor(100000000000000 + Math.random() * 900000000000000), Username: usr, First: fName, Last: lName ,  Password:pwd};
+			var xhttp = new XMLHttpRequest();
+			xhttp.open("POST", "registration", true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send(JSON.stringify(values));
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					if(this.responseText == "1") {
+						localStorage.setItem("key", values.Key);
+						localStorage.setItem("User", usr);
+					//	localStorage.setItem("fName", fName);
+					//	localStorage.setItem("lName", lName);
+						localStorage.setItem("Pass", pwd);
+						window.location.href = "environment/dashboard";
+					}
+				} 
+			}; 
+		}
+		function login() {
+			var unknown = document.getElementById("s_username").value;
+			var pwd = document.getElementById("s_pwd").value;
+			var values = {Unknown: unknown,  Password:pwd};
+			var xhttp = new XMLHttpRequest();
+			xhttp.open("POST", "check", true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send(JSON.stringify(values));
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					if(this.responseText == "false") {
+						alert("Login Failure");
+					} else {
+						localStorage.setItem("key", this.responseText);
+						localStorage.setItem("User", unknown);
+						localStorage.setItem("Pass", pwd);
+						window.location.href = "environment/dashboard";
+					}
+				} 
+  			}; 
+		}
+	</script>
+</html>
