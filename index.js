@@ -112,14 +112,14 @@ app.post('/check', function (req, res) {
       }
     );
     var computedInfo = {"info":[]};
-    requestA.on("row", columns => {
-      for(let i=0; i<4; i++) {
-        computedInfo.info.push(href)(columns[i].value);
-      }
-      res.send(computedInfo);
-    });
-      
+	requestA.on("row", columns => {
+		columns.forEach(column => {
+			computedInfo.info.push(column.value);
+		});
+	});
+	res.send(computedInfo);
     connection.execSql(requestA);
+
   })
 });
 
