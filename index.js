@@ -35,12 +35,13 @@ connection.on("connect", err => {
 });
 
 app.get("/", (req, res) => {
-  fs.readFile('public/FrontendDev/index.html', function(err, data) {
+  fs.readFile('public/website/index.html', function(err, data) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write(data);
     return res.end();
   });
 });
+
 app.get("/environment/dashboard", (req, res) => {
   fs.readFile('public/environment/index.html', function(err, data) {
     res.writeHead(200, {'Content-Type': 'text/html'});
@@ -50,7 +51,15 @@ app.get("/environment/dashboard", (req, res) => {
 });
 
 app.get('/about', function(req, res){
-  fs.readFile('public/FrontendDev/about.html', function(err, data) {
+  fs.readFile('public/website/about.html', function(err, data) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    return res.end();
+  });
+});
+
+app.get("/sign", (req, res) => {
+  fs.readFile('public/website/sign.html', function(err, data) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write(data);
     return res.end();
@@ -58,7 +67,7 @@ app.get('/about', function(req, res){
 });
 
 app.get('*', function(req, res) {
-  fs.readFile('public/FrontendDev/404.html', function(err, data) {
+  fs.readFile('public/website/404.html', function(err, data) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write(data);
     return res.end();
@@ -83,6 +92,31 @@ app.post('/registration', function (req, res) {
       );     
     connection.execSql(requestA);
     })
+});
+
+app.post('/check', function (req, res) {
+  var ans = "";
+  req.on('data', function(data) {
+    var obj = JSON.parse(data);
+    const requestA= new Request(
+      `SELECT ScopeCode FROM IdentityOfIndividual WHERE (Username = '` + obj.Unknown +  `') AND Credentials = '` + obj.Password +  `'`,
+      (err, rowCount) => {
+        if (err) {
+          console.error(err.message);
+        } else {
+            ans = `${rowCount}`;     
+            if(ans == 0) {
+              res.send("false");
+            }
+        }
+      }
+    );
+      requestA.on("row", columns => {
+        res.send(columns[0].value);
+      });
+      
+    connection.execSql(requestA);
+  })
 });
 
 app.listen(port, () => {

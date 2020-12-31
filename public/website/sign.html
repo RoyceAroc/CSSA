@@ -20,7 +20,7 @@
 			var xhttp = new XMLHttpRequest();
 			xhttp.open("POST", "registration", true);
 			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send(JSON.stringify(values));
+			xhttp.send(JSON.stringify(values)); 
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					if(this.responseText == "1") {
