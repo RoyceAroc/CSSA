@@ -1,0 +1,30 @@
+{
+  "name": "CSSA-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RoyceAroc/CSSA.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RoyceAroc/CSSA/issues"
+  },
+  "homepage": "https://github.com/RoyceAroc/CSSA#readme",
+  "dependencies": {
+    "casper": "^0.1.1",
+    "casperjs": "^1.1.4",
+    "express": "^4.17.1",
+    "puppeteer": "^5.5.0",
+    "tedious": "^9.2.1"
+  },
+  "devDependencies": {
+    "zombie": "^6.1.4"
+  }
+}
