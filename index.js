@@ -104,16 +104,20 @@ app.post('/check', function (req, res) {
         if (err) {
           console.error(err.message);
         } else {
-            ans = `${rowCount}`;     
+            ans = `${rowCount}`;      
             if(ans == 0) {
               res.send("false");
             }
         }
       }
     );
-      requestA.on("row", columns => {
-        res.send(columns[0].value);
-      });
+    var computedInfo = {"info":[]};
+    requestA.on("row", columns => {
+      for(let i=0; i<4; i++) {
+        computedInfo.info.push(href)(columns[i].value);
+      }
+      res.send(computedInfo);
+    });
       
     connection.execSql(requestA);
   })

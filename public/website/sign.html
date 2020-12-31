@@ -26,8 +26,8 @@
 					if(this.responseText == "1") {
 						localStorage.setItem("key", values.Key);
 						localStorage.setItem("User", usr);
-					//	localStorage.setItem("fName", fName);
-					//	localStorage.setItem("lName", lName);
+						localStorage.setItem("fName", fName);
+						localStorage.setItem("lName", lName);
 						window.location.href = "environment/dashboard";
 					}
 				} 
@@ -46,9 +46,12 @@
 					if(this.responseText == "false") {
 						alert("Login Failure");
 					} else {
-						localStorage.setItem("key", this.responseText);
-						localStorage.setItem("User", unknown);
-						window.location.href = "environment/dashboard";
+						let valueArray = JSON.parse(this.responseText).info;
+						localStorage.setItem("key", valueArray[0]);
+						localStorage.setItem("User", valueArray[1]);
+						localStorage.setItem("fName", valueArray[2]);
+						localStorage.setItem("lName", valueArray[3]);
+						/window.location.href = "environment/dashboard";
 					}
 				} 
   			}; 
