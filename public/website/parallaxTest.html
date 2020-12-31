@@ -22,7 +22,7 @@
             }
 
             function move() {
-                
+
             }
 
             let position = 0;
@@ -30,7 +30,9 @@
             document.addEventListener('scroll', (e) => {
                 position += 1;
 
-                
+                if (position % 4 == 0) {
+                    perspectiveCamera.position.set(); // do some math here based on the value of position and increment stuff
+                }
             });
 
         </script>
