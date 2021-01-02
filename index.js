@@ -80,13 +80,17 @@ app.post('/registration', function (req, res) {
       var obj = JSON.parse(data);
       const requestA= new Request(
         `INSERT INTO IdentityOfIndividual
-         VALUES ('` + obj.Key + `', '` + obj.Username + `', '` + obj.First + `', '`+ obj.Last + `', '` + obj.Password + `');`,
+         VALUES ('` + obj.Email + `', '` + obj.Username + `', '` + obj.First + `', '`+ obj.Last + `', '` + obj.Password + `');`,
         (err, result) => {
           if (err) {
             console.error(err.message);
           } else {
               ans = `${result}`;     
-              res.send(ans);
+              if(ans == "1"){
+				  res.send(ans);
+			  } else {
+				  res.send("ok");
+			  }
           }
         }
       );     
@@ -99,7 +103,7 @@ app.post('/check', function (req, res) {
   req.on('data', function(data) {
     var obj = JSON.parse(data);
     const requestA= new Request(
-      `SELECT ScopeCode FROM IdentityOfIndividual WHERE (Username = '` + obj.Unknown +  `') AND Credentials = '` + obj.Password +  `'`,
+      `SELECT * FROM IdentityOfIndividual WHERE (Username = '` + obj.Unknown +  `' OR Scopecode = '` + obj.Unknown +  `') AND Credentials = '` + obj.Password +  `'`,
       (err, rowCount) => {
         if (err) {
           console.error(err.message);
@@ -111,15 +115,53 @@ app.post('/check', function (req, res) {
         }
       }
     );
-    var computedInfo = {"info":[]};
+
+	var computedInfo = {"info":[]};
 	requestA.on("row", columns => {
 		columns.forEach(column => {
 			computedInfo.info.push(column.value);
 		});
+		res.send(computedInfo);
 	});
-	res.send(computedInfo);
+	
     connection.execSql(requestA);
 
+  })
+});
+
+app.post('/checkUsername', function (req, res) {
+  var ans = "";
+  req.on('data', function(data) {
+    const requestB= new Request(
+      `SELECT * FROM IdentityOfIndividual WHERE Username = '` + data +  `'`,
+      (err, rowCount) => {
+        if (err) {
+          console.error(err.message);
+        } else {
+            ans = `${rowCount}`;      
+			res.send(ans);
+        }
+      }
+    );
+    connection.execSql(requestB);
+  })
+});
+
+app.post('/checkEmail', function (req, res) {
+  var ans = "";
+  req.on('data', function(data) {
+    const requestC= new Request(
+      `SELECT * FROM IdentityOfIndividual WHERE Scopecode = '` + data +  `'`,
+      (err, rowCount) => {
+        if (err) {
+          console.error(err.message);
+        } else {
+            ans = `${rowCount}`;      
+			res.send(ans);
+        }
+      }
+    );
+    connection.execSql(requestC);
   })
 });
 
