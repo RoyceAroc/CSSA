@@ -1,0 +1,31 @@
+
+header{
+   background-image: url("../images/particlebackground.png");
+   display:flex;
+   flex-direction: column;
+   height: 100vh;
+}
+.infosection{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+}
+.infosectioninfo{
+    display:flex;
+    flex-direction: column;
+    width: 150vh;
+}
+.infosectioninfo h1{
+    color:white;
+    font-size: 15vh;
+    font-family: 'Quicksand';
+    text-align: center;
+    font-weight: lighter;
+}
+.infosectioninfo h4{
+    color:white;
+    text-align:center;
+    font-size: 5vh;
+    margin:0;
+    font-weight: lighter;
+}
