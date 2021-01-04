@@ -21,6 +21,7 @@
     "casper": "^0.1.1",
     "casperjs": "^1.1.4",
     "express": "^4.17.1",
+    "nodemailer": "^6.4.17",
     "puppeteer": "^5.5.0",
     "tedious": "^9.2.1"
   },

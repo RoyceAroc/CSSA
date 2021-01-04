@@ -3,8 +3,34 @@ const path = require("path");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || "8000";
+const nodemailer = require("nodemailer");
 const { parse } = require('querystring');
 const { Connection, Request } = require("tedious");
+
+
+var transporter = nodemailer.createTransport({
+  host: "smtp.mailtrap.io",
+  port: 2525,
+  auth: {
+    user: "98f37652d967b1",
+    pass: "c85a696b5fc2ef"
+  }
+});
+var mailOptions = {
+  from: 'royceaden@gmail.com',
+  to: 'royceaden@gmail.com',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+
 
 var fs = require('fs');
 
