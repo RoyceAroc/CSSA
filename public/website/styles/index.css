@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+body{
+    background-color: rgb(15, 14, 14);
+    font-family: 'Quicksand';
+    margin:0;
+}
+nav img{
+    width:50px;
+}
+
+nav .leftnav{
+    display:flex;
+    flex-direction:row;
+}
+nav .leftnav a{
+    border-bottom: none !important;
+
+}
+
+nav a{
+    text-decoration: none;
+    border-bottom: 3px solid white;
+   color:white;
+   margin: 10px;
+}
+nav .signin{
+    text-decoration: none;
+    border-bottom: none !important;
+    background-color: #0097a7;
+    padding: 10px;
+   color:white;
+   border-radius: 7px;
+   margin-bottom: 10px;
+
+}
+nav{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    padding: 25px;
+}
