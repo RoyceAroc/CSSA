@@ -106,7 +106,7 @@ app.post('/registration', function (req, res) {
       var obj = JSON.parse(data);
       const requestA= new Request(
         `INSERT INTO IdentityOfIndividual
-         VALUES ('` + obj.Email + `', '` + obj.Username + `', '` + obj.First + `', '`+ obj.Last + `', '` + obj.Password + `');`,
+         VALUES ('` + obj.Email + `', '` + obj.Username + `', '` + obj.First + `', '`+ obj.Last + `', '` + obj.Password + `', 'B');`,
         (err, result) => {
           if (err) {
             console.error(err.message);
