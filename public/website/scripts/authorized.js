@@ -73,14 +73,22 @@ function login() {
 
 function onSignIn(googleUser) {
 	var profile = googleUser.getBasicProfile();
-	console.log("ID: " + profile.getId()); 
-	console.log('Full Name: ' + profile.getName());
 	console.log('Given Name: ' + profile.getGivenName());
 	console.log('Family Name: ' + profile.getFamilyName());
-	console.log("Image URL: " + profile.getImageUrl());
 	console.log("Email: " + profile.getEmail());
-	var id_token = googleUser.getAuthResponse().id_token;
-	console.log("ID Token: " + id_token);
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "checkEmail", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(emailC); 
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			if(this.responseText == 1) {
+				alert("This email is already in use");
+			} else {
+				//Work in progress [Make custom username w/ while loop across retention flow check & login]
+			}
+		} 
+	}; 
 }
 
 
