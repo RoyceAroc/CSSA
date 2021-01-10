@@ -96,6 +96,15 @@ app.get('/contact', function(req, res){
   });
 });
 
+
+app.get("/public/website/*", (req, res) => {
+	fs.readFile(req.originalUrl.substring(1), function(err, data) {
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.write(data);
+		return res.end();
+	});
+});
+
 app.get("/sign", (req, res) => {
   fs.readFile('public/website/sign.html', function(err, data) {
     res.writeHead(200, {'Content-Type': 'text/html'});
