@@ -30,10 +30,10 @@ function create() {
 							xhttp.onreadystatechange = function() {
 								if (this.readyState == 4 && this.status == 200) {
 									if(this.responseText == "1") {
-										localStorage.setItem("email", emailC);
-										localStorage.setItem("User", usr);
-										localStorage.setItem("fName", fName);
-										localStorage.setItem("lName", lName);
+										setCookie('email',emailC,365);
+										setCookie('User',usr,365);
+										setCookie('fName',fName,365);
+										setCookie('lName',lName,365);
 										window.location.href = "environment/dashboard";
 									} 
 								} 
@@ -60,10 +60,10 @@ function login() {
 				alert("Login Failure");
 			} else {
 				let valueArray = JSON.parse(this.responseText).info;
-				localStorage.setItem("email", valueArray[0]);
-				localStorage.setItem("User", valueArray[1]);
-				localStorage.setItem("fName", valueArray[2]);
-				localStorage.setItem("lName", valueArray[3]);
+				setCookie('email',valueArray[0],365);
+				setCookie('User',valueArray[1],365);
+				setCookie('fName',valueArray[2],365);
+				setCookie('lName',valueArray[3],365);
 				window.location.href = "environment/dashboard";
 			}
 		} 
@@ -88,10 +88,10 @@ function onSignIn(googleUser) {
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
 						let valueArray = JSON.parse(this.responseText).info;
-						localStorage.setItem("email", valueArray[0]);
-						localStorage.setItem("User", valueArray[1]);
-						localStorage.setItem("fName", valueArray[2]);
-						localStorage.setItem("lName", valueArray[3]);
+							setCookie('email',valueArray[0],365);
+							setCookie('User',valueArray[1],365);
+							setCookie('fName',valueArray[2],365);
+							setCookie('lName',valueArray[3],365);
 						window.location.href = "environment/dashboard";
 					} 
 				}; 
@@ -106,10 +106,10 @@ function onSignIn(googleUser) {
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
 						if(this.responseText == "1") {
-							localStorage.setItem("email", profile.getEmail());
-							localStorage.setItem("User", username);
-							localStorage.setItem("fName", profile.getGivenName());
-							localStorage.setItem("lName", profile.getFamilyName());
+							setCookie('email',profile.getEmail(),365);
+							setCookie('User',username,365);
+							setCookie('fName',profile.getGivenName(),365);
+							setCookie('lName',profile.getFamilyName(),365);
 							window.location.href = "environment/dashboard";
 						} 
 					} 
@@ -134,4 +134,35 @@ function signOut() {
 	auth2.signOut().then(function () {
 		// User has successfully signed out
 	});
+}
+
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+window.onload = function() {
+	if(getCookie('email')) {
+		window.location.href = "environment/dashboard";
+	}
 }

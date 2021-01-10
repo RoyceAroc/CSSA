@@ -65,7 +65,6 @@ app.get("/scripts/*", (req, res) => {
 });
 
 app.get("/images/*", (req, res) => {
-	console.log( req.originalUrl);
 	fs.readFile('public/website' + req.originalUrl, function(err, data) {
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write(data);
@@ -167,6 +166,7 @@ app.post('/check', function (req, res) {
 
   })
 });
+
 
 app.post('/checkUsername', function (req, res) {
   var ans = "";
