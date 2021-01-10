@@ -1,1 +1,87 @@
-Contact Page here
+<!DOCTYPE html>
+<html>
+  <head>
+	  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Yusei+Magic&display=swap" rel="stylesheet">
+  <style>
+  body {
+    background-color: lightgray;
+
+  }
+  input {
+	  
+	  font-family: 'East Sea Dokdo', cursive;
+	  font-size: 25px;
+	  background-color: white;
+	  width: 30%;
+	  height:28px;
+    padding: 15px; 
+
+    border:0 none;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+  textarea {
+	  resize: none;
+	  font-family: 'East Sea Dokdo', cursive;
+font-size: 25px;
+	  width:30%;
+	  height: 150px;
+    padding:15px; 
+     background-color: white;
+
+    border:0 none;
+   
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+  button {
+	  cursor: pointer;
+	  font-family: 'Yusei Magic', sans-serif;
+border-radius: 10px;
+	  background-color: #0097A7;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+
+  margin: 4px 2px;
+}
+
+#form {
+	position: relative;
+	top: 200px;
+}
+.title {
+	letter-spacing: 5px;
+	zoom: 140%;
+	font-family: 'Yusei Magic', sans-serif;
+}
+    </style>	
+  </head>
+  <body>
+	<section id="form">
+	<h1 class="title"><center>REACH OUT TO US</center></h1>
+	
+	<form action="#" onsubmit="return contact()">
+      <center>
+      <input type="text" id="name"  placeholder="Name" required/><br></br>
+      <input type="email" id="email" placeholder="Email"  required/><br></br>
+      <textarea type="text" id="concern"  placeholder = "Your message..."  required></textarea></center>
+
+      <center>
+      <button type="submit">Send</button> 
+      </center>
+	</form>
+	</section>
+   
+  
+
+	<script>
+		function contact() {
+			alert("contact successful!");
+		}
+	</script>
+
+	</body>
+</html>

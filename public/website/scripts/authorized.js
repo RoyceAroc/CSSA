@@ -73,29 +73,65 @@ function login() {
 
 function onSignIn(googleUser) {
 	var profile = googleUser.getBasicProfile();
-	console.log('Given Name: ' + profile.getGivenName());
-	console.log('Family Name: ' + profile.getFamilyName());
-	console.log("Email: " + profile.getEmail());
 	var xhttp = new XMLHttpRequest();
 	xhttp.open("POST", "checkEmail", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send(emailC); 
+	xhttp.send(profile.getEmail()); 
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			if(this.responseText == 1) {
-				alert("This email is already in use");
-			} else {
-				//Work in progress [Make custom username w/ while loop across retention flow check & login]
+				//Account already exists | set profile
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("POST", "gleUsername", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(profile.getEmail()); 
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						let valueArray = JSON.parse(this.responseText).info;
+						localStorage.setItem("email", valueArray[0]);
+						localStorage.setItem("User", valueArray[1]);
+						localStorage.setItem("fName", valueArray[2]);
+						localStorage.setItem("lName", valueArray[3]);
+						window.location.href = "environment/dashboard";
+					} 
+				}; 
+			} else 	{
+				let username = profile.getGivenName() + "#" + (Math.floor(Math.random() * 9000) + 1000);
+				let password = generatePassword();
+				var values = {Email: profile.getEmail(), Username: username, First: profile.getGivenName(), Last: profile.getFamilyName() ,  Password:password};
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("POST", "registrationA", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(JSON.stringify(values)); 
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						if(this.responseText == "1") {
+							localStorage.setItem("email", profile.getEmail());
+							localStorage.setItem("User", username);
+							localStorage.setItem("fName", profile.getGivenName());
+							localStorage.setItem("lName", profile.getFamilyName());
+							window.location.href = "environment/dashboard";
+						} 
+					} 
+				}; 
 			}
 		} 
 	}; 
 }
 
-
+function generatePassword() {
+    var length = 8,
+        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+        retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+        retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    return retVal;
+}
 
 function signOut() {
 	var auth2 = gapi.auth2.getAuthInstance();
 	auth2.signOut().then(function () {
-		console.log('User signed out.');
+		// User has successfully signed out
 	});
 }

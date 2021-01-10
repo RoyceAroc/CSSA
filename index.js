@@ -1,5 +1,6 @@
 const http = require('http');
 const path = require("path");
+var url = require('url');
 const express = require("express");
 const app = express();
 const port = process.env.PORT || "8000";
@@ -39,6 +40,39 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/scripts/authorized.js", (req, res) => {
+  fs.readFile('public/website/scripts/authorized.js', function(err, data) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    return res.end();
+  });
+});
+
+app.get("/styles/*", (req, res) => {
+	fs.readFile('public/website' + req.originalUrl, function(err, data) {
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.write(data);
+		return res.end();
+	});
+});
+
+app.get("/scripts/*", (req, res) => {
+	fs.readFile('public/website' + req.originalUrl, function(err, data) {
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.write(data);
+		return res.end();
+	});
+});
+
+app.get("/images/*", (req, res) => {
+	console.log( req.originalUrl);
+	fs.readFile('public/website' + req.originalUrl, function(err, data) {
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.write(data);
+		return res.end();
+	});
+});
+
 app.get("/environment/dashboard", (req, res) => {
   fs.readFile('public/environment/index.html', function(err, data) {
     res.writeHead(200, {'Content-Type': 'text/html'});
@@ -55,6 +89,14 @@ app.get('/about', function(req, res){
   });
 });
 
+app.get('/contact', function(req, res){
+  fs.readFile('public/website/contact.html', function(err, data) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    return res.end();
+  });
+});
+
 app.get("/sign", (req, res) => {
   fs.readFile('public/website/sign.html', function(err, data) {
     res.writeHead(200, {'Content-Type': 'text/html'});
@@ -62,13 +104,7 @@ app.get("/sign", (req, res) => {
     return res.end();
   });
 });
-app.get("/scripts/authorized.js", (req, res) => {
-  fs.readFile('public/website/scripts/authorized.js', function(err, data) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(data);
-    return res.end();
-  });
-});
+
 app.get('*', function(req, res) {
   fs.readFile('public/website/404.html', function(err, data) {
     res.writeHead(200, {'Content-Type': 'text/html'});
@@ -167,6 +203,57 @@ app.post('/checkEmail', function (req, res) {
     connection.execSql(requestC);
   })
 });
+
+app.post('/gleUsername', function (req, res) {
+  var ans = "";
+  req.on('data', function(data) {
+    const requestD= new Request(
+      `SELECT * FROM IdentityOfIndividual WHERE Scopecode = '` + data +  `'`,
+      (err, rowCount) => {
+        if (err) {
+          console.error(err.message);
+        } else {
+            ans = `${rowCount}`;      
+
+        }
+      }
+    );
+
+	var computedInfo = {"info":[]};
+	requestD.on("row", columns => {
+		columns.forEach(column => {
+			computedInfo.info.push(column.value);
+		});
+		res.send(computedInfo);
+	});
+    connection.execSql(requestD);
+  })
+});
+
+app.post('/registrationA', function (req, res) {
+ 	var ans = "";
+    req.on('data', function(data) {
+      var obj = JSON.parse(data);
+      const requestE= new Request(
+        `INSERT INTO IdentityOfIndividual
+         VALUES ('` + obj.Email + `', '` + obj.Username + `', '` + obj.First + `', '`+ obj.Last + `', '` + obj.Password + `', 'B');`,
+        (err, result) => {
+          if (err) {
+            console.error(err.message);
+          } else {
+              ans = `${result}`;     
+              if(ans == "1"){
+				  res.send(ans);
+			  } else {
+				  res.send("ok");
+			  }
+          }
+        }
+      );     
+    connection.execSql(requestE);
+    })
+});
+
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);
