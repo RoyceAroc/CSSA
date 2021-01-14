@@ -4,7 +4,6 @@ window.onload = function () {
     setInterval(function () {
         if (i < 20) {
             document.getElementById("header").style.paddingTop = `${17 - 0.7 * (i + 1)}%`;
-            // document.getElementById("subtitle").style.marginTop = `${i + 1}%`;
             document.getElementById("header-logo").style.width = `${1 * (i + 1)}%`;
 
             i++;
