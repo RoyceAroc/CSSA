@@ -1,48 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
-
-* {
-	color: white;
-}
-
 body {
-    background-color: #191b1aff;
-    font-family: 'Quicksand';
-    margin: 0;
+    font-size: 20px;
 }
 
-nav img {
-    width: 50px;
-}
-
-nav .leftnav {
-    display:flex;
-    flex-direction:row;
-}
-
-nav .leftnav a {
-    border-bottom: none !important;
-}
-
-nav a {
-    text-decoration: none;
-    border-bottom: 3px solid white;
-	color:white;
-	margin: 10px;
-}
-
-nav .signin {
-    text-decoration: none;
-    border-bottom: none !important;
-    background-color: #0097a7;
-    padding: 10px;
-	color:white;
-	border-radius: 7px;
-	margin-bottom: 10px;
+#header {
+    height: 83.1%;
+    padding-top: 17%;
+    border-bottom: 5px solid aliceblue;
+    text-align: center;
+    background-image: url('images/particlebackground.png');
 }
 
 nav {
-    display:flex;
-    flex-direction:row;
-    justify-content: space-between;
-    padding: 25px;
+    z-index: 831;
+}
+
+#title {
+    font-size: 200px;
+}
+
+#header-logo {
+    width: 0%;
+    height: auto;
+}
+
+#subtitle {
+    margin-top: 0%;
+    font-size: 60px;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    padding-left: 15%;
+    padding-right: 15%;
+    font-size: xx-large;
+}
+
+.content-card-1 {
+    background-color: rgb(35, 36, 35);
+}
+
+.content-card-2 {
+    background-color: rgb(20, 22, 21);
+}
+
+.card img {
+    width: 35%;
+    height: 20%;
+    margin-right: 5%;
+}
+
+.card-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
