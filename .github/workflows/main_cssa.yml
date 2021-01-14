@@ -31,5 +31,5 @@ jobs:
       with:
         app-name: 'cssa'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6889533ccfb24aefb99decb52be713d9 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_3a35a9281ea449eeaa1d7760356ba5aa }}
         package: .
