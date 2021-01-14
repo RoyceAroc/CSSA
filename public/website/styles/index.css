@@ -1,5 +1,5 @@
 body {
-    font-size: 20px;
+    background-image: url('../images/particlebackground.png');
 }
 
 #header {
@@ -7,7 +7,6 @@ body {
     padding-top: 17%;
     border-bottom: 5px solid aliceblue;
     text-align: center;
-    background-image: url('images/particlebackground.png');
 }
 
 nav {
