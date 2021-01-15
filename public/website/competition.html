@@ -9,54 +9,9 @@
 		<script src="scripts/script.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="styles/styles.css">
+		<link rel="stylesheet" type="text/css" href="styles/competition.css">
 
         <link rel="icon" href="images/favicon.ico">
-        
-        <style>
-            #header {
-                padding-bottom: 1%;
-                text-align: center;
-                border-bottom: 5px solid aliceblue;
-                background-image: url('images/particlebackground.png');
-            }
-
-            #title {
-                font-size: 100px;
-            }
-
-            #main {
-                display: flex;
-                flex-direction: row;
-                padding: 2% 1% 2% 1%;
-                background-color: #191b1aff;
-            }
-
-            #sidebar {
-                width: 20%;
-            }
-
-            #nav-box-pad {
-                padding-top: 8%;
-                position: -webkit-sticky;
-                position: sticky;
-                top: 0;
-            }
-
-            #nav-box {
-                padding: 5% 15%;
-                border: 3px solid white;
-            }
-
-            #nav-box > a {
-                color: aliceblue;
-                text-decoration: none;
-            }
-
-            #content {
-                width: 80%;
-                margin-left: 2%;
-            }
-        </style>
 	</head>
 
 	<body>
@@ -90,22 +45,100 @@
 
                 <div id="events-container">
                     <h1 id="events">Events</h1>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci ac auctor augue mauris augue. Feugiat pretium nibh ipsum consequat. Nisl pretium fusce id velit ut tortor pretium viverra suspendisse. Feugiat scelerisque varius morbi enim. Adipiscing diam donec adipiscing tristique. Purus faucibus ornare suspendisse sed nisi lacus. Tempus urna et pharetra pharetra massa massa ultricies. Nullam non nisi est sit amet facilisis magna. Amet volutpat consequat mauris nunc.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci ac auctor augue mauris augue. Feugiat pretium nibh ipsum consequat. Nisl pretium fusce id velit ut tortor pretium viverra suspendisse. Feugiat scelerisque varius morbi enim. Adipiscing diam donec adipiscing tristique. Purus faucibus ornare suspendisse sed nisi lacus. Tempus urna et pharetra pharetra massa massa ultricies. Nullam non nisi est sit amet facilisis magna. Amet volutpat consequat mauris nunc.
+
+                    <a id="eventsToggle" class="btn btn-primary" data-bs-toggle="collapse" href="#eventsCollapsible" role="button" aria-expanded="false" aria-controls="eventsCollapsible">
+                        Click to view events
+                    </a>
+                    
+                    <div id="eventsCollapsible" class="events collapse">
+
+                        <div class="event">
+                            <img class="event-image" src="images/logo.png" alt="...">
+
+                            <div id="event-text">
+                                <h4>Algorithmic Thinking</h4>
+                                <p>Description here...</p>
+                            </div>
+                        </div>
+
+                        <div class="event">
+                            <img class="event-image" src="images/logo.png" alt="...">
+
+                            <div id="event-text">
+                                <h4>Capture the Flag</h4>
+                                <p>Description here...</p>
+                            </div>
+                        </div>
+
+                        <div class="event">
+                            <img class="event-image" src="images/logo.png" alt="...">
+
+                            <div id="event-text">
+                                <h4>Data Science</h4>
+                                <p>Description here...</p>
+                            </div>
+                        </div>
+
+                        <div class="event">
+                            <img class="event-image" src="images/logo.png" alt="...">
+
+                            <div id="event-text">
+                                <h4>Cybersecurity</h4>
+                                <p>Description here...</p>
+                            </div>
+                        </div>
+
+                        <div class="event">
+                            <img class="event-image" src="images/logo.png" alt="...">
+
+                            <div id="event-text">
+                                <h4>Website Design</h4>
+                                <p>Description here...</p>
+                            </div>
+                        </div>
+
+                        <div class="event">
+                            <img class="event-image" src="images/logo.png" alt="...">
+
+                            <div id="event-text">
+                                <h4>Bug Smasher</h4>
+                                <p>Description here...</p>
+                            </div>
+                        </div>
+
+                        <div class="event">
+                            <img class="event-image" src="images/logo.png" alt="...">
+
+                            <div id="event-text">
+                                <h4>Tech Support</h4>
+                                <p>Description here...</p>
+                            </div>
+                        </div>
+
+                        <div class="event">
+                            <img class="event-image" src="images/logo.png" alt="...">
+
+                            <div id="event-text">
+                                <h4>Task Challenges</h4>
+                                <p>Description here...</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="calendar-container">
                     <h1 id="calendar">Competition Calendar</h1>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci ac auctor augue mauris augue. Feugiat pretium nibh ipsum consequat. Nisl pretium fusce id velit ut tortor pretium viverra suspendisse. Feugiat scelerisque varius morbi enim. Adipiscing diam donec adipiscing tristique. Purus faucibus ornare suspendisse sed nisi lacus. Tempus urna et pharetra pharetra massa massa ultricies. Nullam non nisi est sit amet facilisis magna. Amet volutpat consequat mauris nunc.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci ac auctor augue mauris augue. Feugiat pretium nibh ipsum consequat. Nisl pretium fusce id velit ut tortor pretium viverra suspendisse. Feugiat scelerisque varius morbi enim. Adipiscing diam donec adipiscing tristique. Purus faucibus ornare suspendisse sed nisi lacus. Tempus urna et pharetra pharetra massa massa ultricies. Nullam non nisi est sit amet facilisis magna. Amet volutpat consequat mauris nunc.
+                    No competitions are currently scheduled! Stay tuned!
                 </div>
 
                 <div id="faqs-container">
                     <h1 id="faqs">FAQs</h1>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci ac auctor augue mauris augue. Feugiat pretium nibh ipsum consequat. Nisl pretium fusce id velit ut tortor pretium viverra suspendisse. Feugiat scelerisque varius morbi enim. Adipiscing diam donec adipiscing tristique. Purus faucibus ornare suspendisse sed nisi lacus. Tempus urna et pharetra pharetra massa massa ultricies. Nullam non nisi est sit amet facilisis magna. Amet volutpat consequat mauris nunc.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci ac auctor augue mauris augue. Feugiat pretium nibh ipsum consequat. Nisl pretium fusce id velit ut tortor pretium viverra suspendisse. Feugiat scelerisque varius morbi enim. Adipiscing diam donec adipiscing tristique. Purus faucibus ornare suspendisse sed nisi lacus. Tempus urna et pharetra pharetra massa massa ultricies. Nullam non nisi est sit amet facilisis magna. Amet volutpat consequat mauris nunc.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci ac auctor augue mauris augue. Feugiat pretium nibh ipsum consequat. Nisl pretium fusce id velit ut tortor pretium viverra suspendisse. Feugiat scelerisque varius morbi enim. Adipiscing diam donec adipiscing tristique. Purus faucibus ornare suspendisse sed nisi lacus. Tempus urna et pharetra pharetra massa massa ultricies. Nullam non nisi est sit amet facilisis magna. Amet volutpat consequat mauris nunc.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci ac auctor augue mauris augue. Feugiat pretium nibh ipsum consequat. Nisl pretium fusce id velit ut tortor pretium viverra suspendisse. Feugiat scelerisque varius morbi enim. Adipiscing diam donec adipiscing tristique. Purus faucibus ornare suspendisse sed nisi lacus. Tempus urna et pharetra pharetra massa massa ultricies. Nullam non nisi est sit amet facilisis magna. Amet volutpat consequat mauris nunc.
+                    
+                    <h4>Who can register for a competition?</h4>
+                    <p>Each competition has its own eligibility requirements. In general, however, the only requirement is that you are at least 13 years old.</p>
+
+                    <h4>Are there rewards for winners?</h4>
+                    <p>Rewards depend on the competition. Currently, no awards are given besides perks on our <a class="text-link" onclick="window.open('https://discord.gg/xkVJwWZeds')">Discord server.</a></p>
                 </div>
             </div>
 		</div>

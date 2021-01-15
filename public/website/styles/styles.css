@@ -47,3 +47,12 @@ nav .signin {
 	border-radius: 7px;
 	margin-bottom: 10px;
 }
+
+.text-link {
+    color: rgb(0, 174, 255);
+}
+
+.text-link:hover {
+    cursor: pointer;
+    color: rgb(0, 141, 206)
+}

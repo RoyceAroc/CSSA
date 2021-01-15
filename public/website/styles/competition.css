@@ -1,0 +1,80 @@
+#header {
+    padding-bottom: 1%;
+    text-align: center;
+    border-bottom: 5px solid aliceblue;
+    background-image: url('images/particlebackground.png');
+}
+
+#title {
+    font-size: 100px;
+}
+
+#main {
+    display: flex;
+    flex-direction: row;
+    padding: 2% 1% 2% 1%;
+    background-color: #191b1aff;
+}
+
+#sidebar {
+    width: 20%;
+}
+
+#nav-box-pad {
+    padding-top: 8%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+#nav-box {
+    padding: 5% 15%;
+    border: 3px solid white;
+}
+
+#nav-box > a {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+#content {
+    width: 80%;
+    margin-left: 2%;
+}
+
+#content > div {
+    margin-bottom: 2%;
+}
+
+.events {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1%;
+}
+
+#eventsToggle {
+    background-color: rgb(228, 228, 228);
+    color: black;
+    border: 0px;
+}
+
+.event {
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+    width: 45%;
+    margin: 1%;
+    background-color: rgb(35, 36, 35);
+}
+
+.event-image {
+    margin-right: 3%;
+    width: 20%;
+}
+
+.event-text {
+    width: 80%;
+    vertical-align: middle;
+}
