@@ -3,7 +3,7 @@ const path = require("path");
 var url = require('url');
 const express = require("express");
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const { parse } = require('querystring');
 const { Connection, Request } = require("tedious");
 
