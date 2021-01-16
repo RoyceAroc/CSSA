@@ -3,6 +3,5 @@
         "node_modules{,/**}",
         ".vscode{,/**}"
     ],
-    "appService.defaultWebAppToDeploy": "/subscriptions/18590203-3d55-4ff6-a4eb-4fa107ae568f/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/cssa",
     "appService.deploySubpath": "."
 }

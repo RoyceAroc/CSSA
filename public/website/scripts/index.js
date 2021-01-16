@@ -8,5 +8,5 @@ window.onload = function () {
 
             i++;
         }
-    }, 50);
+    }, 10);
 }

@@ -2,7 +2,7 @@
     padding-bottom: 1%;
     text-align: center;
     border-bottom: 5px solid aliceblue;
-    background-image: url('images/particlebackground.png');
+    background-image: url('../images/particlebackground.png');
 }
 
 #title {
