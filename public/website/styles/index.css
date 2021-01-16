@@ -1,32 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 body {
     background-image: url('../images/particlebackground.png');
 }
 
-#header {
-    height: 83.1%;
-    padding-top: 17%;
-    border-bottom: 5px solid aliceblue;
+
+.header{
+    display:flex;
+    flex-direction:row;
+    width: 100vw;
+    justify-content: center;
+    height: 100vh;
+}
+.header > section{
+    display: flex;
+    flex-direction: column;
+    
+}
+.header h1{
     text-align: center;
+    font-size: 20vh;
+    font-weight:300;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
 }
+.header h4{
+    text-align: center;
 
-nav {
-    z-index: 831;
 }
-
-#title {
-    font-size: 200px;
-}
-
-#header-logo {
-    width: 0%;
-    height: auto;
-}
-
-#subtitle {
-    margin-top: 0%;
-    font-size: 60px;
-}
-
 .card {
     display: flex;
     flex-direction: row;
