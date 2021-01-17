@@ -164,6 +164,8 @@ function eraseCookie(name) {
 window.onload = function() {
 	if(getCookie('email')) {
 		window.location.href = "environment/dashboard";
+	} else {
+		signOut();
 	}
 }
 
