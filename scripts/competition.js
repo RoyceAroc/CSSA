@@ -1,7 +1,4 @@
 window.onload = function () {
-    var urlParams = new URLSearchParams(decodeURIComponent(window.location.search));
-    var event = urlParams.get('event');
-
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -13,7 +10,7 @@ window.onload = function () {
     xhttp.send();
 }
 
-function populateEventPage(eventData) {
+function populateCompetitionPage(eventData) {
     let eventTitle = document.getElementById("title");
     let eventDescription = document.getElementById("description");
 
