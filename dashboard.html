@@ -1,3 +1,42 @@
 <!DOCTYPE html>
-Dashboard System
+<html>
+   <head>
+	  <title> CSSA Dashboard</title>
+	  <link rel="icon" href="images/favicon.ico">
+	  <script src="scripts/authorized.js"></script>
+      <link rel="stylesheet" type="text/css" href="styles/auth.css">
+	  <link rel="stylesheet" type="text/css" href="styles/styles.css">
+      <meta name="google-signin-scope" content="profile email">
+	  <script src="https://apis.google.com/js/platform.js" async defer></script>
+	  <script src="https://apis.google.com/js/client:platform.js"></script>
+      <meta name="google-signin-client_id" content="834594227639-dntdsbdaej8rsfhspugmaft12lcorhc8.apps.googleusercontent.com">
+   </head>
+   <body>
+      <h1> AYO Dashboard</h1>
+	Sign out Google Auth <a href="#"  onclick="signOut();">Sign out</a>
+	 	<script>
+		    //Continue moving using margin ... I was thinking import 
+			const loginA = document.querySelector("form.login");
+			const loginB = document.querySelector("label.login");
+			const signupA = document.querySelector("label.signup");
+			const signupB = document.querySelector("form .signup-link a");
+			signupA.onclick = (()=>{
+				loginA.style.marginLeft = "-50%";
+			});
+			loginB.onclick = (()=>{
+				loginA.style.marginLeft = "0%";
+			});
+			signupB.onclick = (()=>{
+				signupA.click();
+				return false;
+         });
+         
+         //Automatic cookie sign in irrespective
+         window.onload = function() {
+            if(getCookie('email') != null) {
+              // window.location.href = "dashboard.html";
+            } 
+         }
+    </script>
+   </body>
 </html>

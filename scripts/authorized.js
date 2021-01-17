@@ -1,5 +1,3 @@
-var boolCheck = false;
-
 function create() {
 	let emailC = document.getElementById("email_c").value;
 	var usr = document.getElementById("username").value;
@@ -59,7 +57,7 @@ function login() {
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			if(this.responseText == "false") {
-				alert("Login Failure");
+				alert("Invalid Information");
 			} else {
 				let valueArray = JSON.parse(this.responseText).info;
 				setCookie('email',valueArray[0],365);
@@ -74,53 +72,51 @@ function login() {
 
 
 function onSignIn(googleUser) {
-	if(boolCheck == true) {
-		var profile = googleUser.getBasicProfile();
-		var xhttp = new XMLHttpRequest();
-		xhttp.open("POST", "https://backend.cssa.dev/checkEmail", true);
-		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhttp.send(profile.getEmail()); 
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				if(this.responseText == 1) {
-					//Account already exists | set profile
-					var xhttp = new XMLHttpRequest();
-					xhttp.open("POST", "https://backend.cssa.dev/gleUsername", true);
-					xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-					xhttp.send(profile.getEmail()); 
-					xhttp.onreadystatechange = function() {
-						if (this.readyState == 4 && this.status == 200) {
-							let valueArray = JSON.parse(this.responseText).info;
-							setCookie('email',valueArray[0],365);
-							setCookie('User',valueArray[1],365);
-							setCookie('fName',valueArray[2],365);
-							setCookie('lName',valueArray[3],365);
+	var profile = googleUser.getBasicProfile();
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "https://backend.cssa.dev/checkEmail", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(profile.getEmail()); 
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			if(this.responseText == 1) {
+				//Account already exists | set profile
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("POST", "https://backend.cssa.dev/gleUsername", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(profile.getEmail()); 
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						let valueArray = JSON.parse(this.responseText).info;
+						setCookie('email',valueArray[0],365);
+						setCookie('User',valueArray[1],365);
+						setCookie('fName',valueArray[2],365);
+						setCookie('lName',valueArray[3],365);
+						window.location.href = "dashboard.html";
+					} 
+				}; 
+			} else 	{
+				let username = profile.getGivenName() + "#" + (Math.floor(Math.random() * 9000) + 1000);
+				let password = generatePassword();
+				var values = {Email: profile.getEmail(), Username: username, First: profile.getGivenName(), Last: profile.getFamilyName() ,  Password:password};
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("POST", "https://backend.cssa.dev/registrationA", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(JSON.stringify(values)); 
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						if(this.responseText == "1") {
+							setCookie('email',profile.getEmail(),365);
+							setCookie('User',username,365);
+							setCookie('fName',profile.getGivenName(),365);
+							setCookie('lName',profile.getFamilyName(),365);
 							window.location.href = "dashboard.html";
 						} 
-					}; 
-				} else 	{
-					let username = profile.getGivenName() + "#" + (Math.floor(Math.random() * 9000) + 1000);
-					let password = generatePassword();
-					var values = {Email: profile.getEmail(), Username: username, First: profile.getGivenName(), Last: profile.getFamilyName() ,  Password:password};
-					var xhttp = new XMLHttpRequest();
-					xhttp.open("POST", "https://backend.cssa.dev/registrationA", true);
-					xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-					xhttp.send(JSON.stringify(values)); 
-					xhttp.onreadystatechange = function() {
-						if (this.readyState == 4 && this.status == 200) {
-							if(this.responseText == "1") {
-								setCookie('email',profile.getEmail(),365);
-								setCookie('User',username,365);
-								setCookie('fName',profile.getGivenName(),365);
-								setCookie('lName',profile.getFamilyName(),365);
-								window.location.href = "dashboard.html";
-							} 
-						} 
-					}; 
-				}
-			} 
-		}; 
-	}
+					} 
+				}; 
+			}
+		} 
+	}; 
 }
 
 function generatePassword() {
@@ -134,10 +130,14 @@ function generatePassword() {
 }
 
 function signOut() {
+	eraseCookie('email');eraseCookie('User');eraseCookie('fName');eraseCookie('lName');
 	var auth2 = gapi.auth2.getAuthInstance();
-	auth2.signOut().then(function () {
-		boolCheck = true;
-	});
+	if(auth2) {
+		auth2.signOut().then(function () {
+			console.log("You have signed out!");
+		});
+	}
+	window.location = "index.html";
 }
 
 function setCookie(name,value,days) {
