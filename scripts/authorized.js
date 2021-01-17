@@ -165,7 +165,7 @@ window.onload = function() {
 	if(getCookie('email')) {
 		window.location.href = "environment/dashboard";
 	} else {
-		signOut();
+		signOut(); //google auth sign out
 	}
 }
 
