@@ -135,10 +135,10 @@ function generatePassword() {
 
 function signOut() {
 	var auth2 = gapi.auth2.getAuthInstance();
-auth2.signOut().then(function () {
-	boolCheck = true;
-});
-
+	auth2.signOut().then(function () {
+		boolCheck = true;
+		console.log("k");
+	});
 }
 
 function setCookie(name,value,days) {
