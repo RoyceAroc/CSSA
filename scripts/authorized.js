@@ -166,3 +166,4 @@ window.onload = function() {
 		window.location.href = "environment/dashboard";
 	}
 }
+

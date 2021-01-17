@@ -1,46 +1,95 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>CSSA</title>
-
-		<meta name="google-signin-scope" content="profile email">
-    	<meta name="google-signin-client_id" content="834594227639-dntdsbdaej8rsfhspugmaft12lcorhc8.apps.googleusercontent.com">
-		<script src="https://apis.google.com/js/platform.js" async defer></script>
-		
-		<script src="scripts/script.js"></script>
-		<script src="scripts/authorized.js"></script>
-
-		<link rel="stylesheet" type="text/css" href="styles/styles.css">
-
-        <link rel="icon" href="images/favicon.ico">
-	</head>
-
-	<body>
-		<nav></nav>
-
-		<h1>Basic Signup </h1>
-		Username:<input id="username"></input>
-		<br>
-		Email:<input type="email" id="email_c"></input>
-		<br>
-		First Name:<input id="f_name"></input>
-		<br>
-		Last Name:<input id="l_name"></input>
-		<br>
-		Password:<input type="password" id="pwd"></input>
-		<br>
-		<button onclick="create()"> Create Account </button>
-
-		<h1>Sign In</h1>
-		Username or Email:<input id="s_username"></input>
-		<br>
-		Password:<input type="password" id="s_pwd"></input>
-		<br>
-		<button onclick="login()">Login</button>
-
-		<h1>Google Auth</h1>
-		<div class="g-signin2" data-onsuccess="onSignIn" data-onfailure="onSignInFailure" data-theme="dark"></div>
-		<br>
-		<a href="#" onclick="signOut();">Sign out</a>
-	</body>
+   <head>
+	  <title> CSSA Login</title>
+	  <link rel="icon" href="images/favicon.ico">
+	  <script src="scripts/authorized.js"></script>
+      <link rel="stylesheet" type="text/css" href="styles/auth.css">
+	  <link rel="stylesheet" type="text/css" href="styles/styles.css">
+      <meta name="google-signin-scope" content="profile email">
+	  <script src="https://apis.google.com/js/platform.js" async defer></script>
+      <meta name="google-signin-client_id" content="834594227639-dntdsbdaej8rsfhspugmaft12lcorhc8.apps.googleusercontent.com">
+   </head>
+   <body>
+      <div class="top-header">
+         <div class="inside">
+            <div class="move-css">
+               <input type="radio" name="slide" id="login" checked>
+               <input type="radio" name="slide" id="signup">
+               <label for="login" class="slide login">Sign In</label>
+               <label for="signup" class="slide signup">Sign Up</label>
+               <div class="tab-tbd">
+               </div>
+            </div>
+            <div class="holder">
+               <form action="javascript:login();" class="login">
+                  <center>
+                     <div class="g-signin2" data-onsuccess="onSignIn" data-onfailure="onSignInFailure" data-theme="dark"></div>
+                  </center>
+                  <div class="or-thing">
+                     <span>OR</span>
+                  </div>
+                  <div class="field">
+                     <input id="s_username" type="text" placeholder="Username or Email" required>
+                  </div>
+                  <div class="field">
+                     <input id="s_pwd" type="password" placeholder="Password" required>
+                  </div>
+                  <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <input type="submit" value="Login">
+                  </div>
+                  <div class="signup-link">
+                     Not a member? <a href="">Signup now</a>
+                  </div>
+               </form>
+               <form action="javascript:create();" class="signup">
+                  <center>
+                     <div class="g-signin2" data-onsuccess="onSignIn" data-onfailure="onSignInFailure" data-theme="dark"></div>
+                  </center>
+                  <div class="or-thing">
+                     <span>OR</span>
+                  </div>
+                  <div class="field">
+                     <input id="f_name" type="text" placeholder="First Name" required>
+                  </div>
+                  <div class="field">
+                     <input id="l_name" type="text" placeholder="Last Name" required>
+                  </div>
+                  <div class="field">
+                     <input id="email_c" type="text" placeholder="Email" required>
+                  </div>
+                  <div class="field">
+                     <input id="username" type="text" placeholder="Username" required>
+                  </div>
+                  <div class="field">
+                     <input id="pwd" type="password" placeholder="Password" required>
+                  </div>
+                  <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <input type="submit" value="Signup"/>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+	  <!--Sign Out <a href="#" onclick="signOut();">Sign out</a> -->
+		<script>
+		    //Continue moving using margin ... I was thinking import 
+			const loginA = document.querySelector("form.login");
+			const loginB = document.querySelector("label.login");
+			const signupA = document.querySelector("label.signup");
+			const signupB = document.querySelector("form .signup-link a");
+			signupA.onclick = (()=>{
+				loginA.style.marginLeft = "-50%";
+			});
+			loginB.onclick = (()=>{
+				loginA.style.marginLeft = "0%";
+			});
+			signupB.onclick = (()=>{
+				signupA.click();
+				return false;
+			});
+		</script>
+   </body>
 </html>
