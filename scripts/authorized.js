@@ -137,7 +137,6 @@ function signOut() {
 	var auth2 = gapi.auth2.getAuthInstance();
 	auth2.signOut().then(function () {
 		boolCheck = true;
-		console.log("k");
 	});
 }
 
@@ -170,7 +169,7 @@ window.onload = function() {
 	if(getCookie('email')) {
 		window.location.href = "environment/dashboard";
 	} else {
-		signOut(); //google auth sign out
+		document.getElementById("auto").click();
 	}
 }
 
