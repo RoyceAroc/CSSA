@@ -17,7 +17,14 @@ body {
 	/*Particle for now work TBD for animated */
 }
 
+input {
+	color: black;
+}
+span {
+	color: black;
+}
 .top-header {
+	color: black;
 	overflow: hidden;
 	max-width: 390px;
 	background: #fff;
