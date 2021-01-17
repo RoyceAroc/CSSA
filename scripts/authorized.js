@@ -138,7 +138,7 @@ function signOut() {
 auth2.signOut().then(function () {
 	console.log("k");
 });
-auth2.disconnect();
+
 }
 
 function setCookie(name,value,days) {
