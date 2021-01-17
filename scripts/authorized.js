@@ -135,6 +135,7 @@ function generatePassword() {
 }
 
 function signOut() {
+	onLoad();
 	eraseCookie('email');eraseCookie('User');eraseCookie('fName');eraseCookie('lName');
 	var auth2 = gapi.auth2.getAuthInstance();
 	auth2.signOut().then(function () {
