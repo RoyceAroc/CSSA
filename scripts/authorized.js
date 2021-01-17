@@ -74,7 +74,7 @@ function login() {
 
 
 function onSignIn(googleUser) {
-	if(boolCheck) {
+	if(boolCheck == true) {
 		var profile = googleUser.getBasicProfile();
 		var xhttp = new XMLHttpRequest();
 		xhttp.open("POST", "https://backend.cssa.dev/checkEmail", true);
@@ -136,7 +136,7 @@ function generatePassword() {
 function signOut() {
 	var auth2 = gapi.auth2.getAuthInstance();
 auth2.signOut().then(function () {
-	console.log("k");
+	boolCheck = true;
 });
 
 }
@@ -171,7 +171,6 @@ window.onload = function() {
 		window.location.href = "environment/dashboard";
 	} else {
 		signOut(); //google auth sign out
-		boolCheck = true;
 	}
 }
 
