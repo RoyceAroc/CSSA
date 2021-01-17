@@ -95,7 +95,7 @@ function onSignIn(googleUser) {
 								setCookie('User',valueArray[1],365);
 								setCookie('fName',valueArray[2],365);
 								setCookie('lName',valueArray[3],365);
-							window.location.href = "environment/dashboard";
+							//window.location.href = "environment/dashboard";
 						} 
 					}; 
 				} else 	{
