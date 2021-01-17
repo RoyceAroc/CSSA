@@ -169,7 +169,7 @@ window.onload = function() {
 	if(getCookie('email')) {
 		window.location.href = "environment/dashboard";
 	} else {
-		document.getElementById("auto").click();
+		document.getElementById("autor").click();
 	}
 }
 
