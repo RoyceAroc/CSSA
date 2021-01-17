@@ -37,6 +37,11 @@
     text-decoration: none;
 }
 
+#nav-box > a:hover {
+    color: rgb(201, 201, 201);
+    text-decoration: underline;
+}
+
 #content {
     width: 80%;
     margin-left: 2%;
@@ -55,8 +60,14 @@
 }
 
 #eventsToggle {
-    background-color: rgb(228, 228, 228);
-    color: black;
+    background-color: rgb(17, 17, 17);
+    color: rgb(255, 255, 255);
+    border: 0px;
+}
+
+#eventsToggle:hover {
+    background-color: rgb(31, 31, 31);
+    color: rgb(255, 255, 255);
     border: 0px;
 }
 
@@ -71,10 +82,10 @@
 
 .event-image {
     margin-right: 3%;
-    width: 20%;
+    width: 30%;
 }
 
 .event-text {
-    width: 80%;
+    width: 70%;
     vertical-align: middle;
 }

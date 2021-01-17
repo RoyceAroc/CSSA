@@ -1,0 +1,17 @@
+#header {
+    padding-bottom: 1%;
+    text-align: center;
+    border-bottom: 5px solid aliceblue;
+    background-image: url('../images/particlebackground.png');
+}
+
+#title {
+    font-size: 100px;
+}
+
+#main {
+    display: flex;
+    flex-direction: row;
+    padding: 2% 1% 2% 1%;
+    background-color: #191b1aff;
+}
