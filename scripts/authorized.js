@@ -91,11 +91,11 @@ function onSignIn(googleUser) {
 					xhttp.onreadystatechange = function() {
 						if (this.readyState == 4 && this.status == 200) {
 							let valueArray = JSON.parse(this.responseText).info;
-								setCookie('email',valueArray[0],365);
-								setCookie('User',valueArray[1],365);
-								setCookie('fName',valueArray[2],365);
-								setCookie('lName',valueArray[3],365);
-							//window.location.href = "environment/dashboard";
+							setCookie('email',valueArray[0],365);
+							setCookie('User',valueArray[1],365);
+							setCookie('fName',valueArray[2],365);
+							setCookie('lName',valueArray[3],365);
+							window.location.href = "environment/dashboard";
 						} 
 					}; 
 				} else 	{
