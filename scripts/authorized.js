@@ -36,7 +36,7 @@ function create() {
 										setCookie('User',usr,365);
 										setCookie('fName',fName,365);
 										setCookie('lName',lName,365);
-										window.location.href = "environment/dashboard";
+										window.location.href = "dashboard.html";
 									} 
 								} 
 							}; 
@@ -66,7 +66,7 @@ function login() {
 				setCookie('User',valueArray[1],365);
 				setCookie('fName',valueArray[2],365);
 				setCookie('lName',valueArray[3],365);
-				window.location.href = "environment/dashboard";
+				window.location.href = "dashboard.html";
 			}
 		} 
 	}; 
@@ -95,7 +95,7 @@ function onSignIn(googleUser) {
 							setCookie('User',valueArray[1],365);
 							setCookie('fName',valueArray[2],365);
 							setCookie('lName',valueArray[3],365);
-							window.location.href = "environment/dashboard";
+							window.location.href = "dashboard.html";
 						} 
 					}; 
 				} else 	{
@@ -113,7 +113,7 @@ function onSignIn(googleUser) {
 								setCookie('User',username,365);
 								setCookie('fName',profile.getGivenName(),365);
 								setCookie('lName',profile.getFamilyName(),365);
-								window.location.href = "environment/dashboard";
+								window.location.href = "dashboard.html";
 							} 
 						} 
 					}; 
@@ -165,9 +165,4 @@ function eraseCookie(name) {
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
-window.onload = function() {
-	if(getCookie('email') != null) {
-		window.location.href = "environment/dashboard";
-	} 
-}
 

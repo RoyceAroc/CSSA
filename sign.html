@@ -90,7 +90,14 @@
 			signupB.onclick = (()=>{
 				signupA.click();
 				return false;
-			});
+         });
+         
+         //Automatic cookie sign in irrespective
+         window.onload = function() {
+            if(getCookie('email') != null) {
+               window.location.href = "dashboard.html";
+            } 
+         }
 		</script>
    </body>
 </html>
