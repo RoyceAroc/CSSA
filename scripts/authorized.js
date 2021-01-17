@@ -132,11 +132,9 @@ function generatePassword() {
 function signOut() {
 	eraseCookie('email');eraseCookie('User');eraseCookie('fName');eraseCookie('lName');
 	var auth2 = gapi.auth2.getAuthInstance();
-	if(auth2) {
-		auth2.signOut().then(function () {
-			console.log("You have signed out!");
-		});
-	}
+	auth2.signOut().then(function () {
+		console.log("You have signed out!");
+	});
 	window.location = "index.html";
 }
 
