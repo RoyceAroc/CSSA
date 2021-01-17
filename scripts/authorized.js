@@ -168,9 +168,6 @@ function eraseCookie(name) {
 window.onload = function() {
 	if(getCookie('email') != null) {
 		window.location.href = "environment/dashboard";
-	} else {
-		console.log("good!");
-		document.getElementById("autor").click();
-	}
+	} 
 }
 
