@@ -4,6 +4,7 @@ header{
    flex-direction: column;
    height: 100vh;
 }
+
 .infosection{
     display:flex;
     flex-direction:row;
