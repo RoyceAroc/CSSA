@@ -3,7 +3,7 @@ footer {
     flex-direction: row;
     justify-content: space-evenly;
     padding: 2%;
-    background-image: url('/images/particlebackground.png');
+    background-color:rgb(27, 29, 29);
 }
 
 #logo {
@@ -35,19 +35,23 @@ footer {
 }
 
 input, textarea {
-    color: black;
-    background-color: white;
-    font-size: larger;
-    border-radius: 5px;
+    font-size: 22px;
+    font-family: Quicksand;
+    border:none;
+    border-radius: 7px;
+    padding: 2px;
     margin-top: 2%;
-    margin-bottom: 2%;
 }
 
 input::-webkit-input-placeholder, #message::-webkit-input-placeholder {
-    font-size: 25px;
+    font-size: 22px;
 }
 
 button {
-    background-color: gray;
+    background-color: #018796;
     margin-top: 2%;
+    border-radius: 7px;
+    font-size: 22.3px;
+    padding: 2px;
+    border:none;
 }
