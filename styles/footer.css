@@ -38,6 +38,7 @@ input, textarea {
     color: black;
     background-color: white;
     font-size: larger;
+    border-radius: 5px;
     margin-top: 2%;
     margin-bottom: 2%;
 }
