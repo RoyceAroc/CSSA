@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-	  <title> CSSA Login</title>
+	  <title>CSSA Login</title>
 	  <link rel="icon" href="images/favicon.ico">
 	  <script src="scripts/authorized.js"></script>
       <link rel="stylesheet" type="text/css" href="styles/auth.css">
@@ -93,9 +93,11 @@
          
          //Automatic cookie sign in irrespective
          window.onload = function() {
-            if(getCookie('email') != null) {
+            if (getCookie('email') != null) {
                window.location.href = "dashboard.html";
-            } 
+            }
+
+            document.querySelector(".abcRioButtonContents > span").innerHTML = "Google Sign In";
          }
 		</script>
    </body>
