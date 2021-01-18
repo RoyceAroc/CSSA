@@ -4,7 +4,7 @@
         <image>./images/Algorithmic Thinking Event Icon - Transparent.png</image>
         <type>Tasks</type>
         <participants>Individual</participants>
-        <description>Competitors are given tasks and must write pseudocode or plain English algorithms that solve the tasks most efficiently.</description>
+        <description>Given tasks, write pseudocode algorithms that solve the tasks most efficiently. Scoring is based on the time complexity (Big O) of the solutions.</description>
         <resources>
             <resource>
                 <title>Rules</title>
@@ -64,7 +64,7 @@
         <image>./images/Website Design Event Icon - Transparent.png</image>
         <type>Case Study</type>
         <participants>Team of 3</participants>
-        <description>Design a website around a prompt that will be provided by the judges at each competition.</description>
+        <description>Design a website around a prompt that will be provided by the judges at each competition. Websites are judged based on aesthetics and functionality.</description>
         <resources>
             <resource>
                 <title>Rules</title>
@@ -79,7 +79,7 @@
         <image>./images/Cybersecurity Event Icon - Transparent.png</image>
         <type>Testing</type>
         <participants>Individual</participants>
-        <description></description>
+        <description>Answer questions related to various cybersecurity topics, including cryptography, privacy, internet security, and various other topics.</description>
         <resources>
             <resource>
                 <title>Rules</title>
@@ -124,7 +124,7 @@
         <image>./images/Information Technology Event Icon - Transparent.png</image>
         <type></type>
         <participants>Individual</participants>
-        <description></description>
+        <description>Answer questions related to various information theory topics, including entropy, information compression, error correction, and various other topics.</description>
         <resources>
             <resource>
                 <title>Rules</title>
