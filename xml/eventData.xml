@@ -1,6 +1,6 @@
 <event>
     <name>Algorithmic Thinking</name>
-    <image></image>
+    <image>./images/Algorithmic Thinking Event Icon - Transparent.png</image>
     <type>Tasks</type>
     <participants>Individual</participants>
     <description>Competitors are given tasks and must write pseudocode algorithms that solve the tasks most efficiently.</description>
@@ -90,7 +90,7 @@
 
 <event>
     <name>Bug Smasher</name>
-    <image></image>
+    <image>./images/Bug Smasher Event Icon - Transparent.png</image>
     <type>Case Study</type>
     <participants>Individual</participants>
     <description></description>
@@ -109,6 +109,21 @@
     <type></type>
     <participants>Team of 2</participants>
     <description>Talk to judges who present a case study involving a technology issue that must be solved.</description>
+    <resources>
+        <resource>
+            <title>Rules</title>
+            <type>Rules</type>
+            <link></link>
+        </resource>
+    </resources>
+</event>
+
+<event>
+    <name>Information Theory</name>
+    <image>./images/Information Technology Event Icon - Transparent.png</image>
+    <type></type>
+    <participants>Individual</participants>
+    <description></description>
     <resources>
         <resource>
             <title>Rules</title>

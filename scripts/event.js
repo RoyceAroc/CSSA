@@ -9,7 +9,7 @@ window.onload = function () {
         }
     };
 
-    xhttp.open("GET", "eventData.html", true);
+    xhttp.open("GET", "./xml/eventData.html", true);
     xhttp.send();
 }
 
@@ -21,5 +21,5 @@ function populateEventPage(eventData) {
     let infoImage = document.getElementById("info-image");
     // Other fields...
 
-    
+
 }
