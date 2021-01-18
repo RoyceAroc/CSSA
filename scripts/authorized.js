@@ -1,3 +1,20 @@
+window.onload = function() {
+	var values = {Cookie: getCookie("email")};
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "https://cssa-backend.herokuapp.com/indirectProfile", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(JSON.stringify(values));
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			if(this.responseText == "false") {
+				console.log("Error A1");
+			} else {
+				let valueArray = JSON.parse(this.responseText).info;
+				console.log(valueArray);
+			}
+		} 
+	}; 
+}
 function create() {
 	let emailC = document.getElementById("email_c").value;
 	var usr = document.getElementById("username").value;
@@ -122,6 +139,10 @@ function onSignIn(googleUser) {
 			}
 		} 
 	}; 
+}
+
+function updateProfile() {
+
 }
 
 function generatePassword() {
