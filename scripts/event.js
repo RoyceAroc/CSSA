@@ -9,7 +9,7 @@ window.onload = function () {
         }
     };
 
-    xhttp.open("GET", "./xml/eventData.html", true);
+    xhttp.open("GET", "https://www.cssa.dev/xml/eventData.xml", true);
     xhttp.send();
 }
 
