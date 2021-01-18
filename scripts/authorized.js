@@ -1,19 +1,25 @@
 window.onload = function() {
-	var values = {Cookie: getCookie("email")};
-	var xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "https://cssa-backend.herokuapp.com/indirectProfile", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send(JSON.stringify(values));
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			if(this.responseText == "false") {
-				console.log("Error A1");
-			} else {
-				let valueArray = JSON.parse(this.responseText).info;
-				console.log(valueArray);
-			}
-		} 
-	}; 
+	if(window.location.href.includes("dashboard.html")) {
+		var values = {Cookie: "royceaden@gmail.com"}; //getCookie("email")
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "https://cssa-backend.herokuapp.com/indirectProfile", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(JSON.stringify(values));
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				if(this.responseText == "false") {
+					console.log("Error A1: Report bug at crewcssa@gmail.com");
+				} else {
+					let valueArray = JSON.parse(this.responseText).info;
+					document.getElementById("updateA").value = valueArray[2];
+					document.getElementById("updateB").value = valueArray[3];
+					document.getElementById("updateC").value = valueArray[1];
+					document.getElementById("updateD").value = valueArray[0];
+					document.getElementById("updateE").value = valueArray[4];
+				}
+			} 
+		}; 
+	}
 }
 function create() {
 	let emailC = document.getElementById("email_c").value;
@@ -142,7 +148,25 @@ function onSignIn(googleUser) {
 }
 
 function updateProfile() {
-
+	let a = document.getElementById("updateA").value;
+	let b = document.getElementById("updateB").value;
+	let c = document.getElementById("updateC").value;
+	let d = document.getElementById("updateD").value;
+	let e = document.getElementById("updateE").value;
+	var values = {Scopecode: d, Username:c, FirstName:a, LastName: b, Credentials: e}; 
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "https://cssa-backend.herokuapp.com/updateProfile", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(JSON.stringify(values));
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				if(this.responseText == "error") {
+					console.log("Error A2: Report bug at crewcssa@gmail.com");
+				} else {
+					alert("Profile has been successfully updated!")
+				}
+			} 
+		}; 
 }
 
 function generatePassword() {
