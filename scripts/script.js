@@ -1,6 +1,6 @@
 window.addEventListener('load', function () {
-    if(getCookie('email') != null) {
-        if(window.location.href.includes("sign.html")) {
+    if (getCookie('email') != null) {
+        if (window.location.href.includes("sign.html")) {
             window.location.href = "dashboard.html";
         } else {
             var xhttp = new XMLHttpRequest();
@@ -16,7 +16,7 @@ window.addEventListener('load', function () {
             xhttp.send();
         }
     } else {
-        if(window.location.href.includes("dashboard.html")) {
+        if (window.location.href.includes("dashboard.html")) {
             window.location.href = "sign.html";
         } else {
             var xhttp = new XMLHttpRequest();
@@ -32,4 +32,16 @@ window.addEventListener('load', function () {
             xhttp.send();
         }
     }
+
+    var footerxhttp = new XMLHttpRequest();
+    footerxhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("footer").outerHTML = footerxhttp.responseText;
+        } else if (this.readyState == 4 && this.status != 200) {
+            footerxhttp.send();
+        }
+    };
+
+    footerxhttp.open("GET", "footer.html", true);
+    footerxhttp.send();
 });
