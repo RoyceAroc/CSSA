@@ -4,7 +4,8 @@ window.onload = function () {
     var navxhttp = new XMLHttpRequest();
     navxhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementsByTagName("nav")[0].innerHTML += navxhttp.responseText;
+            document.getElementsByTagName("nav")[0].innerHTML += "<p>bro</p>";
+            /*document.getElementsByTagName("nav")[0].innerHTML += navxhttp.responseText;*/
         }
     };
 
