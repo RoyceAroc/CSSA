@@ -13,7 +13,6 @@
 .header > section {
     display:flex;
     flex-direction: column;
-    display:none;
 }
 
 .header h1 {
