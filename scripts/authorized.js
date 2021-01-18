@@ -266,4 +266,22 @@ function eraseCookie(name) {
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
-
+function sendContact() {
+	let a = document.getElementById("contact_name").value;
+	let b = document.getElementById("contact_email").value;
+	let c = document.getElementById("contact_message").value;
+	var co = {A: a, B:b, C:c};
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "https://cssa-backend.herokuapp.com/submitContact", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(JSON.stringify(co));
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			if(this.responseText == "error") {
+				console.log("Error B1");
+			} else {
+				alert("You shall be contacted in 1-2 days with a response!");
+			}
+		} 
+	}; 
+}

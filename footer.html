@@ -14,17 +14,17 @@
         </p>
     </div>
 
-    <div id="form">
+    <form  action="javascript:sendContact();" id="form">
         <h1 class="title">
             REACH OUT TO US!
         </h1>
 
-        <input type="text" id="name" placeholder="Name" required/>
+        <input maxlength="50" type="text" id="contact_name" placeholder="Name" required/>
         
-        <input type="email" id="email" placeholder="Email" required/>
+        <input maxlength="70" type="email" id="contact_email" placeholder="Email" required/>
         
-        <textarea type="text" id="message" placeholder="Message" required></textarea>
+        <textarea maxlength="8000" type="text" id="contact_message" placeholder="Message" required></textarea>
         
         <button type="submit">SEND</button>
-    </div>
+    </form>
 </footer>
