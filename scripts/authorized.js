@@ -1,6 +1,6 @@
 window.onload = function() {
 	if(window.location.href.includes("dashboard.html")) {
-		var values = {Cookie: "royceaden@gmail.com"}; //getCookie("email")
+		var values = {Cookie: getCookie("email")}; 
 		var xhttp = new XMLHttpRequest();
 		xhttp.open("POST", "https://cssa-backend.herokuapp.com/indirectProfile", true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -153,20 +153,55 @@ function updateProfile() {
 	let c = document.getElementById("updateC").value;
 	let d = document.getElementById("updateD").value;
 	let e = document.getElementById("updateE").value;
-	var values = {Scopecode: d, Username:c, FirstName:a, LastName: b, Credentials: e}; 
-		var xhttp = new XMLHttpRequest();
-		xhttp.open("POST", "https://cssa-backend.herokuapp.com/updateProfile", true);
-		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhttp.send(JSON.stringify(values));
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				if(this.responseText == "error") {
-					console.log("Error A2: Report bug at crewcssa@gmail.com");
-				} else {
-					alert("Profile has been successfully updated!")
-				}
-			} 
-		}; 
+	var values = {Scopecode: d, Username:c, FirstName:a, LastName: b, Credentials: e, Init: getCookie("email")}; 
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "https://cssa-backend.herokuapp.com/updateProfile", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(JSON.stringify(values));
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			if(this.responseText == "error") {
+				console.log("Error A2: Report bug at crewcssa@gmail.com");
+			} else {
+				setCookie('email',d,365);
+				setCookie('User',c,365);
+				setCookie('fName',a,365);
+				setCookie('lName',b,365);
+				alert("Profile has been successfully updated!");
+
+			}
+		} 
+	}; 
+}
+
+function refer() {
+	let a = document.getElementById("referA").value;
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "https://cssa-backend.herokuapp.com/checkUsername", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(a);
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			if(this.responseText == 1) {
+				var values = {Refer: a, Init: getCookie("email")}; 
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("POST", "https://cssa-backend.herokuapp.com/refer", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(JSON.stringify(values));
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						if(this.responseText == "error") {
+							console.log("Error A3: Report bug at crewcssa@gmail.com");
+						} else {
+							alert("Your referrer has an added token. Thank you!")
+						}
+					} 
+				}; 
+			} else {
+				alert("This user does not exist. Therefore, you cannot refer him");
+			}
+		} 
+	}; 
 }
 
 function generatePassword() {
