@@ -15,7 +15,7 @@
 		<!--<script src="scripts/script.js"></script> testing now only -->
         <script src="scripts/competition.js"></script>
         <script src="scripts/authorized.js"></script>
-
+        <link rel="stylesheet" href="styles/dashboard.css">
         <link rel="stylesheet" type="text/css" href="styles/styles.css">
         <link rel="stylesheet" type="text/css" href="styles/competition.css">
         <link rel="stylesheet" type="text/css" href="styles/pageheader.css">
@@ -54,10 +54,45 @@
                     <h1>Settings</h1>
                     
                     <h4>Update Profile</h4>
-                    <p>TBD</p>
+                    <div style="width: 50%;" class="holder">
+                        <form action="javascript:login();" class="login">
+                            <div class="field">
+                                <input id="s_username" type="text" placeholder="First Name" required>
+                             </div>
+                             <div class="field">
+                                <input id="s_username" type="text" placeholder="Last Name" required>
+                             </div>
+                           <div class="field">
+                              <input id="s_username" type="text" placeholder="Username" required>
+                           </div>
+                           <div class="field">
+                            <input id="s_username" type="email" placeholder="Email" required>
+                         </div>
+                           <div class="field">
+                              <input id="s_pwd" type="password" placeholder="Password" required>
+                           </div>
+                           <center><div style="width: 25%;" class="field btn">
+                              <div class="btn-layer"></div>
+                              <input type="submit" value="Update">
+                           </div></center>
+                        
+                        </form>
+                    </div>
 
                     <h4>Referral</h4>
-                    <p>TBD</p>
+                    <div style="width: 50%;" class="holder">
+                        <form action="javascript:login();" class="login">
+                            <div class="field">
+                                <input id="s_username" type="text" placeholder="Username" required>
+                             </div>
+                       
+                           <center><div style="width: 25%;" class="field btn">
+                              <div class="btn-layer"></div>
+                              <input type="submit" value="Refer">
+                           </div></center>
+                        
+                        </form>
+                    </div>
                 </div>
             </div>
 		</div>
