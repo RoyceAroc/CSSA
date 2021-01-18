@@ -12,7 +12,7 @@
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.css">
         
-		<script src="scripts/script.js"></script>
+		 <script src="scripts/script.js"></script>
         
         <script src="scripts/authorized.js"></script>
         <link rel="stylesheet" href="styles/dashboard.css">
@@ -45,8 +45,111 @@
             <div id="content">
 
                 <div id="interest">
-                    <h1>Interest Form TBD</h1>
-                    <p>Work in progress</p>
+                    <h1>Interest Form </h1>
+                    
+<form action="javascript:interestForm();">
+    <div  style="width: 50%;" class="form-group">
+        <label for="competitionInput">Competition</label>
+        <select class="form-control" id="competitionInput">
+            <option>First Mini-Competition</option>
+        </select>
+    </div>
+
+    <div  style="width: 50%;" class="form-group">
+        <label for="event1">Event #1</label>
+        <select  class="form-control" id="event1">
+            <option>None</option>
+            <option>Algorithmic Thinking</option>
+            <option>Programming Challenges</option>
+            <option>Data Science</option>
+            <option>Capture the Flag</option>
+            <option>Website Design</option>
+            <option>Cybersecurity</option>
+            <option>Tech Support</option>
+            <option>Information Theory</option>
+        </select>
+    </div>
+
+    <div  style="width: 50%;" class="form-group">
+        <label for="event2">Event #2</label>
+        <select class="form-control" id="event2">
+            <option>None</option>
+            <option>Algorithmic Thinking</option>
+            <option>Programming Challenges</option>
+            <option>Data Science</option>
+            <option>Capture the Flag</option>
+            <option>Website Design</option>
+            <option>Cybersecurity</option>
+            <option>Tech Support</option>
+            <option>Information Theory</option>
+        </select>
+    </div>
+
+    <div  style="width: 50%;" class="form-group">
+        <label for="event3">Event #3</label>
+        <select class="form-control" id="event3">
+            <option>None</option>
+            <option>Algorithmic Thinking</option>
+            <option>Programming Challenges</option>
+            <option>Data Science</option>
+            <option>Capture the Flag</option>
+            <option>Website Design</option>
+            <option>Cybersecurity</option>
+            <option>Tech Support</option>
+            <option>Information Theory</option>
+        </select>
+    </div>
+
+    <div  style="width: 50%;" class="form-group">
+        <label for="event4">Event #4</label>
+        <select class="form-control" id="event4">
+            <option>None</option>
+            <option>Algorithmic Thinking</option>
+            <option>Programming Challenges</option>
+            <option>Data Science</option>
+            <option>Capture the Flag</option>
+            <option>Website Design</option>
+            <option>Cybersecurity</option>
+            <option>Tech Support</option>
+            <option>Information Theory</option>
+        </select>
+    </div>
+<br>
+    <div  style="width: 75%;" class="form-group">
+        <label>Which competition ranges would work best for you (competitors would be given a range of time to complete their events)? Select all that apply.</label>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="date1">
+            <label class="form-check-label" for="date1">
+                February 28 to March 14
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="date2">
+            <label class="form-check-label" for="date1">
+                March 7 to March 21
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="date3">
+            <label class="form-check-label" for="date1">
+                March 14 to March 28
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="date4">
+            <label class="form-check-label" for="date1">
+                March 21 to April 4
+            </label>
+        </div>
+    </div>
+<div style="width: 25%;" class="field btn">
+        <div class="btn-layer"></div>
+        <input type="submit" value="Submit">
+     </div>
+</form>
                 </div>
                 <hr style="color: white;"></hr>
 

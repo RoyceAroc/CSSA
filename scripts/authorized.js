@@ -174,6 +174,23 @@ function updateProfile() {
 	}; 
 }
 
+function interestForm() {
+	let container = {Init: getCookie("email"),Competition: document.getElementById("competitionInput").value, Dates: {Date1: document.getElementById("date1").checked,Date2: document.getElementById("date2").checked,Date3: document.getElementById("date3").checked,Date4: document.getElementById("date4").checked}, Events : {EventA: document.getElementById("event1").value,EventB: document.getElementById("event2").value,EventC: document.getElementById("event3").value,EventD: document.getElementById("event4").value}};
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "https://cssa-backend.herokuapp.com/userInterestData", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(JSON.stringify(container));
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			if(this.responseText == "error") {
+				console.log("Error A4: Report bug at crewcssa@gmail.com");
+			} else {
+				alert("Thank you for submitting the interest form!")
+			}
+		} 
+	}; 
+}
+
 function refer() {
 	let a = document.getElementById("referA").value;
 	var xhttp = new XMLHttpRequest();

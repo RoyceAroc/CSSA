@@ -16,6 +16,9 @@ span {
 	border-radius: 5px;
 }
 
+.form-control option {
+     color: black;
+}
 .top-header  .title {
 	width: 50%;
 	font-size: 35px;
