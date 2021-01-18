@@ -96,10 +96,16 @@
 				signupA.click();
 				return false;
          });
-         
+         let refer = "";
          //Automatic cookie sign in irrespective
          window.onload = function() {
+            let start = window.location.href.indexOf("sign.html?referral=");
+         
+            for(let i=start+19; i<window.location.href.length; i++) {
+               refer += window.location.href[i];
+            }
             document.querySelector(".abcRioButtonContents > span").innerHTML = "Google Sign In";
+            
          }
 		</script>
    </body>
