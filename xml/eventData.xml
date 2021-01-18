@@ -46,7 +46,7 @@
 
     <event>
         <name>Capture the Flag</name>
-        <image></image>
+        <image>./images/Capture the Flag Event Icon - Transparent.png</image>
         <type>Submission</type>
         <participants>Individual</participants>
         <description>Users must hide a secret (a string of text) somewhere on a website. All websites are hosted by the organization and given to other competitors, who must find the secrets.</description>
