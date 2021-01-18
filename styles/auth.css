@@ -13,10 +13,14 @@ body {
 	height: 100%;
 	width: 100%;
 	place-items: center;
-	background-image: url("https://www.cssa.dev/images/particlebackground.png");
 	/*Particle for now work TBD for animated */
 }
-
+#particle-canvas{
+	width:100vw;
+	height:100%;
+	position:fixed !important;
+	z-index: -1;
+}
 input {
 	color: black;
 }
@@ -275,6 +279,7 @@ span.buttonText {
 
 .abcRioButtonBlue {
 	background-color: #0097a7 !important;
+	border-radius: 7px;
 }
 
 .abcRioButtonContentWrapper {
