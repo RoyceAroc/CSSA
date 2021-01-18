@@ -15,8 +15,8 @@ function populateCompetitionPage(eventData) {
     xmlDoc = parser.parseFromString(eventData, "text/xml");
 
     for (events of xmlDoc.getElementsByTagName("event")) {
-        console.log(events);
-        
+        console.log(events.childNodes);
+
         let eventHTML = `
             <div class="event">
                 <img class="event-image" src="{events.childNodes[1].nodeValue}" alt="...">
