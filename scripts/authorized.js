@@ -5,7 +5,7 @@ function create() {
 	var lName = document.getElementById("l_name").value;
 	var pwd = document.getElementById("pwd").value;
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "https://backend.cssa.dev/checkUsername", true);
+	xhttp.open("POST", "https://cssa-backend.herokuapp.com/checkUsername", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send(usr); 
 	xhttp.onreadystatechange = function() {
@@ -14,7 +14,7 @@ function create() {
 				alert("Username taken");
 			} else {
 				var xhttp = new XMLHttpRequest();
-				xhttp.open("POST", "https://backend.cssa.dev/checkEmail", true);
+				xhttp.open("POST", "https://cssa-backend.herokuapp.com/checkEmail", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send(emailC); 
 				xhttp.onreadystatechange = function() {
@@ -24,7 +24,7 @@ function create() {
 						} else {
 							var values = {Email: emailC, Username: usr, First: fName, Last: lName ,  Password:pwd};
 							var xhttp = new XMLHttpRequest();
-							xhttp.open("POST", "https://backend.cssa.dev/registration", true);
+							xhttp.open("POST", "https://cssa-backend.herokuapp.com/registration", true);
 							xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 							xhttp.send(JSON.stringify(values)); 
 							xhttp.onreadystatechange = function() {
@@ -51,7 +51,7 @@ function login() {
 	var pwd = document.getElementById("s_pwd").value;
 	var values = {Unknown: unknown,  Password:pwd};
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "https://backend.cssa.dev/check", true);
+	xhttp.open("POST", "https://cssa-backend.herokuapp.com/check", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send(JSON.stringify(values));
 	xhttp.onreadystatechange = function() {
@@ -79,7 +79,7 @@ function onLoad() {
 function onSignIn(googleUser) {
 	var profile = googleUser.getBasicProfile();
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "https://backend.cssa.dev/checkEmail", true);
+	xhttp.open("POST", "https://cssa-backend.herokuapp.com/checkEmail", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send(profile.getEmail()); 
 	xhttp.onreadystatechange = function() {
@@ -87,7 +87,7 @@ function onSignIn(googleUser) {
 			if(this.responseText == 1) {
 				//Account already exists | set profile
 				var xhttp = new XMLHttpRequest();
-				xhttp.open("POST", "https://backend.cssa.dev/gleUsername", true);
+				xhttp.open("POST", "https://cssa-backend.herokuapp.com/gleUsername", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send(profile.getEmail()); 
 				xhttp.onreadystatechange = function() {
@@ -105,7 +105,7 @@ function onSignIn(googleUser) {
 				let password = generatePassword();
 				var values = {Email: profile.getEmail(), Username: username, First: profile.getGivenName(), Last: profile.getFamilyName() ,  Password:password};
 				var xhttp = new XMLHttpRequest();
-				xhttp.open("POST", "https://backend.cssa.dev/registrationA", true);
+				xhttp.open("POST", "https://cssa-backend.herokuapp.com/registrationA", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send(JSON.stringify(values)); 
 				xhttp.onreadystatechange = function() {
