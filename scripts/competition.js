@@ -11,12 +11,21 @@ window.onload = function () {
 }
 
 function populateCompetitionPage(eventData) {
-    let eventTitle = document.getElementById("title");
-    let eventDescription = document.getElementById("description");
+    parser = new DOMParser();
+    xmlDoc = parser.parseFromString(eventData,"text/xml");
 
-    let infoName = document.getElementById("info-name");
-    let infoImage = document.getElementById("info-image");
-    // Other fields...
+    xmlDoc.getElementsByTagName("event").forEach((event) => {
+        let eventHTML = `
+            <div class="event">
+                <img class="event-image" src="${event.childNodes[1].nodeValue}" alt="...">
 
-    
+                <div id="event-text">
+                    <h4 id="event-title">${event.childNodes[0].nodeValue}</h4>
+                    <p id="event-description">${event.childNodes[4].nodeValue}</p>
+                </div>
+            </div>
+        `;
+
+        document.getElementById("eventsCollapsible").innerHTML += eventHTML;
+    });
 }
