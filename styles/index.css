@@ -5,6 +5,10 @@
     width: 100%;
     height: 100vh;
 }
+#particle-canvas{
+    z-index: -1;
+
+}
 
 .header > section {
     display:flex;
