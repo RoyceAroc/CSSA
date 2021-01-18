@@ -8,6 +8,8 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
         <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
         <script src="https://kit.fontawesome.com/df7e7c41fe.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.css">
         
 		<script src="scripts/script.js"></script>
         <script src="scripts/competition.js"></script>
@@ -33,10 +35,10 @@
                 <div id="nav-box-pad">
                     <div id="nav-box">
                         <h4>Contents</h4>
-                        <a href="#overview">  Overview</a>
-                        <a href="#events">  Events</a>
-                        <a href="#calendar">  Competition Calendar</a>
-                        <a id="bottom" href="#faqs">  FAQs</a>  
+                        <a href="#overview">Overview</a>
+                        <a href="#events">Events</a>
+                        <a href="#competitions">Competitions</a>
+                        <a id="bottom" href="#faqs">FAQs</a>
                     </div>
                 </div>
             </div>
@@ -60,11 +62,15 @@
                     </div>
                 </div>
 
-                <div id="calendar-container">
-                    <h1 id="calendar">Competition Calendar</h1>
-                    No competitions are currently scheduled! Stay tuned!
+                <div id="competitions-container">
+                    <h1 id="cocompetitionsmp">Competitions</h1>
 
-                    
+                    <div id="calendar-container">
+                        <h4 id="calendar">Competition Calendar</h4>
+                        No competitions are currently scheduled! Stay tuned!
+                        
+                        <div id="competition-calendar"></div>
+                    </div>
                 </div>
 
                 <div id="faqs-container">

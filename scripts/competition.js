@@ -10,6 +10,16 @@ window.addEventListener('load', function () {
     xhttp.send();
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    var competitionCalendar = document.getElementById('competition-calendar');
+
+    var calendar = new FullCalendar.Calendar(competitionCalendar, {
+        initialView: 'dayGridMonth',
+    });
+
+    calendar.render();
+});
+
 function populateCompetitionPage(eventData) {
     var parser = new DOMParser();
     xmlDoc = parser.parseFromString(eventData, "text/xml");

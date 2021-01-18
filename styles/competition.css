@@ -73,7 +73,7 @@
     padding: 2%;
     width: 45%;
     margin: 1%;
-    background-color: rgb(35, 36, 35);
+    background-color: rgb(27, 27, 27);
 }
 
 .event-image {
@@ -84,4 +84,20 @@
 .event-text {
     width: 70%;
     vertical-align: middle;
+}
+
+#competition-calendar {
+    width: 50%;
+    height: 40%;
+    margin-top: 2%;
+    margin-left: 25%;
+}
+
+.fc-scroller {
+    overflow: unset !important;
+}
+
+#competition-calendar a {
+    color: white;
+    text-decoration: none;
 }
