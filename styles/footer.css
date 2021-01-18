@@ -1,0 +1,51 @@
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 2%;
+}
+
+#logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20%;
+}
+
+#logo > img {
+    width: 80%;
+}
+
+#contact-info {
+    text-align: left;
+    width: 30%;
+    margin-left: 7%;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%
+}
+
+.title {
+    text-align: center;
+}
+
+input, textarea {
+    color: black;
+    background-color: white;
+    font-size: larger;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+input::-webkit-input-placeholder, #message::-webkit-input-placeholder {
+    font-size: 25px;
+}
+
+button {
+    background-color: gray;
+    margin-top: 2%;
+}

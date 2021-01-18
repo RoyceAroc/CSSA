@@ -86,6 +86,11 @@
     vertical-align: middle;
 }
 
+#calendar-container > h5 {
+    text-align: center;
+    margin-top: 2%;
+}
+
 #competition-calendar {
     width: 50%;
     height: 40%;
