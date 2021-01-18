@@ -1,136 +1,136 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<events>
+    <event>
+        <name>Algorithmic Thinking</name>
+        <image>./images/Algorithmic Thinking Event Icon - Transparent.png</image>
+        <type>Tasks</type>
+        <participants>Individual</participants>
+        <description>Competitors are given tasks and must write pseudocode algorithms that solve the tasks most efficiently.</description>
+        <resources>
+            <resource>
+                <title>Rules</title>
+                <type>Rules</type>
+                <link></link>
+            </resource>
+        </resources>
+    </event>
 
-<event>
-    <name>Algorithmic Thinking</name>
-    <image>./images/Algorithmic Thinking Event Icon - Transparent.png</image>
-    <type>Tasks</type>
-    <participants>Individual</participants>
-    <description>Competitors are given tasks and must write pseudocode algorithms that solve the tasks most efficiently.</description>
-    <resources>
-        <resource>
-            <title>Rules</title>
-            <type>Rules</type>
-            <link></link>
-        </resource>
-    </resources>
-</event>
+    <event>
+        <name>Programming Challenges</name>
+        <image></image>
+        <type>Tasks</type>
+        <participants>Team of 2</participants>
+        <description>Write algorithmic or heuristic code to solve short tasks.</description>
+        <resources>
+            <resource>
+                <title>Rules</title>
+                <type>Rules</type>
+                <link></link>
+            </resource>
+        </resources>
+    </event>
 
-<event>
-    <name>Programming Challenges</name>
-    <image></image>
-    <type>Tasks</type>
-    <participants>Team of 2</participants>
-    <description>Write algorithmic or heuristic code to solve short tasks.</description>
-    <resources>
-        <resource>
-            <title>Rules</title>
-            <type>Rules</type>
-            <link></link>
-        </resource>
-    </resources>
-</event>
+    <event>
+        <name>Data Science</name>
+        <image></image>
+        <type>Testing</type>
+        <participants>Team of 2</participants>
+        <description></description>
+        <resources>
+            <resource>
+                <title>Rules</title>
+                <type>Rules</type>
+                <link></link>
+            </resource>
+        </resources>
+    </event>
 
-<event>
-    <name>Data Science</name>
-    <image></image>
-    <type>Testing</type>
-    <participants>Team of 2</participants>
-    <description></description>
-    <resources>
-        <resource>
-            <title>Rules</title>
-            <type>Rules</type>
-            <link></link>
-        </resource>
-    </resources>
-</event>
+    <event>
+        <name>Capture the Flag</name>
+        <image></image>
+        <type>Submission</type>
+        <participants>Individual</participants>
+        <description>Users must hide a secret (a string of text) somewhere on a website. All websites are hosted by the organization and given to other competitors, who must find the secrets.</description>
+        <resources>
+            <resource>
+                <title>Rules</title>
+                <type>Rules</type>
+                <link></link>
+            </resource>
+        </resources>
+    </event>
 
-<event>
-    <name>Capture the Flag</name>
-    <image></image>
-    <type>Submission</type>
-    <participants>Individual</participants>
-    <description>Users must hide a secret (a string of text) somewhere on a website. All websites are hosted by the organization and given to other competitors, who must find the secrets.</description>
-    <resources>
-        <resource>
-            <title>Rules</title>
-            <type>Rules</type>
-            <link></link>
-        </resource>
-    </resources>
-</event>
+    <event>
+        <name>Website Design</name>
+        <image></image>
+        <type>Case Study</type>
+        <participants>Team of 3</participants>
+        <description>Design a website around a prompt that will be provided by the judges at each competition.</description>
+        <resources>
+            <resource>
+                <title>Rules</title>
+                <type>Rules</type>
+                <link></link>
+            </resource>
+        </resources>
+    </event>
 
-<event>
-    <name>Website Design</name>
-    <image></image>
-    <type>Case Study</type>
-    <participants>Team of 3</participants>
-    <description>Design a website around a prompt that will be provided by the judges at each competition.</description>
-    <resources>
-        <resource>
-            <title>Rules</title>
-            <type>Rules</type>
-            <link></link>
-        </resource>
-    </resources>
-</event>
+    <event>
+        <name>Cybersecurity</name>
+        <image></image>
+        <type>Testing</type>
+        <participants>Individual</participants>
+        <description></description>
+        <resources>
+            <resource>
+                <title>Rules</title>
+                <type>Rules</type>
+                <link></link>
+            </resource>
+        </resources>
+    </event>
 
-<event>
-    <name>Cybersecurity</name>
-    <image></image>
-    <type>Testing</type>
-    <participants>Individual</participants>
-    <description></description>
-    <resources>
-        <resource>
-            <title>Rules</title>
-            <type>Rules</type>
-            <link></link>
-        </resource>
-    </resources>
-</event>
+    <event>
+        <name>Bug Smasher</name>
+        <image>./images/Bug Smasher Event Icon - Transparent.png</image>
+        <type>Case Study</type>
+        <participants>Individual</participants>
+        <description></description>
+        <resources>
+            <resource>
+                <title>Rules</title>
+                <type>Rules</type>
+                <link></link>
+            </resource>
+        </resources>
+    </event>
 
-<event>
-    <name>Bug Smasher</name>
-    <image>./images/Bug Smasher Event Icon - Transparent.png</image>
-    <type>Case Study</type>
-    <participants>Individual</participants>
-    <description></description>
-    <resources>
-        <resource>
-            <title>Rules</title>
-            <type>Rules</type>
-            <link></link>
-        </resource>
-    </resources>
-</event>
+    <event>
+        <name>Tech Support</name>
+        <image></image>
+        <type></type>
+        <participants>Team of 2</participants>
+        <description>Talk to judges who present a case study involving a technology issue that must be solved.</description>
+        <resources>
+            <resource>
+                <title>Rules</title>
+                <type>Rules</type>
+                <link></link>
+            </resource>
+        </resources>
+    </event>
 
-<event>
-    <name>Tech Support</name>
-    <image></image>
-    <type></type>
-    <participants>Team of 2</participants>
-    <description>Talk to judges who present a case study involving a technology issue that must be solved.</description>
-    <resources>
-        <resource>
-            <title>Rules</title>
-            <type>Rules</type>
-            <link></link>
-        </resource>
-    </resources>
-</event>
-
-<event>
-    <name>Information Theory</name>
-    <image>./images/Information Technology Event Icon - Transparent.png</image>
-    <type></type>
-    <participants>Individual</participants>
-    <description></description>
-    <resources>
-        <resource>
-            <title>Rules</title>
-            <type>Rules</type>
-            <link></link>
-        </resource>
-    </resources>
-</event>
+    <event>
+        <name>Information Theory</name>
+        <image>./images/Information Technology Event Icon - Transparent.png</image>
+        <type></type>
+        <participants>Individual</participants>
+        <description></description>
+        <resources>
+            <resource>
+                <title>Rules</title>
+                <type>Rules</type>
+                <link></link>
+            </resource>
+        </resources>
+    </event>
+</events>
