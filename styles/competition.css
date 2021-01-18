@@ -93,13 +93,18 @@
 
 #competition-calendar {
     width: 50%;
-    height: 40%;
+    height: 20.5%;
     margin-top: 2%;
     margin-left: 25%;
 }
 
 .fc-scroller {
     overflow: unset !important;
+}
+
+.fc-scrollgrid.fc-scrollgrid-liquid {
+    width: 100%;
+    height: 100%;
 }
 
 #competition-calendar a {
