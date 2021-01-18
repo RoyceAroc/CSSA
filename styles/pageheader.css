@@ -1,16 +1,21 @@
 #header {
-    padding-bottom: 1%;
+    padding-bottom: 10vh;
     text-align: center;
-    border-bottom: 5px solid aliceblue;
-    background-image: url('../images/particlebackground.png');
-}
+    z-index: -1;
 
+}
+#particle-canvas{
+    width:100%;
+    height:100vh;
+    position:fixed !important;
+    z-index: -1;
+}
 #title {
     font-size: 100px;
 }
 
 #main {
     display: flex;
-    padding: 2% 1% 2% 1%;
-    background-color: #191b1aff;
+
+    background-color: #212423;
 }

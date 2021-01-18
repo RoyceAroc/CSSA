@@ -1,37 +1,44 @@
 #main {
     display: flex;
     flex-direction: row;
-    padding: 2% 1% 2% 1%;
     background-color: #191b1aff;
 }
 
 #sidebar {
     width: 20%;
+
+    background-color:#2d3130;
 }
 
 #nav-box-pad {
-    padding-top: 8%;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
 }
 
-#nav-box {
+#nav-box{
+    display:flex;
+    flex-direction: column;
+}
+#nav-box h4 {
     padding: 5% 15%;
-    border: 3px solid white;
+    background-color:#0097a7;
+    margin:0;
 }
 
 #nav-box > a {
     color: aliceblue;
     text-decoration: none;
+    padding: 5% 15%;
 }
 
 #nav-box > a:hover {
-    color: rgb(201, 201, 201);
-    text-decoration: underline;
+
+    background-color:#00000018;
 }
 
 #content {
+    padding:2%;
     width: 80%;
     margin-left: 2%;
 }
