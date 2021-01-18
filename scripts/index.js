@@ -1,12 +1,12 @@
-window.onload = function () {
-    let i = 0;
+window.addEventListener('load', function () {
+    var canvasDiv = document.getElementById('particle-canvas');
+    var options = {
+        particleColor: '#0097a7',
+        background: 'back.png',
+        interactive: true,
+        speed: 'medium',
+        density: 'medium'
+    };
 
-    setInterval(function () {
-        if (i < 20) {
-            document.getElementById("header").style.paddingTop = `${15 - 0.7 * (i + 1)}%`;
-            document.getElementById("header-logo").style.width = `${1 * (i + 1)}%`;
-
-            i++;
-        }
-    }, 10);
-}
+    var particleCanvas = new ParticleNetwork(canvasDiv, options);
+});

@@ -1,13 +1,13 @@
-window.onload = function () {
-    var navxhttp = new XMLHttpRequest();
-    navxhttp.onreadystatechange = function() {
+window.addEventListener('load', function () {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementsByTagName("nav")[0].innerHTML = navxhttp.responseText;
-        } else {
-            navxhttp.send();
+            document.getElementsByTagName("nav")[0].innerHTML = xhttp.responseText;
+        } else if (this.readyState == 4 && this.status != 200) {
+            xhttp.send();
         }
     };
 
-    navxhttp.open("GET", "navbar.html", true);
-    navxhttp.send();
-}
+    xhttp.open("GET", "navbar.html", true);
+    xhttp.send();
+});

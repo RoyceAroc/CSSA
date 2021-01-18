@@ -1,6 +1,6 @@
 var eventName;
 
-window.onload = function () {
+window.addEventListener('load', function () {
     var urlParams = new URLSearchParams(decodeURIComponent(window.location.search));
     var event = urlParams.get('event');
 
@@ -13,7 +13,7 @@ window.onload = function () {
 
     xhttp.open("GET", "https://www.cssa.dev/xml/eventData.xml", true);
     xhttp.send();
-}
+});
 
 function populateEventPage(eventData) {
     let eventTitle = document.getElementById("title");
