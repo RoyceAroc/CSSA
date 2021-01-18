@@ -3,6 +3,7 @@ footer {
     flex-direction: row;
     justify-content: space-evenly;
     padding: 2%;
+    background-image: url('/images/particlebackground.png');
 }
 
 #logo {

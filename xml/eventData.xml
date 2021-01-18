@@ -4,7 +4,7 @@
         <image>./images/Algorithmic Thinking Event Icon - Transparent.png</image>
         <type>Tasks</type>
         <participants>Individual</participants>
-        <description>Competitors are given tasks and must write pseudocode algorithms that solve the tasks most efficiently.</description>
+        <description>Competitors are given tasks and must write pseudocode or plain English algorithms that solve the tasks most efficiently.</description>
         <resources>
             <resource>
                 <title>Rules</title>
@@ -16,7 +16,7 @@
 
     <event>
         <name>Programming Challenges</name>
-        <image>./images/Bug Smasher Event Icon.png</image>
+        <image>./images/Programming Challenges Event Icon - Transparent.png</image>
         <type>Tasks</type>
         <participants>Team of 2</participants>
         <description>Write algorithmic or heuristic code to solve short tasks.</description>
@@ -34,7 +34,7 @@
         <image>./images/Data Science Event Icon - Transparent.png</image>
         <type>Testing</type>
         <participants>Team of 2</participants>
-        <description></description>
+        <description>Answer questions related to various data science topics, including statistics, neural networks, clustering, and various other topics.</description>
         <resources>
             <resource>
                 <title>Rules</title>
@@ -94,7 +94,7 @@
         <image>./images/Bug Smasher Event Icon - Transparent.png</image>
         <type>Case Study</type>
         <participants>Individual</participants>
-        <description></description>
+        <description>Given a long piece of code, find all bugs and fix them without running the code. Code is provided in C++, Java, Python, and JavaScript.</description>
         <resources>
             <resource>
                 <title>Rules</title>
@@ -109,7 +109,7 @@
         <image>./images/Tech Support Event Icon - Transparent.png</image>
         <type></type>
         <participants>Team of 2</participants>
-        <description>Talk to judges who present a case study involving a technology issue that must be solved.</description>
+        <description>Talk to judges who present a case study involving a technology issue that must be fixed by providing instructions for the judges to follow.</description>
         <resources>
             <resource>
                 <title>Rules</title>
