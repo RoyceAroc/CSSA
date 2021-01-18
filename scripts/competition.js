@@ -14,20 +14,26 @@ function populateCompetitionPage(eventData) {
     var parser = new DOMParser();
     xmlDoc = parser.parseFromString(eventData, "text/xml");
 
-    for (events of xmlDoc.getElementsByTagName("event")) {
-        console.log(events.childNodes);
+    for (events of xmlDoc.getElementsByTagName("events")) {
+        for (i in events.childNodes) {
+            if (i % 2 == 1) {
+                let e = events.childNodes[i];
 
-        let eventHTML = `
-            <div class="event">
-                <img class="event-image" src="{events.childNodes[1].nodeValue}" alt="...">
-
-                <div id="event-text">
-                    <h4 id="event-title">${events.childNodes[0].nodeValue}</h4>
-                    <p id="event-description">${events.childNodes[4].nodeValue}</p>
-                </div>
-            </div>
-        `;
-
-        document.getElementById("eventsCollapsible").innerHTML += eventHTML;
+                console.log(e.childNodes[3].nodeValue);
+    
+                let eventHTML = `
+                    <div class="event">
+                        <img class="event-image" src="${e.childNodes[3].innerHTML}" alt="...">
+        
+                        <div id="event-text">
+                            <h4 id="event-title">${e.childNodes[1].innerHTML}</h4>
+                            <p id="event-description">${e.childNodes[9].innerHTML}</p>
+                        </div>
+                    </div>
+                `;
+        
+                document.getElementById("eventsCollapsible").innerHTML += eventHTML;
+            }
+        }
     }
 }
