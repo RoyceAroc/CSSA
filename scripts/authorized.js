@@ -197,20 +197,6 @@ function refer() {
 			}
 		} 
 	}; 
-	/*var values = {user, Init: 'royceaden@gmail.com'}; 
-	var xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "https://cssa-backend.herokuapp.com/updateProfile", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send(JSON.stringify(values));
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			if(this.responseText == "error") {
-				console.log("Error A2: Report bug at crewcssa@gmail.com");
-			} else {
-				alert("Profile has been successfully updated!")
-			}
-		} 
-	}; */
 }
 
 function generatePassword() {
