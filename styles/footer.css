@@ -3,11 +3,7 @@ footer {
     flex-direction: row;
     justify-content: space-evenly;
     padding: 2%;
-<<<<<<< Updated upstream
     background-color:rgb(20, 22, 21);
-=======
-    background-color: rgb(20, 22, 21);
->>>>>>> Stashed changes
 }
 
 #logo {
@@ -66,21 +62,13 @@ footer {
 }
 
 input, textarea {
-<<<<<<< Updated upstream
+
    color:black;
    font-size: 20px;
    margin-top:2%;
    padding: 2%;
    border-radius: 7px;
    border:none;
-=======
-    color: black;
-    font-size: 20px;
-    padding: 2%;
-    margin-top: 2%;
-    border:none;
-    border-radius: 7px;
->>>>>>> Stashed changes
 }
 
 input::-webkit-input-placeholder, #message::-webkit-input-placeholder {
@@ -89,16 +77,9 @@ input::-webkit-input-placeholder, #message::-webkit-input-placeholder {
 
 button {
     background-color: #0097a7;
-<<<<<<< Updated upstream
     margin-top: 2%;
     border-radius: 7px;
     border:none;
     padding: 2%;
     
-=======
-    border-radius: 7px;
-    border:none;
-    margin-top: 2%;
-    padding: 2%;
->>>>>>> Stashed changes
 }
