@@ -13,29 +13,31 @@ window.addEventListener("load", function() {
 					let valueArray = JSON.parse(this.responseText).info;
 					document.getElementById("updateA").value = valueArray[2];
 					document.getElementById("updateB").value = valueArray[3];
-					document.getElementById("updateC").value = valueArray[1];
+					document.getElementById("updateC").value = valueArray[1].substr(0, valueArray[1].length - 5);
+					console.log(valueArray[1]);
+					document.getElementById("separator").value = valueArray[1].substr(str.length - 5);
 					document.getElementById("updateD").value = valueArray[0];
 					document.getElementById("updateE").value = valueArray[4];
 				}
 			} 
-		}; 
+		};
+
+		document.getElementById("event1").addEventListener("change", function () {
+			validateEvent("event1");
+		});
+	
+		document.getElementById("event2").addEventListener("change", function () {
+			validateEvent("event2");
+		});
+	
+		document.getElementById("event3").addEventListener("change", function () {
+			validateEvent("event3");
+		});
+	
+		document.getElementById("event4").addEventListener("change", function () {
+			validateEvent("event4");
+		});
 	}
-
-	document.getElementById("event1").addEventListener("change", function () {
-		validateEvent("event1");
-	});
-
-	document.getElementById("event2").addEventListener("change", function () {
-		validateEvent("event2");
-	});
-
-	document.getElementById("event3").addEventListener("change", function () {
-		validateEvent("event3");
-	});
-
-	document.getElementById("event4").addEventListener("change", function () {
-		validateEvent("event4");
-	});
 });
 
 function create() {
@@ -167,7 +169,7 @@ function onSignIn(googleUser) {
 function updateProfile() {
 	let a = document.getElementById("updateA").value;
 	let b = document.getElementById("updateB").value;
-	let c = document.getElementById("updateC").value;
+	let c = document.getElementById("updateC").value + document.getElementById("separator").innerHTML;
 	let d = document.getElementById("updateD").value;
 	let e = document.getElementById("updateE").value;
 	var values = {Scopecode: d, Username:c, FirstName:a, LastName: b, Credentials: e, Init: getCookie("email")}; 
