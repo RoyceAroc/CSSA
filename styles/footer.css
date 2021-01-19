@@ -5,15 +5,29 @@ footer {
     padding: 2%;
     background-color:rgb(20, 22, 21);
 }
+.logos{
+    display:flex;
+    flex-direction:row;
 
+}
 #logo {
     display: flex;
     flex-direction: column;
+    width: 30%;
+}
+
+.over p{
+    color:rgb(204, 204, 204)
+}
+.titlewrap{
+    height: 70px;
+    display:flex;
+    flex-direction:column;
     justify-content: center;
-    width: 20%;
 }
 .fa-instagram, .fa-discord{
     font-size: 50px;
+    cursor: pointer;
     
 }
 .fa-instagram{
@@ -25,8 +39,10 @@ footer {
     margin-top:10px;
     color:rgb(154, 82, 212)
 }
-#logo > img {
-    width: 80%;
+#logo img {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
 }
 
 #contact-info {
@@ -36,19 +52,15 @@ footer {
 }
 
 #contact-info .footlink{
-    color: #0097a7;
-}
-.fa-instagram, .fa-discord{
-    font-size: 50px;
-    cursor:pointer;
-}
-.fa-instagram{
-    margin-right: 10px;
-    color: rgb(190, 76, 76);
-}
-.fa-discord{
+    color: rgb(204, 204, 204);
+    text-decoration: none;
 
-    color:#7289da;
+}
+#contact-info .footlink:hover{
+    text-decoration:underline;
+}
+#contact-info p{
+    color: rgb(204, 204, 204);
 }
 #form {
     display: flex;
