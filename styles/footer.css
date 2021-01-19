@@ -3,7 +3,7 @@ footer {
     flex-direction: row;
     justify-content: space-evenly;
     padding: 2%;
-    background-image: url('/images/particlebackground.png');
+    background-color:rgb(20, 22, 21);
 }
 
 #logo {
@@ -12,7 +12,19 @@ footer {
     justify-content: center;
     width: 20%;
 }
-
+.fa-instagram, .fa-discord{
+    font-size: 50px;
+    
+}
+.fa-instagram{
+    color:rgb(216, 94, 94);
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.fa-discord{
+    margin-top:10px;
+    color:rgb(154, 82, 212)
+}
 #logo > img {
     width: 80%;
 }
@@ -35,19 +47,23 @@ footer {
 }
 
 input, textarea {
-    color: black;
-    background-color: white;
-    font-size: larger;
-    border-radius: 5px;
-    margin-top: 2%;
-    margin-bottom: 2%;
+   color:black;
+   font-size: 20px;
+   margin-top:2%;
+   padding: 2%;
+   border-radius: 7px;
+   border:none;
 }
 
 input::-webkit-input-placeholder, #message::-webkit-input-placeholder {
-    font-size: 25px;
+    font-size: 20px;
 }
 
 button {
-    background-color: gray;
+    background-color: #0097a7;
     margin-top: 2%;
+    border-radius: 7px;
+    border:none;
+    padding: 2%;
+    
 }
