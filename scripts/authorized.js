@@ -174,23 +174,6 @@ function updateProfile() {
 }
 
 function interestForm() {
-	let container = {
-		Init: getCookie("email"),
-		Competition: document.getElementById("competitionInput").value,
-		Dates: {
-			Date1: document.getElementById("date1").checked,
-			Date2: document.getElementById("date2").checked,
-			Date3: document.getElementById("date3").checked,
-			Date4: document.getElementById("date4").checked
-		},
-		Events: {
-			EventA: document.getElementById("event1").value,
-			EventB: document.getElementById("event2").value,
-			EventC: document.getElementById("event3").value,
-			EventD: document.getElementById("event4").value
-		}
-	};
-
 	let eventsArr = [];
 	let nones = 0;
 
@@ -212,6 +195,23 @@ function interestForm() {
 	if (nones == 4) {
 		return alert("Please select at least one event.");
 	}
+	
+	let container = {
+		Init: getCookie("email"),
+		Competition: document.getElementById("competitionInput").value,
+		Dates: {
+			Date1: document.getElementById("date1").checked,
+			Date2: document.getElementById("date2").checked,
+			Date3: document.getElementById("date3").checked,
+			Date4: document.getElementById("date4").checked
+		},
+		Events: {
+			EventA: document.getElementById("event1").value,
+			EventB: document.getElementById("event2").value,
+			EventC: document.getElementById("event3").value,
+			EventD: document.getElementById("event4").value
+		}
+	};
 
 	var xhttp = new XMLHttpRequest();
 	xhttp.open("POST", "https://cssa-backend.herokuapp.com/userInterestData", true);
