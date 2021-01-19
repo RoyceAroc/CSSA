@@ -326,4 +326,11 @@ span.buttonText {
 
 #competitions {
 	display: none;
+	flex-direction: column;
+}
+
+#competitions-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
