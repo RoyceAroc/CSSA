@@ -7,7 +7,7 @@ footer {
 }
 .logos{
     display:flex;
-    flex-direction:row;
+    flex-direction:column;
 
 }
 #logo {
@@ -40,8 +40,8 @@ footer {
     color:rgb(154, 82, 212)
 }
 #logo img {
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height:100px;
     margin-right: 10px;
 }
 
