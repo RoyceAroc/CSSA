@@ -168,14 +168,51 @@ function updateProfile() {
 				setCookie('fName',a,365);
 				setCookie('lName',b,365);
 				alert("Profile has been successfully updated!");
-
 			}
 		} 
 	}; 
 }
 
 function interestForm() {
-	let container = {Init: getCookie("email"),Competition: document.getElementById("competitionInput").value, Dates: {Date1: document.getElementById("date1").checked,Date2: document.getElementById("date2").checked,Date3: document.getElementById("date3").checked,Date4: document.getElementById("date4").checked}, Events : {EventA: document.getElementById("event1").value,EventB: document.getElementById("event2").value,EventC: document.getElementById("event3").value,EventD: document.getElementById("event4").value}};
+	let container = {
+		Init: getCookie("email"),
+		Competition: document.getElementById("competitionInput").value,
+		Dates: {
+			Date1: document.getElementById("date1").checked,
+			Date2: document.getElementById("date2").checked,
+			Date3: document.getElementById("date3").checked,
+			Date4: document.getElementById("date4").checked
+		},
+		Events: {
+			EventA: document.getElementById("event1").value,
+			EventB: document.getElementById("event2").value,
+			EventC: document.getElementById("event3").value,
+			EventD: document.getElementById("event4").value
+		}
+	};
+
+	let eventsArr = [];
+	let nones = 0;
+
+	events.forEach((v, k) => {
+		if (eventsArr.includes(v)) {
+			eventsArr = [];
+			nones = 0;
+
+			return alert("Please do not select the same event twice.")
+		} else {
+			eventsArr.push(v);
+			
+			if (v == "None") {
+				nones++;
+			}
+		}
+	});
+
+	if (nones == 4) {
+		return alert("Please select at least one event.");
+	}
+
 	var xhttp = new XMLHttpRequest();
 	xhttp.open("POST", "https://cssa-backend.herokuapp.com/userInterestData", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -189,6 +226,26 @@ function interestForm() {
 			}
 		} 
 	}; 
+}
+
+let events = new Map();
+
+document.getElementById("event1").addEventListener("change", validateEvent("event1"));
+document.getElementById("event2").addEventListener("change", validateEvent("event2"));
+document.getElementById("event3").addEventListener("change", validateEvent("event3"));
+document.getElementById("event4").addEventListener("change", validateEvent("event4"));
+
+function validateEvent(eventNum) {
+	if (events.has(document.getElementById(eventNum).value)) {
+		alert("Please do not select the same event twice.");
+	} else if (document.getElementById(eventNum).value == "None") {
+		events.delete(eventNum);
+		if (events.size == 0) {
+			alert("Please select at least one event.");
+		}
+	} else {
+		events.set(eventNum, document.getElementById(eventNum).value);
+	}
 }
 
 function refer() {
