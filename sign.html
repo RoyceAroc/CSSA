@@ -107,10 +107,9 @@
 				return false;
          });
          //Automatic cookie sign in irrespective
-         window.onload = function() {
+         window.addEventListener("load", function() {
             document.querySelector(".abcRioButtonContents > span").innerHTML = "Google Sign In";
-            
-         }
+         });
 		</script>
    </body>
 </html>

@@ -1,4 +1,4 @@
-window.onload = function() {
+window.addEventListener("load", function() {
 	if(window.location.href.includes("dashboard.html")) {
 		var values = {Cookie: getCookie("email")}; 
 		var xhttp = new XMLHttpRequest();
@@ -36,7 +36,7 @@ window.onload = function() {
 	document.getElementById("event4").addEventListener("change", function () {
 		validateEvent("event4");
 	});
-}
+});
 
 function create() {
 	let emailC = document.getElementById("email_c").value;
