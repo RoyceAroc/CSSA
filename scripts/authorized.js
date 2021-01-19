@@ -14,8 +14,7 @@ window.addEventListener("load", function() {
 					document.getElementById("updateA").value = valueArray[2];
 					document.getElementById("updateB").value = valueArray[3];
 					document.getElementById("updateC").value = valueArray[1].substr(0, valueArray[1].length - 5);
-					document.getElementById("separator").value = valueArray[1].substr(valueArray[1].length - 5);
-					console.log(valueArray[1].substr(valueArray[1].length - 5));
+					document.getElementById("separator").innerHTML = valueArray[1].substr(valueArray[1].length - 5);
 					document.getElementById("updateD").value = valueArray[0];
 					document.getElementById("updateE").value = valueArray[4];
 				}
