@@ -20,7 +20,8 @@ nav {
 }
 
 nav img {
-    width: 50px;
+    width: 5vw;
+    height: 5vw;
 }
 
 nav .leftnav {
