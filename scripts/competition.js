@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var calendar = new FullCalendar.Calendar(competitionCalendar, {
         initialView: 'dayGridMonth',
+        // height: "30%",
     });
 
     calendar.render();
