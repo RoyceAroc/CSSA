@@ -6,13 +6,14 @@
         <meta name="google-signin-client_id" content="834594227639-dntdsbdaej8rsfhspugmaft12lcorhc8.apps.googleusercontent.com">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.css">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
         <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
         <script src="https://kit.fontawesome.com/df7e7c41fe.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         
-		 <script src="scripts/script.js"></script>
+		 <!-- <script src="scripts/script.js"></script> -->
         
         <script src="scripts/authorized.js"></script>
         <link rel="stylesheet" href="styles/dashboard.css">
@@ -21,6 +22,17 @@
         <link rel="stylesheet" type="text/css" href="styles/pageheader.css">
 
         <link rel="icon" href="images/favicon.ico">
+
+        <script>
+            function display(elem) {
+                $('#' + elem).toggle();
+            }
+
+            function switchSection(elem1, elem2) {
+                document.getElementById(elem1).style.display = "flex";
+                document.getElementById(elem2).style.display = "none";
+            }
+        </script>
     </head>
 
 	<body>
@@ -36,165 +48,203 @@
                 <div id="nav-box-pad">
                     <div id="nav-box">
                         <h4>Contents</h4>
-                        <a href="#interest">Interest Form</a>
-                        <a id="bottom" href="#settings">Settings</a>
+                        <a onclick="switchSection('profile', 'competitions');">Profile</a>
+                        <a onclick="switchSection('competitions', 'profile');">My Competitions</a>
                     </div>
                 </div>
             </div>
 
             <div id="content">
 
-                <div id="interest">
-                    <h1>Interest Form </h1>
+                <div id="profile">
+                    <h1>Profile</h1>
                     
-<form action="javascript:interestForm();">
-    <div  style="width: 50%;" class="form-group">
-        <label for="competitionInput">Competition</label>
-        <select class="form-control" id="competitionInput">
-            <option>First Mini-Competition</option>
-        </select>
-    </div>
+                    <div id="profile-content">
+                        <div id="userinfo" class="holder">
+                            <h4>Update Profile</h4>
 
-    <div  style="width: 50%;" class="form-group">
-        <label for="event1">Event #1</label>
-        <select  class="form-control" id="event1">
-            <option>None</option>
-            <option>Algorithmic Thinking</option>
-            <option>Programming Challenges</option>
-            <option>Data Science</option>
-            <option>Capture the Flag</option>
-            <option>Website Design</option>
-            <option>Cybersecurity</option>
-            <option>Tech Support</option>
-            <option>Information Theory</option>
-        </select>
-    </div>
+                            <form action="javascript:updateProfile();" class="login">
 
-    <div  style="width: 50%;" class="form-group">
-        <label for="event2">Event #2</label>
-        <select class="form-control" id="event2">
-            <option>None</option>
-            <option>Algorithmic Thinking</option>
-            <option>Programming Challenges</option>
-            <option>Data Science</option>
-            <option>Capture the Flag</option>
-            <option>Website Design</option>
-            <option>Cybersecurity</option>
-            <option>Tech Support</option>
-            <option>Information Theory</option>
-        </select>
-    </div>
+                                <div class="field">
+                                    <input id="updateA" type="text" placeholder="First Name" required>
+                                </div>
 
-    <div  style="width: 50%;" class="form-group">
-        <label for="event3">Event #3</label>
-        <select class="form-control" id="event3">
-            <option>None</option>
-            <option>Algorithmic Thinking</option>
-            <option>Programming Challenges</option>
-            <option>Data Science</option>
-            <option>Capture the Flag</option>
-            <option>Website Design</option>
-            <option>Cybersecurity</option>
-            <option>Tech Support</option>
-            <option>Information Theory</option>
-        </select>
-    </div>
+                                <div class="field">
+                                    <input id="updateB" type="text" placeholder="Last Name" required>
+                                </div>
 
-    <div  style="width: 50%;" class="form-group">
-        <label for="event4">Event #4</label>
-        <select class="form-control" id="event4">
-            <option>None</option>
-            <option>Algorithmic Thinking</option>
-            <option>Programming Challenges</option>
-            <option>Data Science</option>
-            <option>Capture the Flag</option>
-            <option>Website Design</option>
-            <option>Cybersecurity</option>
-            <option>Tech Support</option>
-            <option>Information Theory</option>
-        </select>
-    </div>
-<br>
-    <div  style="width: 75%;" class="form-group">
-        <label>Which competition ranges would work best for you (competitors would be given a range of time to complete their events)? Select all that apply.</label>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="date1">
-            <label class="form-check-label" for="date1">
-                February 28 to March 14
-            </label>
-        </div>
+                                <div class="field">
+                                    <input id="updateC" type="text" placeholder="Username" required>
+                                    <div id="separator">
+                                        #1024
+                                    </div>
+                                </div>
 
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="date2">
-            <label class="form-check-label" for="date1">
-                March 7 to March 21
-            </label>
-        </div>
+                                <div class="field">
+                                    <input id="updateD" type="email" placeholder="Email" required>
+                                </div>
 
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="date3">
-            <label class="form-check-label" for="date1">
-                March 14 to March 28
-            </label>
-        </div>
+                                <div class="field">
+                                    <input id="updateE" type="password" placeholder="Password" required>
+                                </div>
 
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="date4">
-            <label class="form-check-label" for="date1">
-                March 21 to April 4
-            </label>
-        </div>
-    </div>
-<div style="width: 25%;" class="field btn">
-        <div class="btn-layer"></div>
-        <input type="submit" value="Submit">
-     </div>
-</form>
-                </div>
-                <hr style="color: white;"></hr>
+                                <div style="width: 25%;" class="field btn">
+                                    <div class="btn-layer"></div>
+                                    <input type="submit" value="Update">
+                                </div>
+                            
+                            </form>
 
-                <div id="settings">
-                    <h1>Settings</h1>
-                    
-                    <h4>Update Profile</h4>
-                    <div style="width: 50%;" class="holder">
-                        <form action="javascript:updateProfile();" class="login">
-                            <div class="field">
-                                <input id="updateA" type="text" placeholder="First Name" required>
-                             </div>
-                             <div class="field">
-                                <input id="updateB" type="text" placeholder="Last Name" required>
-                             </div>
-                           <div class="field">
-                              <input id="updateC" type="text" placeholder="Username" required>
-                           </div>
-                           <div class="field">
-                            <input id="updateD" type="email" placeholder="Email" required>
-                         </div>
-                           <div class="field">
-                              <input id="updateE" type="password" placeholder="Password" required>
-                           </div>
-                           <center><div style="width: 25%;" class="field btn">
-                              <div class="btn-layer"></div>
-                              <input type="submit" value="Update">
-                           </div></center>
+                        </div>
+
+                        <!-- <hr style="color: white;"></hr> -->
+
+                        <div id="referral" class="holder">
+                            <h4>Referral</h4>
+
+                            <form action="javascript:refer();" class="login">
+
+                                <div class="field">
+                                    <input id="referA" type="text" placeholder="Username" required>
+                                </div>
                         
-                        </form>
+                                <div style="width: 25%;" class="field btn">
+                                    <div class="btn-layer"></div>
+                                    <input type="submit" value="Refer">
+                                </div>
+                            
+                            </form>
+                        </div>
                     </div>
+                </div>
 
-                    <h4>Referral</h4>
-                    <div style="width: 50%;" class="holder">
-                        <form action="javascript:refer();" class="login">
-                            <div class="field">
-                                <input id="referA" type="text" placeholder="Username" required>
-                             </div>
-                       
-                           <center><div style="width: 25%;" class="field btn">
-                              <div class="btn-layer"></div>
-                              <input type="submit" value="Refer">
-                           </div></center>
+                <div id="competitions">
+
+                    <h1>My Competitions</h1>
+
+                    <div id="competitions-content">
+                        <div id="competition-registration">
+                            <h4>Competition Registration</h4>
                         
-                        </form>
+                            <form action="javascript:interestForm();">
+
+                                <div class="form-group">
+                                    <label for="competitionInput">Competition</label>
+                                    <select class="form-control" id="competitionInput">
+                                        <option>First Mini-Competition</option>
+                                    </select>
+                                </div>
+
+                                <br>
+
+                                <div class="form-group">
+                                    <label for="event1">Event #1</label>
+                                    <select  class="form-control" id="event1">
+                                        <option>None</option>
+                                        <option>Algorithmic Thinking</option>
+                                        <option>Programming Challenges</option>
+                                        <option>Data Science</option>
+                                        <option>Capture the Flag</option>
+                                        <option>Website Design</option>
+                                        <option>Cybersecurity</option>
+                                        <option>Tech Support</option>
+                                        <option>Information Theory</option>
+                                    </select>
+                                </div>
+
+                                <br>
+
+                                <div class="form-group">
+                                    <label for="event2">Event #2</label>
+                                    <select class="form-control" id="event2">
+                                        <option>None</option>
+                                        <option>Algorithmic Thinking</option>
+                                        <option>Programming Challenges</option>
+                                        <option>Data Science</option>
+                                        <option>Capture the Flag</option>
+                                        <option>Website Design</option>
+                                        <option>Cybersecurity</option>
+                                        <option>Tech Support</option>
+                                        <option>Information Theory</option>
+                                    </select>
+                                </div>
+
+                                <br>
+
+                                <div class="form-group">
+                                    <label for="event3">Event #3</label>
+                                    <select class="form-control" id="event3">
+                                        <option>None</option>
+                                        <option>Algorithmic Thinking</option>
+                                        <option>Programming Challenges</option>
+                                        <option>Data Science</option>
+                                        <option>Capture the Flag</option>
+                                        <option>Website Design</option>
+                                        <option>Cybersecurity</option>
+                                        <option>Tech Support</option>
+                                        <option>Information Theory</option>
+                                    </select>
+                                </div>
+
+                                <br>
+
+                                <div class="form-group">
+                                    <label for="event4">Event #4</label>
+                                    <select class="form-control" id="event4">
+                                        <option>None</option>
+                                        <option>Algorithmic Thinking</option>
+                                        <option>Programming Challenges</option>
+                                        <option>Data Science</option>
+                                        <option>Capture the Flag</option>
+                                        <option>Website Design</option>
+                                        <option>Cybersecurity</option>
+                                        <option>Tech Support</option>
+                                        <option>Information Theory</option>
+                                    </select>
+                                </div>
+
+                                <br>
+
+                                <div class="form-group">
+                                    <label>Which competition ranges would work best for you (competitors would be given a range of time to complete their events)? Select all that apply.</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="date1">
+                                        <label class="form-check-label" for="date1">
+                                            February 28 to March 14
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="date2">
+                                        <label class="form-check-label" for="date1">
+                                            March 7 to March 21
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="date3">
+                                        <label class="form-check-label" for="date1">
+                                            March 14 to March 28
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="date4">
+                                        <label class="form-check-label" for="date1">
+                                            March 21 to April 4
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <div class="field btn">
+                                    <div class="btn-layer"></div>
+                                    <input type="submit" value="Submit">
+                                </div>
+
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -45,3 +45,7 @@ window.addEventListener('load', function () {
     footerxhttp.open("GET", "footer.html", true);
     footerxhttp.send();
 });
+
+function display(elem) {
+    $('#' + elem).toggle();
+}

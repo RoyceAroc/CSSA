@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
-
 input {
 	color: black;
 }
+
 span {
 	color: black;
 }
+
 .top-header {
 	color: black;
 	overflow: hidden;
@@ -19,7 +20,8 @@ span {
 .form-control option {
      color: black;
 }
-.top-header  .title {
+
+.top-header .title {
 	width: 50%;
 	font-size: 35px;
 	font-weight: 600;
@@ -150,14 +152,12 @@ form .field input:focus::placeholder {
 	margin-top: 30px;
 }
 
-.holder form .pass-link a,
-.holder form .signup-link a {
+.holder form .pass-link a, .holder form .signup-link a {
 	color: #0097a7;
 	text-decoration: none;
 }
 
-.holder form .pass-link a:hover,
-.holder form .signup-link a:hover {
+.holder form .pass-link a:hover, .holder form .signup-link a:hover {
 	text-decoration: underline;
 }
 
@@ -212,8 +212,7 @@ form .btn input[type="submit"] {
 	display: inline-block;
 }
 
-.or-thing>span:before,
-.or-thing>span:after {
+.or-thing>span:before, .or-thing>span:after {
 	content: "";
 	position: absolute;
 	top: 50%;
@@ -276,4 +275,55 @@ span.buttonText {
 .abcRioButtonContents > span {
 	color: white;
 	margin-top: 5vh;
+}
+
+#profile {
+	display: flex;
+	flex-direction: column;
+}
+
+#profile-content, #competitions-content {
+	display: flex;
+	flex-direction: row;
+}
+
+#userinfo {
+	flex-grow: 4;
+	border-right: 2px solid rgb(196, 196, 196);
+}
+
+.field {
+	width: 60% !important;
+	display: flex;
+	flex-direction: row;
+}
+
+#updateC {
+	width: 75% !important;
+	border-top-right-radius: 0%;
+	border-bottom-right-radius: 0%;
+}
+
+#separator {
+	background-color: rgb(61, 61, 61);
+	width: 25%;
+	font-size: 100%;
+	line-height: 250% !important;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#tag {
+	-moz-user-select: none;
+	user-select: none;
+	width: 25% !important;
+}
+
+#referral {
+	flex-grow: 3;
+	margin-left: 17%;
+}
+
+#competitions {
+	display: none;
 }
