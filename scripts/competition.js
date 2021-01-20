@@ -32,7 +32,7 @@ function populateCompetitionPage(eventData) {
     
                 let eventHTML = `
                     <div class="event">
-                        <img class="event-image" src="${e.childNodes[3].innerHTML}" alt="...">
+                        <img class="event-image" style="" src="${e.childNodes[3].innerHTML}" alt="...">
         
                         <div id="event-text">
                             <h4 id="event-title">${e.childNodes[1].innerHTML}</h4>
