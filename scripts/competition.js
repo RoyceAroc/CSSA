@@ -10,16 +10,27 @@ window.addEventListener('load', function () {
     xhttp.send();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    var competitionCalendar = document.getElementById('competition-calendar');
+// document.addEventListener('DOMContentLoaded', function() {
+//     var competitionCalendar = document.getElementById('competition-calendar');
 
-    var calendar = new FullCalendar.Calendar(competitionCalendar, {
-        initialView: 'dayGridMonth',
-        // height: "30%",
-    });
+//     var calendar = new FullCalendar.Calendar(competitionCalendar, {
+//         initialView: 'dayGridMonth',
+//         height: 696,
+//         aspectRatio: 0.5 * window.innerWidth/696,
+//         events: [
+//             {
+//                 title: 'Test',
+//                 start: '2021-03-01',
+//                 end: '2021-03-25',
+//                 allDay: true,
+//             }
+//         ]
+//     });
 
-    calendar.render();
-});
+//     calendar.render();
+
+//     document.getElementById('competition-calendar').style.width = `696px`;
+// });
 
 function populateCompetitionPage(eventData) {
     var parser = new DOMParser();

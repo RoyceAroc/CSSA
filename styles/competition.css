@@ -86,29 +86,68 @@
     vertical-align: middle;
 }
 
-/* #calendar-container > h5 {
+#calendar-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1%;
+}
+
+#competition-list-container {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: 1%;
+    margin-right: 1%;
+    background-color: #2d3130;
+}
+
+#competition-list-header {
+    height: 15%;
+    padding-top: 6%;
     text-align: center;
-    margin-top: 2%;
+    background-color: #1b1b1b;
+}
+
+#competition-list {
+    padding: 2%;
+}
+
+.competition-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 3% 1% 1% 1%;
+    background-color: darkslategray;
+}
+
+.competition-item-image {
+    width: 4vw;
+    height: 4vw;
+}
+
+.competition-item-description {
+    font-size: 1vw;
 }
 
 #competition-calendar {
-    width: 49%;
-    height: 19.7%;
-    margin-top: 2%;
-    margin-left: 25%;
-} */
-
-/* .fc-scroller {
-    overflow: unset !important;
+    width: 70%;
+    margin-left: 2%;
+    margin-right: 1%;
+    table-layout: fixed;
 }
 
-.fc-scrollgrid.fc-scrollgrid-liquid {
-    width: 100%;
-    height: 100%;
+#competition-calendar > tr {
+    
 }
-*/
 
-#competition-calendar a {
-    color: white;
-    text-decoration: none;
+th {
+    border: 1px solid white;
+    padding: 1%;
+    text-align: center;
+}
+
+tr > td {
+    border: 1px solid white;
+    padding: 1% 2% 10% 10%;
+    text-align: right;
 }
