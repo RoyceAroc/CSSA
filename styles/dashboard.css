@@ -298,20 +298,6 @@ span.buttonText {
 	flex-direction: row;
 }
 
-#updateC {
-	width: 75% !important;
-	border-top-right-radius: 0%;
-	border-bottom-right-radius: 0%;
-}
-
-#separator {
-	background-color: rgb(61, 61, 61);
-	width: 25%;
-	font-size: 100%;
-	line-height: 250% !important;
-	text-align: center;
-	vertical-align: middle;
-}
 
 #tag {
 	-moz-user-select: none;
