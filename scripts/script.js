@@ -15,7 +15,7 @@ window.addEventListener('load', function () {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementsByTagName("nav")[1].innerHTML = xhttp.responseText;
+                    document.getElementsByTagName("nav")[0].innerHTML = xhttp.responseText;
                 } else if (this.readyState == 4 && this.status != 200) {
                     xhttp.send();
                 }
@@ -31,7 +31,7 @@ window.addEventListener('load', function () {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementsByTagName("nav")[1].innerHTML = xhttp.responseText;
+                    document.getElementsByTagName("nav")[0].innerHTML = xhttp.responseText;
                 } else if (this.readyState == 4 && this.status != 200) {
                     xhttp.send();
                 }
@@ -58,11 +58,3 @@ window.addEventListener('load', function () {
 function display(elem) {
     $('#' + elem).toggle();
 }
-
-$('.dropdown').on('show.bs.dropdown', function(e){
-    $(this).find('.dropdown-menu').first().stop(true, true).slideDown(400);
-});
-
-$('.dropdown').on('hide.bs.dropdown', function(e){
-    $(this).find('.dropdown-menu').first().stop(true, true).slideUp(400);
-});

@@ -11,42 +11,52 @@ body {
     margin: 0;
 }
 
-.nav-link {
-    text-transform: uppercase;
-    font-size: 20px;
-    text-decoration: none;
-    color: rgb(180, 180, 180);
-    
-    border-bottom: 3px solid transparent;
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 25px;
 }
 
-.active {
-    color: white;
+nav img {
+    width: 5vw;
+    height: 5vw;
 }
-.top-nav-link {
-    text-transform: uppercase;
-    font-size: 12px;
 
+nav .leftnav {
+    display: flex;
+    flex-direction: row;
+}
+
+nav .leftnav a {
+    border-bottom: none !important;
+}
+
+nav a {
     text-decoration: none;
+    border-bottom: 3px solid white;
+	color:white;
+	margin: 10px;
+}
+
+nav a:hover {
     color: rgb(180, 180, 180);
 }
-.top-nav-link:hover {
-    color: white;
+
+nav .signin {
     text-decoration: none;
+    border-bottom: none !important;
+    background-color: #0097a7;
+    padding: 10px;
+	color: white;
+	border-radius: 7px;
+	margin-bottom: 10px;
 }
-.open-icon {
+
+nav .signin:hover {
+    background-color: #018796;
     color: white;
-}
-@media only screen and (max-width:1000px) {
-    .nav-link:hover {
-        color: white;
-    }
-}
-@media only screen and (min-width:1000px) {
-    .nav-link:hover {
-        color: white;
-        border-bottom: 3px solid white;
-    }
 }
 
 .text-link {
