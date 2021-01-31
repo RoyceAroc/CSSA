@@ -1,11 +1,27 @@
-<section class="leftnav">
-    <img src="images/logo.png">
-    <p><a class= "organizationname" href="index.html">COMPUTER SCIENCE STUDENT ASSOCIATION</a></p>
-</section>
-<section class="rightnav">
-    <a href="index.html">HOME</a>
-    <a href="about.html">ABOUT</a>
-    <a href="competition.html">COMPETITION</a>
-    <a href="dashboard.html">DASHBOARD</a>
-    <a href="index.html" class="signin" onclick="signOut();">SIGN OUT</a>
-</section> 
+<div class="container">
+    <a href="#"><img src="images/header-logo.png" style="zoom: 20%;" alt="CSSA Header Logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#compNav">
+        <i class="fa fa-bars open-icon"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="compNav">
+        <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+            <li style="padding-left: 10px;" class="nav-item">
+                <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li style="padding-left: 10px;" class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li style="padding-left: 10px;" class="nav-item">
+                <a class="nav-link" href="competition.html">Competition</a>
+            </li>
+            <li style="padding-left: 10px;" class="nav-item">
+                <a class="nav-link" href="dashboard.html">Dashboard</a>
+            </li>
+        </ul>
+        <center><ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="index.html" onclick="signOut();" class="btn btn-rounded btn-info">Sign Out</a>
+            </li>
+        </ul></center>
+    </div>
+</div>
