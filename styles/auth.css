@@ -1,20 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Poppins', sans-serif;
-}
 /*Work on the fonts probs use the sandspace one */
 
-html,
-body {
-	display: grid;
-	height: 100%;
-	width: 100%;
-	place-items: center;
-	/*Particle for now work TBD for animated */
-}
+
 #particle-canvas{
 	width:100vw;
 	height:100%;
