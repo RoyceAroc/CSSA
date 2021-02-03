@@ -70,7 +70,7 @@ function populateCompetitionPage(eventData) {
     let startDate = d.getDate() - d.getDay() - 8;
 
     for (let i = 0; i < 35; i++) {
-        document.getElementById(i).innerHTML = (startDate + i) % 31 + 1;
+        document.getElementById(i).innerHTML = (Math.sign((startDate + i) % daysInMonth(d.getMonth(), d.getFullYear()) + 1) == 1) ? ((startDate + i) % daysInMonth(d.getMonth(), d.getFullYear()) + 1) : ((startDate + i) % daysInMonth(d.getMonth(), d.getFullYear()) + 1) + daysInMonth(d.getMonth(), d.getFullYear());
     }
 
 };
