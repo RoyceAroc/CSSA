@@ -1,9 +1,32 @@
 window.addEventListener("load", function() {
 	if(window.location.href.includes("dashboard.html")) {
-		var values = {Cookie: getCookie("email")}; 
+		var valuesA = {user: getCookie("User")}; 
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "https://cssa-backend.herokuapp.com/getClientData", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(JSON.stringify(valuesA));
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				if(this.responseText == "false") {
+					console.log("Error C1: Report bug at crewcssa@gmail.com");
+				} else {
+					let play = JSON.parse(this.responseText).info;
+					if(play[5] != "-") {
+						document.getElementById("competition-registration").style.display = "none";
+						document.getElementById("signed-up").innerHTML = "You have signed up for the <b>" + JSON.parse(play[5]).Competition+ " </b>. The events in which you are in competing are " + JSON.parse(play[5]).Events.EventA + ", " + JSON.parse(play[5]).Events.EventB + ", " +  JSON.parse(play[5]).Events.EventC + ", " + JSON.parse(play[5]).Events.EventD + ".";
+					} 
+					if(play[6] != "-") {
+						document.getElementById("userinfo").style.borderStyle = "none";
+						document.getElementById("referral").style.display = "none";
+						
+					} 
+				}
+			} 
+		};
 		var xhttp = new XMLHttpRequest();
 		xhttp.open("POST", "https://cssa-backend.herokuapp.com/indirectProfile", true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		var values = {Cookie: getCookie("email")}; 
 		xhttp.send(JSON.stringify(values));
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
@@ -170,24 +193,37 @@ function updateProfile() {
 	let c = document.getElementById("updateC").value;
 	let d = document.getElementById("updateD").value;
 	let e = document.getElementById("updateE").value;
-	var values = {Scopecode: d, Username:c, FirstName:a, LastName: b, Credentials: e, Init: getCookie("email")}; 
-	var xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "https://cssa-backend.herokuapp.com/updateProfile", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send(JSON.stringify(values));
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			if(this.responseText == "error") {
-				console.log("Error A2: Report bug at crewcssa@gmail.com");
-			} else {
-				setCookie('email',d,365);
-				setCookie('User',c,365);
-				setCookie('fName',a,365);
-				setCookie('lName',b,365);
-				alert("Profile has been successfully updated!");
-			}
-		} 
-	}; 
+	if(a == "" || a.length > 50) {
+		alert("Invalid First Name");
+	} else if(b == "" || b.length > 50) {
+		alert("Invalid Last Name");
+	} else if(c == "" || c.length > 50) {
+		alert("Invalid Username Format");
+	} else if(d = "" || d.length > 70) {
+		alert("Invalid Email Format");
+	} else if(e == "" || e.length > 50) {
+		alert("Invalid Password Format");
+	} else {
+		var values = {Scopecode: d, Username:c, FirstName:a, LastName: b, Credentials: e, Init: getCookie("email")}; 
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "https://cssa-backend.herokuapp.com/updateProfile", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(JSON.stringify(values));
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				if(this.responseText == "error") {
+					console.log("Error A2: Report bug at crewcssa@gmail.com");
+				} else {
+					setCookie('email',d,365);
+					setCookie('User',c,365);
+					setCookie('fName',a,365);
+					setCookie('lName',b,365);
+					alert("Profile has been updated successfully!");
+					
+				}
+			} 
+		}; 
+	}
 }
 
 function interestForm() {
@@ -260,7 +296,8 @@ function interestForm() {
 			if(this.responseText == "error") {
 				console.log("Error A4: Report bug at crewcssa@gmail.com");
 			} else {
-				alert("Thank you for submitting the interest form!")
+				alert("Thank you for submitting the interest form!");
+				location.reload();
 			}
 		} 
 	}; 
@@ -310,7 +347,8 @@ function refer() {
 						if(this.responseText == "error") {
 							console.log("Error A3: Report bug at crewcssa@gmail.com");
 						} else {
-							alert("Your referrer has an added token. Thank you!")
+							alert("Your referrer has an added token. Thank you!");
+							location.reload();
 						}
 					} 
 				}; 
