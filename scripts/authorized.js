@@ -1,1 +1,425 @@
-function create(){let e=document.getElementById("email_c").value;var t=document.getElementById("username").value,n=document.getElementById("f_name").value,a=document.getElementById("l_name").value,o=document.getElementById("pwd").value,s=new XMLHttpRequest;s.open("POST","https://cssa-backend.herokuapp.com/checkUsername",!0),s.setRequestHeader("Content-type","application/x-www-form-urlencoded"),s.send(t),s.onreadystatechange=function(){if(4==this.readyState&&200==this.status)if(1==this.responseText)alert("Username taken");else{var s=new XMLHttpRequest;s.open("POST","https://cssa-backend.herokuapp.com/checkEmail",!0),s.setRequestHeader("Content-type","application/x-www-form-urlencoded"),s.send(e),s.onreadystatechange=function(){if(4==this.readyState&&200==this.status)if(1==this.responseText)alert("This email is already in use");else{var s={Email:e,Username:t,First:n,Last:a,Password:o},i=new XMLHttpRequest;i.open("POST","https://cssa-backend.herokuapp.com/registration",!0),i.setRequestHeader("Content-type","application/x-www-form-urlencoded"),i.send(JSON.stringify(s)),i.onreadystatechange=function(){4==this.readyState&&200==this.status&&"1"==this.responseText&&(setCookie("email",e,365),setCookie("User",t,365),setCookie("fName",n,365),setCookie("lName",a,365),window.location.href="dashboard.html")}}}}}}function login(){var e={Unknown:document.getElementById("s_username").value,Password:document.getElementById("s_pwd").value},t=new XMLHttpRequest;t.open("POST","https://cssa-backend.herokuapp.com/check",!0),t.setRequestHeader("Content-type","application/x-www-form-urlencoded"),t.send(JSON.stringify(e)),t.onreadystatechange=function(){if(4==this.readyState&&200==this.status)if("false"==this.responseText)alert("Invalid Information");else{let e=JSON.parse(this.responseText).info;setCookie("email",e[0],365),setCookie("User",e[1],365),setCookie("fName",e[2],365),setCookie("lName",e[3],365),window.location.href="dashboard.html"}}}function onLoad(){gapi.load("auth2",function(){gapi.auth2.init()})}function onSignIn(e){var t=e.getBasicProfile(),n=new XMLHttpRequest;n.open("POST","https://cssa-backend.herokuapp.com/checkEmail",!0),n.setRequestHeader("Content-type","application/x-www-form-urlencoded"),n.send(t.getEmail()),n.onreadystatechange=function(){if(4==this.readyState&&200==this.status)if(1==this.responseText){(e=new XMLHttpRequest).open("POST","https://cssa-backend.herokuapp.com/gleUsername",!0),e.setRequestHeader("Content-type","application/x-www-form-urlencoded"),e.send(t.getEmail()),e.onreadystatechange=function(){if(4==this.readyState&&200==this.status){let e=JSON.parse(this.responseText).info;setCookie("email",e[0],365),setCookie("User",e[1],365),setCookie("fName",e[2],365),setCookie("lName",e[3],365),window.location.href="dashboard.html"}}}else{let a=t.getGivenName()+"#"+(Math.floor(9e3*Math.random())+1e3),o=generatePassword();var e,n={Email:t.getEmail(),Username:a,First:t.getGivenName(),Last:t.getFamilyName(),Password:o};(e=new XMLHttpRequest).open("POST","https://cssa-backend.herokuapp.com/registrationA",!0),e.setRequestHeader("Content-type","application/x-www-form-urlencoded"),e.send(JSON.stringify(n)),e.onreadystatechange=function(){4==this.readyState&&200==this.status&&"1"==this.responseText&&(setCookie("email",t.getEmail(),365),setCookie("User",a,365),setCookie("fName",t.getGivenName(),365),setCookie("lName",t.getFamilyName(),365),window.location.href="dashboard.html")}}}}function updateProfile(){let e=document.getElementById("updateA").value,t=document.getElementById("updateB").value,n=document.getElementById("updateC").value,a=document.getElementById("updateD").value,o=document.getElementById("updateE").value;var s={Scopecode:a,Username:n,FirstName:e,LastName:t,Credentials:o,Init:getCookie("email")},i=new XMLHttpRequest;i.open("POST","https://cssa-backend.herokuapp.com/updateProfile",!0),i.setRequestHeader("Content-type","application/x-www-form-urlencoded"),i.send(JSON.stringify(s)),i.onreadystatechange=function(){4==this.readyState&&200==this.status&&("error"==this.responseText?console.log("Error A2: Report bug at crewcssa@gmail.com"):(setCookie("email",a,365),setCookie("User",n,365),setCookie("fName",e,365),setCookie("lName",t,365),alert("Profile has been successfully updated!")))}}function interestForm(){let e=[],t=0,n=0;if(events.has("event1")||events.set("event1","None"),events.has("event2")||events.set("event2","None"),events.has("event3")||events.set("event3","None"),events.has("event4")||events.set("event4","None"),console.log(events),events.forEach((a,o)=>{e.includes(a)&&"None"!=a?n=5:(e.push(a),"None"==a&&t++)}),4==t)return t=0,alert("Please select at least one event!");if(5==n)return alert("Please do not select the same event twice!");let a={Init:getCookie("email"),Competition:document.getElementById("competitionInput").value,Dates:{Date1:document.getElementById("date1").checked,Date2:document.getElementById("date2").checked,Date3:document.getElementById("date3").checked,Date4:document.getElementById("date4").checked},Events:{EventA:document.getElementById("event1").value,EventB:document.getElementById("event2").value,EventC:document.getElementById("event3").value,EventD:document.getElementById("event4").value}};var o=new XMLHttpRequest;o.open("POST","https://cssa-backend.herokuapp.com/userInterestData",!0),o.setRequestHeader("Content-type","application/x-www-form-urlencoded"),o.send(JSON.stringify(a)),o.onreadystatechange=function(){4==this.readyState&&200==this.status&&("error"==this.responseText?console.log("Error A4: Report bug at crewcssa@gmail.com"):alert("Thank you for submitting the interest form!"))}}window.addEventListener("load",function(){if(window.location.href.includes("dashboard.html")){var e={Cookie:getCookie("email")},t=new XMLHttpRequest;t.open("POST","https://cssa-backend.herokuapp.com/indirectProfile",!0),t.setRequestHeader("Content-type","application/x-www-form-urlencoded"),t.send(JSON.stringify(e)),t.onreadystatechange=function(){if(4==this.readyState&&200==this.status)if("false"==this.responseText)console.log("Error A1: Report bug at crewcssa@gmail.com");else{let e=JSON.parse(this.responseText).info;document.getElementById("updateA").value=e[2],document.getElementById("updateB").value=e[3],document.getElementById("updateC").value=e[1],document.getElementById("updateD").value=e[0],document.getElementById("updateE").value=e[4]}},document.getElementById("event1").addEventListener("change",function(){validateEvent("event1")}),document.getElementById("event2").addEventListener("change",function(){validateEvent("event2")}),document.getElementById("event3").addEventListener("change",function(){validateEvent("event3")}),document.getElementById("event4").addEventListener("change",function(){validateEvent("event4")})}});let events=new Map,eventsA=[],noneCounter=4;function validateEvent(e){events.has(document.getElementById(e).value)&&"None"!=document.getElementById(e).value?alert("Please do not select the same event twice."):"None"==document.getElementById(e).value?(events.delete(e),0==events.size&&alert("Please select at least one event."),console.log("Chose none")):(events.set(e,document.getElementById(e).value),noneCounter--),4==noneCounter&&alert("Please select at least one event..")}function refer(){let e=document.getElementById("referA").value;var t=new XMLHttpRequest;t.open("POST","https://cssa-backend.herokuapp.com/checkUsername",!0),t.setRequestHeader("Content-type","application/x-www-form-urlencoded"),t.send(e),t.onreadystatechange=function(){if(4==this.readyState&&200==this.status)if(1==this.responseText){var t={Refer:e,Init:getCookie("email")},n=new XMLHttpRequest;n.open("POST","https://cssa-backend.herokuapp.com/refer",!0),n.setRequestHeader("Content-type","application/x-www-form-urlencoded"),n.send(JSON.stringify(t)),n.onreadystatechange=function(){4==this.readyState&&200==this.status&&("error"==this.responseText?console.log("Error A3: Report bug at crewcssa@gmail.com"):alert("Your referrer has an added token. Thank you!"))}}else alert("This user does not exist. Therefore, you cannot refer him")}}function generatePassword(){for(var e="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",t="",n=0,a=e.length;n<8;++n)t+=e.charAt(Math.floor(Math.random()*a));return t}function signOut(){onLoad(),eraseCookie("email"),eraseCookie("User"),eraseCookie("fName"),eraseCookie("lName"),gapi.auth2.getAuthInstance().signOut().then(function(){console.log("You have signed out!")}),window.location="index.html"}function setCookie(e,t,n){var a="";if(n){var o=new Date;o.setTime(o.getTime()+24*n*60*60*1e3),a="; expires="+o.toUTCString()}document.cookie=e+"="+(t||"")+a+"; path=/"}function getCookie(e){for(var t=e+"=",n=document.cookie.split(";"),a=0;a<n.length;a++){for(var o=n[a];" "==o.charAt(0);)o=o.substring(1,o.length);if(0==o.indexOf(t))return o.substring(t.length,o.length)}return null}function eraseCookie(e){document.cookie=e+"=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;"}function sendContact(){var e={A:document.getElementById("contact_name").value,B:document.getElementById("contact_email").value,C:document.getElementById("contact_message").value},t=new XMLHttpRequest;t.open("POST","https://cssa-backend.herokuapp.com/submitContact",!0),t.setRequestHeader("Content-type","application/x-www-form-urlencoded"),t.send(JSON.stringify(e)),t.onreadystatechange=function(){4==this.readyState&&200==this.status&&("error"==this.responseText?console.log("Error B1"):alert("You shall be contacted in 1-2 days with a response!"))}}
+window.addEventListener("load", function() {
+	if(window.location.href.includes("dashboard.html")) {
+		var valuesA = {user: getCookie("User")}; 
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "https://cssa-backend.herokuapp.com/getClientData", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(JSON.stringify(valuesA));
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				if(this.responseText == "false") {
+					console.log("Error C1: Report bug at crewcssa@gmail.com");
+				} else {
+					let play = JSON.parse(this.responseText).info;
+					if(play[5] != "-") {
+						document.getElementById("competition-registration").style.display = "none";
+						document.getElementById("signed-up").innerHTML = "You have signed up for the <b>" + JSON.parse(play[5]).Competition+ " </b>. The events in which you are in competing are " + JSON.parse(play[5]).Events.EventA + ", " + JSON.parse(play[5]).Events.EventB + ", " +  JSON.parse(play[5]).Events.EventC + ", " + JSON.parse(play[5]).Events.EventD + ".";
+					} 
+					if(play[6] != "-") {
+						document.getElementById("userinfo").style.borderStyle = "none";
+						document.getElementById("referral").style.display = "none";
+						
+					} 
+				}
+			} 
+		};
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "https://cssa-backend.herokuapp.com/indirectProfile", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		var values = {Cookie: getCookie("email")}; 
+		xhttp.send(JSON.stringify(values));
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				if(this.responseText == "false") {
+					console.log("Error A1: Report bug at crewcssa@gmail.com");
+				} else {
+					let valueArray = JSON.parse(this.responseText).info;
+					document.getElementById("updateA").value = valueArray[2];
+					document.getElementById("updateB").value = valueArray[3];
+					document.getElementById("updateC").value = valueArray[1];
+					document.getElementById("updateD").value = valueArray[0];
+					document.getElementById("updateE").value = valueArray[4];
+				}
+			} 
+		};
+
+		document.getElementById("event1").addEventListener("change", function () {
+			validateEvent("event1");
+		});
+	
+		document.getElementById("event2").addEventListener("change", function () {
+			validateEvent("event2");
+		});
+	
+		document.getElementById("event3").addEventListener("change", function () {
+			validateEvent("event3");
+		});
+	
+		document.getElementById("event4").addEventListener("change", function () {
+			validateEvent("event4");
+		});
+	}
+});
+
+function create() {
+	let emailC = document.getElementById("email_c").value;
+	var usr = document.getElementById("username").value;
+	var fName = document.getElementById("f_name").value;
+	var lName = document.getElementById("l_name").value;
+	var pwd = document.getElementById("pwd").value;
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "https://cssa-backend.herokuapp.com/checkUsername", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(usr); 
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			if(this.responseText == 1) {
+				alert("Username taken");
+			} else {
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("POST", "https://cssa-backend.herokuapp.com/checkEmail", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(emailC); 
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						if(this.responseText == 1) {
+							alert("This email is already in use");
+						} else {
+							var values = {Email: emailC, Username: usr, First: fName, Last: lName ,  Password:pwd};
+							var xhttp = new XMLHttpRequest();
+							xhttp.open("POST", "https://cssa-backend.herokuapp.com/registration", true);
+							xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+							xhttp.send(JSON.stringify(values)); 
+							xhttp.onreadystatechange = function() {
+								if (this.readyState == 4 && this.status == 200) {
+									if(this.responseText == "1") {
+										setCookie('email',emailC,365);
+										setCookie('User',usr,365);
+										setCookie('fName',fName,365);
+										setCookie('lName',lName,365);
+										window.location.href = "dashboard.html";
+									} 
+								} 
+							}; 
+						}
+					} 
+				}; 
+			}
+		} 
+	}; 		
+}
+
+function login() {
+	var unknown = document.getElementById("s_username").value;
+	var pwd = document.getElementById("s_pwd").value;
+	var values = {Unknown: unknown,  Password:pwd};
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "https://cssa-backend.herokuapp.com/check", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(JSON.stringify(values));
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			if(this.responseText == "false") {
+				alert("Invalid Information");
+			} else {
+				let valueArray = JSON.parse(this.responseText).info;
+				setCookie('email',valueArray[0],365);
+				setCookie('User',valueArray[1],365);
+				setCookie('fName',valueArray[2],365);
+				setCookie('lName',valueArray[3],365);
+				window.location.href = "dashboard.html";
+			}
+		} 
+	}; 
+}
+
+function onLoad() {
+	gapi.load('auth2', function() {
+	  gapi.auth2.init();
+	});
+}
+
+function onSignIn(googleUser) {
+	var profile = googleUser.getBasicProfile();
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "https://cssa-backend.herokuapp.com/checkEmail", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(profile.getEmail()); 
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			if(this.responseText == 1) {
+				//Account already exists | set profile
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("POST", "https://cssa-backend.herokuapp.com/gleUsername", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(profile.getEmail()); 
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						let valueArray = JSON.parse(this.responseText).info;
+						setCookie('email',valueArray[0],365);
+						setCookie('User',valueArray[1],365);
+						setCookie('fName',valueArray[2],365);
+						setCookie('lName',valueArray[3],365);
+						window.location.href = "dashboard.html";
+					} 
+				}; 
+			} else 	{
+				let username = profile.getGivenName() + "#" + (Math.floor(Math.random() * 9000) + 1000);
+				let password = generatePassword();
+				var values = {Email: profile.getEmail(), Username: username, First: profile.getGivenName(), Last: profile.getFamilyName() ,  Password:password};
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("POST", "https://cssa-backend.herokuapp.com/registrationA", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(JSON.stringify(values)); 
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						if(this.responseText == "1") {
+							setCookie('email',profile.getEmail(),365);
+							setCookie('User',username,365);
+							setCookie('fName',profile.getGivenName(),365);
+							setCookie('lName',profile.getFamilyName(),365);
+							window.location.href = "dashboard.html";
+						} 
+					} 
+				}; 
+			}
+		} 
+	}; 
+}
+
+function updateProfile() {
+	let a = document.getElementById("updateA").value;
+	let b = document.getElementById("updateB").value;
+	let c = document.getElementById("updateC").value;
+	let d = document.getElementById("updateD").value;
+	let e = document.getElementById("updateE").value;
+	if(a == "" || a.length > 50) {
+		alert("Invalid First Name");
+	} else if(b == "" || b.length > 50) {
+		alert("Invalid Last Name");
+	} else if(c == "" || c.length > 50) {
+		alert("Invalid Username Format");
+	} else if(d = "" || d.length > 70) {
+		alert("Invalid Email Format");
+	} else if(e == "" || e.length > 50) {
+		alert("Invalid Password Format");
+	} else {
+		var values = {Scopecode: d, Username:c, FirstName:a, LastName: b, Credentials: e, Init: getCookie("email")}; 
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "https://cssa-backend.herokuapp.com/updateProfile", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(JSON.stringify(values));
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				if(this.responseText == "error") {
+					console.log("Error A2: Report bug at crewcssa@gmail.com");
+				} else {
+					setCookie('email',d,365);
+					setCookie('User',c,365);
+					setCookie('fName',a,365);
+					setCookie('lName',b,365);
+					alert("Profile has been updated successfully!");
+					
+				}
+			} 
+		}; 
+	}
+}
+
+function interestForm() {
+	let eventsArr = [];
+	let nones = 0;
+	let ones = 0;
+
+	if (!events.has("event1")) {
+		events.set("event1", "None");
+	}
+
+	if (!events.has("event2")) {
+		events.set("event2", "None");
+	}
+
+	if (!events.has("event3")) {
+		events.set("event3", "None");
+	}
+
+	if (!events.has("event4")) {
+		events.set("event4", "None");
+	}
+
+	console.log(events);
+
+	events.forEach((v, k) => {
+		if (eventsArr.includes(v) && v != "None") {
+			ones = 5;
+			return;
+		} else {
+			eventsArr.push(v);
+			
+			if (v == "None") {
+				nones++;
+			}
+		}
+	});
+
+	if (nones == 4) {
+		nones = 0;
+
+		return alert("Please select at least one event!");
+	} else if (ones == 5) {
+		return alert("Please do not select the same event twice!");
+	}
+
+	let container = {
+		Init: getCookie("email"),
+		Competition: document.getElementById("competitionInput").value,
+		Dates: {
+			Date1: document.getElementById("date1").checked,
+			Date2: document.getElementById("date2").checked,
+			Date3: document.getElementById("date3").checked,
+			Date4: document.getElementById("date4").checked
+		},
+		Events: {
+			EventA: document.getElementById("event1").value,
+			EventB: document.getElementById("event2").value,
+			EventC: document.getElementById("event3").value,
+			EventD: document.getElementById("event4").value
+		}
+	};
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "https://cssa-backend.herokuapp.com/userInterestData", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(JSON.stringify(container));
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			if(this.responseText == "error") {
+				console.log("Error A4: Report bug at crewcssa@gmail.com");
+			} else {
+				alert("Thank you for submitting the interest form!");
+				location.reload();
+			}
+		} 
+	}; 
+}
+
+let events = new Map();
+let eventsA = [];
+let noneCounter = 4;
+
+function validateEvent(eventNum) {
+	if (events.has(document.getElementById(eventNum).value) && document.getElementById(eventNum).value != "None") {
+		alert("Please do not select the same event twice.");
+	} else if (document.getElementById(eventNum).value == "None") {
+		events.delete(eventNum);
+
+		if (events.size == 0) {
+			alert("Please select at least one event.");
+		}
+
+		console.log("Chose none");
+	} else {
+		events.set(eventNum, document.getElementById(eventNum).value);
+		noneCounter--;
+	}
+
+	if (noneCounter == 4) {
+		alert("Please select at least one event..");
+	}
+}
+
+function refer() {
+	let a = document.getElementById("referA").value;
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "https://cssa-backend.herokuapp.com/checkUsername", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(a);
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			if(this.responseText == 1) {
+				var values = {Refer: a, Init: getCookie("email")}; 
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("POST", "https://cssa-backend.herokuapp.com/refer", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(JSON.stringify(values));
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						if(this.responseText == "error") {
+							console.log("Error A3: Report bug at crewcssa@gmail.com");
+						} else {
+							alert("Your referrer has an added token. Thank you!");
+							location.reload();
+						}
+					} 
+				}; 
+			} else {
+				alert("This user does not exist. Therefore, you cannot refer him");
+			}
+		} 
+	}; 
+}
+
+function generatePassword() {
+    var length = 8,
+        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+        retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+        retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    return retVal;
+}
+
+function signOut() {
+	onLoad();
+	eraseCookie('email');eraseCookie('User');eraseCookie('fName');eraseCookie('lName');
+	var auth2 = gapi.auth2.getAuthInstance();
+	auth2.signOut().then(function () {
+		console.log("You have signed out!");
+	});
+	window.location = "index.html";
+}
+
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+function sendContact() {
+	let a = document.getElementById("contact_name").value;
+	let b = document.getElementById("contact_email").value;
+	let c = document.getElementById("contact_message").value;
+	var co = {A: a, B:b, C:c};
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "https://cssa-backend.herokuapp.com/submitContact", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(JSON.stringify(co));
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			if(this.responseText == "error") {
+				console.log("Error B1");
+			} else {
+				alert("You shall be contacted in 1-2 days with a response!");
+			}
+		} 
+	}; 
+}
