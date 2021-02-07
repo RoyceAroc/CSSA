@@ -33,6 +33,7 @@ window.addEventListener('load', function () {
         }
     }
 
+    //Make navbar active
    
     var footerxhttp = new XMLHttpRequest();
     footerxhttp.onreadystatechange = function() {
