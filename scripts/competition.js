@@ -37,8 +37,18 @@ function populateCompetitionPage() {
 
 function calendar(startingDate) {
     for (let i = 0; i < 35; i++) {
-        document.getElementById(i).innerHTML = new Date(startingDate.getFullYear(), startingDate.getMonth(), startingDate.getDate() + i - startingDate.getDay()).getDate();
+        var currentDate = new Date(startingDate.getFullYear(), startingDate.getMonth(), startingDate.getDate() + i - startingDate.getDay() - 7)
+
+        document.getElementById(i).innerHTML = currentDate.getDate();
+        
+        if (currentDate.getMonth() == startingDate.getMonth()) {
+            document.getElementById(i).style.backgroundColor = "#12121288"
+        } else {
+            document.getElementById(i).style.backgroundColor = "#00000000"
+        }
     }
+
+    document.getElementById("calendar-date").innerHTML = `${months[startingDate.getMonth()]} ${startingDate.getFullYear()}`;
 }
 
 function next() {
