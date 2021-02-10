@@ -32,8 +32,6 @@ window.addEventListener('load', function () {
             xhttp.send();
         }
     }
-
-    //Make navbar active
    
     var footerxhttp = new XMLHttpRequest();
     footerxhttp.onreadystatechange = function() {
@@ -76,6 +74,7 @@ const eventData = {
             "image": "./images/Algorithmic Thinking Event Icon - Transparent.png",
             "type": "Tasks",
             "participants": "Individual",
+            "shortDescription": "Given tasks, write pseudocode algorithms that solve the tasks most efficiently. Scoring is based on the time complexity (Big O) of the solutions.",
             "description": "Given tasks, write pseudocode algorithms that solve the tasks most efficiently. Scoring is based on the time complexity (Big O) of the solutions.",
             "resources": [
                 {
@@ -90,6 +89,7 @@ const eventData = {
             "image": "./images/Programming Challenges Event Icon - Transparent.png",
             "type": "Tasks",
             "participants": "Team of 2",
+            "shortDescription": "Write algorithmic or heuristic code to solve multiple short tasks made around a common theme. C++, Java, Python, and Javascript are allowed.",
             "description": "Write algorithmic or heuristic code to solve multiple short tasks made around a common theme. C++, Java, Python, and Javascript are allowed.",
             "resources": [
                 {
@@ -104,6 +104,7 @@ const eventData = {
             "image": "./images/Data Science Event Icon - Transparent.png",
             "type": "Testing",
             "participants": "Team of 2",
+            "shortDescription": "Answer questions related to various data science topics, including statistics, neural networks, clustering, and various other topics.",
             "description": "Answer questions related to various data science topics, including statistics, neural networks, clustering, and various other topics.",
             "resources": [
                 {
@@ -118,6 +119,7 @@ const eventData = {
             "image": "./images/Capture the Flag Event Icon - Transparent.png",
             "type": "Submission",
             "participants": "Individual",
+            "shortDescription": "Users must hide a secret (a string of text) somewhere on a website. All websites are hosted by the organization and given to other competitors, who must find the secrets.",
             "description": "Users must hide a secret (a string of text) somewhere on a website. All websites are hosted by the organization and given to other competitors, who must find the secrets.",
             "resources": [
                 {
@@ -132,6 +134,7 @@ const eventData = {
             "image": "./images/Website Design Event Icon - Transparent.png",
             "type": "Case Study",
             "participants": "Team of 3",
+            "shortDescription": "Design a website around a prompt that will be provided by the judges at each competition. Websites are judged based on aesthetics and functionality.",
             "description": "Design a website around a prompt that will be provided by the judges at each competition. Websites are judged based on aesthetics and functionality.",
             "resources": [
                 {
@@ -146,6 +149,7 @@ const eventData = {
             "image": "./images/Cybersecurity Event Icon - Transparent.png",
             "type": "Testing",
             "participants": "Individual",
+            "shortDescription": "Answer questions related to various cybersecurity topics, including cryptography, privacy, internet security, and various other topics.",
             "description": "Answer questions related to various cybersecurity topics, including cryptography, privacy, internet security, and various other topics.",
             "resources": [
                 {
@@ -160,6 +164,7 @@ const eventData = {
             "image": "./images/Bug Smasher Event Icon - Transparent.png",
             "type": "Case Study",
             "participants": "Individual",
+            "shortDescription": "Given a long piece of code, find all bugs and fix them without running the code. Code is provided in C++, Java, Python, and JavaScript.",
             "description": "Given a long piece of code, find all bugs and fix them without running the code. Code is provided in C++, Java, Python, and JavaScript.",
             "resources": [
                 {
@@ -174,6 +179,7 @@ const eventData = {
             "image": "./images/Tech Support Event Icon - Transparent.png",
             "type": "",
             "participants": "Team of 2",
+            "shortDescription": "Talk to judges who present a case study involving a technology issue that must be fixed by providing instructions for the judges to follow.",
             "description": "Talk to judges who present a case study involving a technology issue that must be fixed by providing instructions for the judges to follow.",
             "resources": [
                 {
@@ -188,6 +194,7 @@ const eventData = {
             "image": "./images/Information Technology Event Icon - Transparent.png",
             "type": "",
             "participants": "Individual",
+            "shortDescription": "Answer questions related to various information theory topics, including entropy, information compression, error correction, and various other topics.",
             "description": "Answer questions related to various information theory topics, including entropy, information compression, error correction, and various other topics.",
             "resources": [
                 {

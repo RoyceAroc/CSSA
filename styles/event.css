@@ -22,8 +22,8 @@
     justify-content: space-evenly;
 }
 
-#overview > hr {
-    width: 99%;
+#description, #overview > hr {
+    width: 97%;
 }
 
 #info-box {
