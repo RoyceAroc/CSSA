@@ -10,28 +10,6 @@ window.addEventListener('load', function () {
     xhttp.send();
 });
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     var competitionCalendar = document.getElementById('competition-calendar');
-
-//     var calendar = new FullCalendar.Calendar(competitionCalendar, {
-//         initialView: 'dayGridMonth',
-//         height: 696,
-//         aspectRatio: 0.5 * window.innerWidth/696,
-//         events: [
-//             {
-//                 title: 'Test',
-//                 start: '2021-03-01',
-//                 end: '2021-03-25',
-//                 allDay: true,
-//             }
-//         ]
-//     });
-
-//     calendar.render();
-
-//     document.getElementById('competition-calendar').style.width = `696px`;
-// });
-
 function populateCompetitionPage(eventData) {
     var parser = new DOMParser();
     xmlDoc = parser.parseFromString(eventData, "text/xml");
@@ -42,7 +20,7 @@ function populateCompetitionPage(eventData) {
                 let e = events.childNodes[i];
     
                 let eventHTML = `
-                    <div class="event">
+                    <div class="event" onclick="window.location='event.html?event=${e.childNodes[1].innerHTML}'">
                         <img class="event-image" style="" src="${e.childNodes[3].innerHTML}" alt="...">
         
                         <div id="event-text">

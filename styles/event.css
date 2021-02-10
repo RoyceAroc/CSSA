@@ -11,7 +11,31 @@
 
 #main {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding: 2% 1% 2% 1%;
     background-color: #191b1aff;
+}
+
+#upper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#info-box {
+    width: 20%;
+    padding: 2%;
+    background-color: rgb(38, 39, 39);
+}
+
+#info-name {
+    text-align: center;
+}
+
+#info-image {
+    width: 70%;
+    margin: 0% 15%;
+    padding: 1%;
+    background-color: rgb(46, 46, 46);
+    border: 2px solid black;
 }
