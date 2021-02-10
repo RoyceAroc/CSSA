@@ -1,38 +1,26 @@
 window.addEventListener('load', function () {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            populateCompetitionPage(xhttp.responseText);
-        }
-    };
-
-    xhttp.open("GET", "./xml/eventData.xml", true);
-    xhttp.send();
+    populateCompetitionPage()
 });
 
-function populateCompetitionPage(eventData) {
-    var parser = new DOMParser();
-    xmlDoc = parser.parseFromString(eventData, "text/xml");
+function populateCompetitionPage() {
+    console.log(eventData["events"])
 
-    for (events of xmlDoc.getElementsByTagName("events")) {
-        for (let i in events.childNodes) {
-            if (i % 2 == 1) {
-                let e = events.childNodes[i];
-    
-                let eventHTML = `
-                    <div class="event" onclick="window.location='event.html?event=${e.childNodes[1].innerHTML}'">
-                        <img class="event-image" style="" src="${e.childNodes[3].innerHTML}" alt="...">
-        
-                        <div id="event-text">
-                            <h4 id="event-title">${e.childNodes[1].innerHTML}</h4>
-                            <p id="event-description">${e.childNodes[9].innerHTML}</p>
-                        </div>
-                    </div>
-                `;
-        
-                document.getElementById("eventsCollapsible").innerHTML += eventHTML;
-            }
-        }
+    for (k of Object.keys(eventData["events"])) {
+        let e = eventData["events"][k];
+        console.log(k)
+
+        let eventHTML = `
+            <div class="event" onclick="window.location='event.html?event=${e["name"]}'">
+                <img class="event-image" style="" src="${e["image"]}" alt="...">
+
+                <div id="event-text">
+                    <h4 id="event-title">${e["name"]}</h4>
+                    <p id="event-description">${e["description"]}</p>
+                </div>
+            </div>
+        `;
+
+        document.getElementById("eventsCollapsible").innerHTML += eventHTML;
     }
 
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];

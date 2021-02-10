@@ -67,4 +67,135 @@ fetch('scripts/seo_optimization.json')
   script.setAttribute('type', 'application/ld+json');
   script.textContent = structuredDataText;
   document.head.appendChild(script);
-})
+});
+
+const eventData = {
+	"events": {
+		"Algorithmic Thinking": {
+            "name": "Algorithmic Thinking",
+            "image": "./images/Algorithmic Thinking Event Icon - Transparent.png",
+            "type": "Tasks",
+            "participants": "Individual",
+            "description": "Given tasks, write pseudocode algorithms that solve the tasks most efficiently. Scoring is based on the time complexity (Big O) of the solutions.",
+            "resources": [
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": ""
+                }
+            ]
+        },
+        "Programming Challenges": {
+            "name": "Programming Challenges",
+            "image": "./images/Programming Challenges Event Icon - Transparent.png",
+            "type": "Tasks",
+            "participants": "Team of 2",
+            "description": "Write algorithmic or heuristic code to solve multiple short tasks made around a common theme. C++, Java, Python, and Javascript are allowed.",
+            "resources": [
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": ""
+                }
+            ]
+        },
+        "Data Science": {
+            "name": "Data Science",
+            "image": "./images/Data Science Event Icon - Transparent.png",
+            "type": "Testing",
+            "participants": "Team of 2",
+            "description": "Answer questions related to various data science topics, including statistics, neural networks, clustering, and various other topics.",
+            "resources": [
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": ""
+                }
+            ]
+        },
+        "Capture the Flag": {
+            "name": "Capture the Flag",
+            "image": "./images/Capture the Flag Event Icon - Transparent.png",
+            "type": "Submission",
+            "participants": "Individual",
+            "description": "Users must hide a secret (a string of text) somewhere on a website. All websites are hosted by the organization and given to other competitors, who must find the secrets.",
+            "resources": [
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": ""
+                }
+            ]
+        },
+        "Website Design": {
+            "name": "Website Design",
+            "image": "./images/Website Design Event Icon - Transparent.png",
+            "type": "Case Study",
+            "participants": "Team of 3",
+            "description": "Design a website around a prompt that will be provided by the judges at each competition. Websites are judged based on aesthetics and functionality.",
+            "resources": [
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": ""
+                }
+            ]
+        },
+        "Cybersecurity": {
+            "name": "Cybersecurity",
+            "image": "./images/Cybersecurity Event Icon - Transparent.png",
+            "type": "Testing",
+            "participants": "Individual",
+            "description": "Answer questions related to various cybersecurity topics, including cryptography, privacy, internet security, and various other topics.",
+            "resources": [
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": ""
+                }
+            ]
+        },
+        "Bug Smasher": {
+            "name": "Bug Smasher",
+            "image": "./images/Bug Smasher Event Icon - Transparent.png",
+            "type": "Case Study",
+            "participants": "Individual",
+            "description": "Given a long piece of code, find all bugs and fix them without running the code. Code is provided in C++, Java, Python, and JavaScript.",
+            "resources": [
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": ""
+                }
+            ]
+        },
+        "Tech Support": {
+            "name": "Tech Support",
+            "image": "./images/Tech Support Event Icon - Transparent.png",
+            "type": "",
+            "participants": "Team of 2",
+            "description": "Talk to judges who present a case study involving a technology issue that must be fixed by providing instructions for the judges to follow.",
+            "resources": [
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": ""
+                }
+            ]
+        },
+        "Information Theory": {
+            "name": "Information Theory",
+            "image": "./images/Information Technology Event Icon - Transparent.png",
+            "type": "",
+            "participants": "Individual",
+            "description": "Answer questions related to various information theory topics, including entropy, information compression, error correction, and various other topics.",
+            "resources": [
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": ""
+                }
+            ]
+        }
+	}
+};
