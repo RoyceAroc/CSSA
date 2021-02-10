@@ -74,7 +74,7 @@ footer {
     text-align: center;
 }
 
-input, textarea {
+footer input, textarea {
    color:black;
    font-size: 20px;
    margin-top:2%;

@@ -252,11 +252,9 @@ span.buttonText {
 	font-weight: bold;
 	font-family: 'Roboto', sans-serif;
 }
-
 .abcRioButton {
-	width: 15vw !important;
-	height: 6vh !important;
-	margin: 10% 5% 10% 5% !important;
+	width: 240px !important;
+	height: 60px !important;
 }
 
 .abcRioButtonBlue {
@@ -265,7 +263,7 @@ span.buttonText {
 }
 
 .abcRioButtonContentWrapper {
-	padding-top: 1vh;
+	padding:10px;
 }
 
 .abcRioButtonIcon {
@@ -319,4 +317,8 @@ span.buttonText {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+}
+
+#nav-box a:hover {
+	cursor: pointer;
 }

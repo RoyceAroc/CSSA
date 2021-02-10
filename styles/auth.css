@@ -259,9 +259,8 @@ span.buttonText {
 }
 
 .abcRioButton {
-	width: 15vw !important;
-	height: 6vh !important;
-	margin: 10% 5% 10% 5% !important;
+	width: 240px !important;
+	height: 60px !important;
 }
 
 .abcRioButtonBlue {
@@ -270,7 +269,7 @@ span.buttonText {
 }
 
 .abcRioButtonContentWrapper {
-	padding-top: 1vh;
+	padding:10px;
 }
 
 .abcRioButtonIcon {
@@ -280,4 +279,13 @@ span.buttonText {
 .abcRioButtonContents > span {
 	color: white;
 	margin-top: 5vh;
+}
+@media only screen and (max-width:1000px) {
+	footer {
+		bottom:0;
+		position: absolute;
+	}
+	.top-header {
+		zoom: 170%;
+	}
 }

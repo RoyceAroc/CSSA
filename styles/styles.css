@@ -12,6 +12,7 @@ body {
 }
 
 .nav-link {
+
     text-transform: uppercase;
     font-size: 20px;
     text-decoration: none;
@@ -19,6 +20,7 @@ body {
     
     border-bottom: 3px solid transparent;
 }
+
 
 .active {
     color: white;
@@ -34,19 +36,45 @@ body {
     color: white;
     text-decoration: none;
 }
-.open-icon {
+.navbar-toggler {
     color: white;
+    zoom: 150%;
+    position: absolute;
+    right:30px;
+    top:20px;
+    border: none;
+    outline:none;
 }
 @media only screen and (max-width:1000px) {
     .nav-link:hover {
         color: white;
     }
+    nav {
+        zoom: 120%;
+    }
+    nav #logo-header{
+        margin-top: 1%;
+        position: relative;
+    }
+    .nav-item {
+        text-align: right;
+    }
 }
 @media only screen and (min-width:1000px) {
+    .button-out {
+        padding-right: 30px;
+        padding-left: 30px;
+        position: relative;
+    }
+    .navbar-nav{
+        position: absolute;
+        right:0;
+    }
     .nav-link:hover {
         color: white;
         border-bottom: 3px solid white;
     }
+    
 }
 
 .text-link {
@@ -57,3 +85,10 @@ body {
     cursor: pointer;
     color: rgb(0, 141, 206)
 }
+
+
+nav #logo-header{
+    margin-left: 5%;
+    position: relative;
+}
+
