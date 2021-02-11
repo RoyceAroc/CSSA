@@ -247,8 +247,8 @@ const eventData = {
             "image": "./images/Golf Event Icon - Transparent.png",
             "type": "",
             "participants": "Individual",
-            "shortDescription": "Given a short task, write the densest code possible that can solve the task but takes up the least number of character.",
-            "description": "Given a short task, write the densest code possible that can solve the task but takes up the least number of character.",
+            "shortDescription": "Given a short task, write the densest code possible that can solve the task but takes up the least number of characters.",
+            "description": "Given a short task, write the densest code possible that can solve the task but takes up the least number of characters.",
             "resources": [
                 {
                     "title": "Event Guide",
