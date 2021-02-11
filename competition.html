@@ -14,7 +14,6 @@
         <script src="https://kit.fontawesome.com/df7e7c41fe.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.css">
-        <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase.js"></script>
         
 		<script src="scripts/script.js"></script>
         <script src="scripts/competition.js"></script>
@@ -78,10 +77,6 @@
                     <p>
                         Currently, there are nine official events. However, many events will be added in the future, and some competitions may feature trial or one-off events.
                     </p>
-
-                    <!-- <a id="eventsToggle" class="btn btn-primary" data-bs-toggle="collapse" href="#eventsCollapsible" role="button" aria-expanded="false" aria-controls="eventsCollapsible">
-                        Click to view events
-                    </a> -->
                     
                     <div id="eventsCollapsible" class="events">
 
@@ -117,67 +112,84 @@
                             </div>
                         </div>
 
-                        <table id="competition-calendar">
-                            <tr>
-                                <th>Sunday</th>
-                                <th>Monday</th>
-                                <th>Tuesday</th>
-                                <th>Wednesday</th>
-                                <th>Thursday</th>
-                                <th>Friday</th>
-                                <th>Saturday</th>
-                            </tr>
+                        <div id="calendar">
+                            <div id="calendar-navigation">
+                                <h3 id="calendar-date">Month Year</h3>
 
-                            <tr>
-                                <td id="0">1</td>
-                                <td id="1">2</td>
-                                <td id="2">3</td>
-                                <td id="3">4</td>
-                                <td id="4">5</td>
-                                <td id="5">6</td>
-                                <td id="6">7</td>
-                            </tr>
+                                <div id="month-navigation">
+                                    <button onclick="previous()">
+                                        &larr;
+                                    </button>
+                                    <button onclick="next()">
+                                        &rarr;
+                                    </button>
+                                </div>
+                            </div>
 
-                            <tr>
-                                <td id="7">1</td>
-                                <td id="8">2</td>
-                                <td id="9">3</td>
-                                <td id="10">4</td>
-                                <td id="11">5</td>
-                                <td id="12">6</td>
-                                <td id="13">7</td>
-                            </tr>
+                            <div id="competition-calendar-container">
+                                <table id="competition-calendar">
+                                    <tr>
+                                        <th>Sunday</th>
+                                        <th>Monday</th>
+                                        <th>Tuesday</th>
+                                        <th>Wednesday</th>
+                                        <th>Thursday</th>
+                                        <th>Friday</th>
+                                        <th>Saturday</th>
+                                    </tr>
 
-                            <tr>
-                                <td id="14">1</td>
-                                <td id="15">2</td>
-                                <td id="16">3</td>
-                                <td id="17">4</td>
-                                <td id="18">5</td>
-                                <td id="19">6</td>
-                                <td id="20">7</td>
-                            </tr>
+                                    <tr>
+                                        <td id="0">1</td>
+                                        <td id="1">2</td>
+                                        <td id="2">3</td>
+                                        <td id="3">4</td>
+                                        <td id="4">5</td>
+                                        <td id="5">6</td>
+                                        <td id="6">7</td>
+                                    </tr>
 
-                            <tr>
-                                <td id="21">1</td>
-                                <td id="22">2</td>
-                                <td id="23">3</td>
-                                <td id="24">4</td>
-                                <td id="25">5</td>
-                                <td id="26">6</td>
-                                <td id="27">7</td>
-                            </tr>
+                                    <tr>
+                                        <td id="7">1</td>
+                                        <td id="8">2</td>
+                                        <td id="9">3</td>
+                                        <td id="10">4</td>
+                                        <td id="11">5</td>
+                                        <td id="12">6</td>
+                                        <td id="13">7</td>
+                                    </tr>
 
-                            <tr>
-                                <td id="28">1</td>
-                                <td id="29">2</td>
-                                <td id="30">3</td>
-                                <td id="31">4</td>
-                                <td id="32">5</td>
-                                <td id="33">6</td>
-                                <td id="34">7</td>
-                            </tr>
-                        </table>
+                                    <tr>
+                                        <td id="14">1</td>
+                                        <td id="15">2</td>
+                                        <td id="16">3</td>
+                                        <td id="17">4</td>
+                                        <td id="18">5</td>
+                                        <td id="19">6</td>
+                                        <td id="20">7</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td id="21">1</td>
+                                        <td id="22">2</td>
+                                        <td id="23">3</td>
+                                        <td id="24">4</td>
+                                        <td id="25">5</td>
+                                        <td id="26">6</td>
+                                        <td id="27">7</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td id="28">1</td>
+                                        <td id="29">2</td>
+                                        <td id="30">3</td>
+                                        <td id="31">4</td>
+                                        <td id="32">5</td>
+                                        <td id="33">6</td>
+                                        <td id="34">7</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
