@@ -1,3 +1,21 @@
+firebase.initializeApp({
+    apiKey: "AIzaSyAPTvz8weUBIMyjl6ekC1uegX-j4u2Z1sc",
+    authDomain: "cssa-dev.firebaseapp.com",
+    databaseURL: "https://cssa-dev-default-rtdb.firebaseio.com",
+    projectId: "cssa-dev",
+    storageBucket: "cssa-dev.appspot.com",
+    messagingSenderId: "921024173703",
+    appId: "1:921024173703:web:46f4a35d815964ddf44a22",
+    measurementId: "G-WBN11JNGTN"
+});
+
+firebase.analytics();
+
+var db = firebase.firestore();
+db.enablePersistence();
+
+var users = db.collection("users");
+
 window.addEventListener('load', function () {
     if (getCookie('email') != null) {
         if (window.location.href.includes("sign.html")) {

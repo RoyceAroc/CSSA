@@ -97,7 +97,10 @@ function create() {
 										setCookie('User',usr,365);
 										setCookie('fName',fName,365);
 										setCookie('lName',lName,365);
-										window.location.href = "dashboard.html";
+				
+										firebaseAuth(emailC, usr, pwd);
+						
+										// window.location.href = "dashboard.html";
 									} 
 								} 
 							}; 
@@ -126,8 +129,11 @@ function login() {
 				setCookie('email',valueArray[0],365);
 				setCookie('User',valueArray[1],365);
 				setCookie('fName',valueArray[2],365);
-				setCookie('lName',valueArray[3],365);
-				window.location.href = "dashboard.html";
+				setCookie('lName', valueArray[3], 365);
+				
+				firebaseAuth(valueArray[0], valueArray[1], pwd);
+
+				// window.location.href = "dashboard.html";
 			}
 		} 
 	}; 
@@ -159,8 +165,13 @@ function onSignIn(googleUser) {
 						setCookie('email',valueArray[0],365);
 						setCookie('User',valueArray[1],365);
 						setCookie('fName',valueArray[2],365);
-						setCookie('lName',valueArray[3],365);
-						window.location.href = "dashboard.html";
+						setCookie('lName', valueArray[3], 365);
+
+						console.log(valueArray);
+				
+						firebaseAuth(valueArray[0], valueArray[1], pwd);
+		
+						// window.location.href = "dashboard.html";
 					} 
 				}; 
 			} else 	{
@@ -178,7 +189,10 @@ function onSignIn(googleUser) {
 							setCookie('User',username,365);
 							setCookie('fName',profile.getGivenName(),365);
 							setCookie('lName',profile.getFamilyName(),365);
-							window.location.href = "dashboard.html";
+				
+							firebaseAuth(profile.getEmail(), username, password);
+			
+							// window.location.href = "dashboard.html";
 						} 
 					} 
 				}; 
@@ -218,113 +232,13 @@ function updateProfile() {
 					setCookie('User',c,365);
 					setCookie('fName',a,365);
 					setCookie('lName',b,365);
+				
+					firebaseAuth(d, c, e);
+	
 					alert("Profile has been updated successfully!");
-					
 				}
-			} 
+			}
 		}; 
-	}
-}
-
-function interestForm() {
-	let eventsArr = [];
-	let nones = 0;
-	let ones = 0;
-
-	if (!events.has("event1")) {
-		events.set("event1", "None");
-	}
-
-	if (!events.has("event2")) {
-		events.set("event2", "None");
-	}
-
-	if (!events.has("event3")) {
-		events.set("event3", "None");
-	}
-
-	if (!events.has("event4")) {
-		events.set("event4", "None");
-	}
-
-	console.log(events);
-
-	events.forEach((v, k) => {
-		if (eventsArr.includes(v) && v != "None") {
-			ones = 5;
-			return;
-		} else {
-			eventsArr.push(v);
-			
-			if (v == "None") {
-				nones++;
-			}
-		}
-	});
-
-	if (nones == 4) {
-		nones = 0;
-
-		return alert("Please select at least one event!");
-	} else if (ones == 5) {
-		return alert("Please do not select the same event twice!");
-	}
-
-	let container = {
-		Init: getCookie("email"),
-		Competition: document.getElementById("competitionInput").value,
-		Dates: {
-			Date1: document.getElementById("date1").checked,
-			Date2: document.getElementById("date2").checked,
-			Date3: document.getElementById("date3").checked,
-			Date4: document.getElementById("date4").checked
-		},
-		Events: {
-			EventA: document.getElementById("event1").value,
-			EventB: document.getElementById("event2").value,
-			EventC: document.getElementById("event3").value,
-			EventD: document.getElementById("event4").value
-		}
-	};
-
-	var xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "https://cssa-backend.herokuapp.com/userInterestData", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send(JSON.stringify(container));
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			if(this.responseText == "error") {
-				console.log("Error A4: Report bug at crewcssa@gmail.com");
-			} else {
-				alert("Thank you for submitting the interest form!");
-				location.reload();
-			}
-		} 
-	}; 
-}
-
-let events = new Map();
-let eventsA = [];
-let noneCounter = 4;
-
-function validateEvent(eventNum) {
-	if (events.has(document.getElementById(eventNum).value) && document.getElementById(eventNum).value != "None") {
-		alert("Please do not select the same event twice.");
-	} else if (document.getElementById(eventNum).value == "None") {
-		events.delete(eventNum);
-
-		if (events.size == 0) {
-			alert("Please select at least one event.");
-		}
-
-		console.log("Chose none");
-	} else {
-		events.set(eventNum, document.getElementById(eventNum).value);
-		noneCounter--;
-	}
-
-	if (noneCounter == 4) {
-		alert("Please select at least one event..");
 	}
 }
 
@@ -422,4 +336,23 @@ function sendContact() {
 			}
 		} 
 	}; 
+}
+
+function firebase(email, username, password) {
+	console.log('hi');
+
+	firebase.auth().createUserWithEmailAndPassword(email, password).then(function () {
+		firebase.auth().onAuthStateChanged(function (user) {
+			users.doc(user.uid).set({
+				role: "competitor"
+			}, { merge: true });
+		});
+    }).catch(function (error) {
+        var errorCode = error.code;
+		console.log(error.message);
+		
+		// firebase.auth().signInWithEmailAndPassword(email, id).catch(function (error) {
+		// 	console.log("Error occurred signing in: ", error);
+		// });
+	});
 }
