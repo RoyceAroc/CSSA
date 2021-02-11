@@ -162,10 +162,8 @@ function onSignIn(googleUser) {
 						setCookie('User',valueArray[1],365);
 						setCookie('fName',valueArray[2],365);
 						setCookie('lName', valueArray[3], 365);
-
-						console.log(valueArray);
 				
-						firebaseAuth(valueArray[0], valueArray[1], pwd);
+						firebaseAuth(valueArray[0], valueArray[1], valueArray[4]);
 					} 
 				}; 
 			} else 	{
@@ -183,8 +181,6 @@ function onSignIn(googleUser) {
 							setCookie('User',username,365);
 							setCookie('fName',profile.getGivenName(),365);
 							setCookie('lName', profile.getFamilyName(), 365);
-							
-							console.log(profile);
 				
 							firebaseAuth(profile.getEmail(), username, password);
 						} 
