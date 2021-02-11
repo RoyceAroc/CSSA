@@ -190,3 +190,27 @@ tr > td {
     padding: 1% 2% 10% 10%;
     text-align: right;
 }
+
+@media only screen and (max-width:1218px) {
+   #sidebar {
+       display: none;
+   }
+   #content {
+       width: 100%;
+   }
+  
+   .event {
+    display: flow-root;
+    text-align: center;
+   }
+   #calendar-container {
+       zoom: 50%;
+   }
+}
+@media only screen and (min-width:1218px) {
+}
+
+html,body {
+    width: 100%;
+    height: 100%;
+}
