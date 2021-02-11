@@ -110,11 +110,11 @@ const eventData = {
             "shortDescription": "Write algorithmic or heuristic code to solve multiple short tasks made around a common theme. C++, Java, Python, and Javascript are allowed.",
             "description": "Write algorithmic or heuristic code to solve multiple short tasks made around a common theme. C++, Java, Python, and Javascript are allowed.",
             "resources": [
-                {
-                    "title": "Event Guide",
-                    "type": "Event Guide",
-                    "link": ""
-                }
+                // {
+                //     "title": "Event Guide",
+                //     "type": "Event Guide",
+                //     "link": ""
+                // }
             ]
         },
         "Data Science": {
@@ -155,11 +155,11 @@ const eventData = {
             "shortDescription": "Design a website around a prompt that will be provided by the judges at each competition. Websites are judged based on aesthetics and functionality.",
             "description": "Design a website around a prompt that will be provided by the judges at each competition. Websites are judged based on aesthetics and functionality.",
             "resources": [
-                {
-                    "title": "Event Guide",
-                    "type": "Event Guide",
-                    "link": ""
-                }
+                // {
+                //     "title": "Event Guide",
+                //     "type": "Event Guide",
+                //     "link": ""
+                // }
             ]
         },
         "Cybersecurity": {
@@ -185,11 +185,11 @@ const eventData = {
             "shortDescription": "Given a long piece of code, find all bugs and fix them without running the code. Code is provided in C++, Java, Python, and JavaScript.",
             "description": "Given a long piece of code, find all bugs and fix them without running the code. Code is provided in C++, Java, Python, and JavaScript.",
             "resources": [
-                {
-                    "title": "Event Guide",
-                    "type": "Event Guide",
-                    "link": ""
-                }
+                // {
+                //     "title": "Event Guide",
+                //     "type": "Event Guide",
+                //     "link": ""
+                // }
             ]
         },
         "Tech Support": {
@@ -200,11 +200,11 @@ const eventData = {
             "shortDescription": "Talk to judges who present a case study involving a technology issue that must be fixed by providing instructions for the judges to follow.",
             "description": "Talk to judges who present a case study involving a technology issue that must be fixed by providing instructions for the judges to follow.",
             "resources": [
-                {
-                    "title": "Event Guide",
-                    "type": "Event Guide",
-                    "link": ""
-                }
+                // {
+                //     "title": "Event Guide",
+                //     "type": "Event Guide",
+                //     "link": ""
+                // }
             ]
         },
         "Information Theory": {
