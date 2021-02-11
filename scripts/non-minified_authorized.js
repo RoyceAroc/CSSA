@@ -162,8 +162,6 @@ function onSignIn(googleUser) {
 						setCookie('User',valueArray[1],365);
 						setCookie('fName',valueArray[2],365);
 						setCookie('lName', valueArray[3], 365);
-
-						console.log(valueArray[0], valueArray[1], valueArray[4]);
 				
 						firebaseAuth(valueArray[0], valueArray[1], valueArray[4]);
 					} 
@@ -336,11 +334,10 @@ function firebaseAuth(email, username, password) {
 			users.doc(user.uid).set({
 				
 			}, { merge: true }).then(() => {
-				console.log("Hi! " + user.uid);
-
 				window.location.href = "dashboard.html";
 			}).catch((e) => {
 				console.log(e.message);
+
 				alert("Something went wrong :/ Please refresh the page and try again!");
 			});
 		});
@@ -348,19 +345,15 @@ function firebaseAuth(email, username, password) {
         var errorCode = error.code;
 		
 		if (error.message == "The email address is already in use by another account.") {
-			console.log("1");
 			firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
-				console.log("2");
 				firebase.auth().onAuthStateChanged(function (user) {
-					console.log("3");
 					users.doc(user.uid).set({
 
 					}, { merge: true }).then(() => {
-						console.log("Hello! " + user.uid);
-				
 						window.location.href = "dashboard.html";
 					}).catch((e) => {
 						console.log(e.message);
+						
 						alert("Something went wrong :/ Please refresh the page and try again!");
 					});
 				});
