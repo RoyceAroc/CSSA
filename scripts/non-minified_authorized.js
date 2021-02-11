@@ -99,8 +99,6 @@ function create() {
 										setCookie('lName',lName,365);
 				
 										firebaseAuth(emailC, usr, pwd);
-						
-										// window.location.href = "dashboard.html";
 									} 
 								} 
 							}; 
@@ -132,8 +130,6 @@ function login() {
 				setCookie('lName', valueArray[3], 365);
 				
 				firebaseAuth(valueArray[0], valueArray[1], pwd);
-
-				// window.location.href = "dashboard.html";
 			}
 		} 
 	}; 
@@ -170,8 +166,6 @@ function onSignIn(googleUser) {
 						console.log(valueArray);
 				
 						firebaseAuth(valueArray[0], valueArray[1], pwd);
-		
-						// window.location.href = "dashboard.html";
 					} 
 				}; 
 			} else 	{
@@ -188,11 +182,11 @@ function onSignIn(googleUser) {
 							setCookie('email',profile.getEmail(),365);
 							setCookie('User',username,365);
 							setCookie('fName',profile.getGivenName(),365);
-							setCookie('lName',profile.getFamilyName(),365);
+							setCookie('lName', profile.getFamilyName(), 365);
+							
+							console.log(profile);
 				
 							firebaseAuth(profile.getEmail(), username, password);
-			
-							// window.location.href = "dashboard.html";
 						} 
 					} 
 				}; 
@@ -338,21 +332,41 @@ function sendContact() {
 	}; 
 }
 
-function firebase(email, username, password) {
-	console.log('hi');
-
+function firebaseAuth(email, username, password) {
 	firebase.auth().createUserWithEmailAndPassword(email, password).then(function () {
 		firebase.auth().onAuthStateChanged(function (user) {
 			users.doc(user.uid).set({
-				role: "competitor"
-			}, { merge: true });
+				
+			}, { merge: true }).then(() => {
+				console.log("Hi! " + user.uid);
+
+				window.location.href = "dashboard.html";
+			}).catch((e) => {
+				console.log(e.message);
+				alert("Something went wrong :/ Please refresh the page and try again!");
+			});
 		});
     }).catch(function (error) {
         var errorCode = error.code;
-		console.log(error.message);
 		
-		// firebase.auth().signInWithEmailAndPassword(email, id).catch(function (error) {
-		// 	console.log("Error occurred signing in: ", error);
-		// });
+		if (error.message == "The email address is already in use by another account.") {
+			console.log("1");
+			firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
+				console.log("2");
+				firebase.auth().onAuthStateChanged(function (user) {
+					console.log("3");
+					users.doc(user.uid).set({
+
+					}, { merge: true }).then(() => {
+						console.log("Hello! " + user.uid);
+				
+						window.location.href = "dashboard.html";
+					}).catch((e) => {
+						console.log(e.message);
+						alert("Something went wrong :/ Please refresh the page and try again!");
+					});
+				});
+			});
+		}
 	});
 }
