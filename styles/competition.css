@@ -187,50 +187,7 @@ tr > td {
     text-align: right;
 }
 
-@media only screen and (max-width:1218px) {
-   #sidebar {
-       display: none;
-   }
-   #content {
-       width: 100%;
-   }
-  
-   .event {
-    display: flow-root;
-    text-align: center;
-   }
-   #calendar-container {
-       zoom: 50%;
-   }
-   .competition-item-title {
-       zoom: 150%;
-   }
-   .competition-item-description {
-       zoom: 250%;
-   }
-   #month-navigation {
-       zoom: 200%;
-       width: 300px;
-       height: 50px;
-   }
-   #month-navigation > button {
-       padding: 10px;
-        background-color: #2d3130;
-        margin: 0% 2%;
-   }
-   #calendar-date {
-       zoom: 200%;
-   }
-   #competition-list-header {
-       zoom: 150%;
-   }
-@media only screen and (min-width:1218px) {
-    #month-navigation > button {
-        background-color: #2d3130;
-        width: 3vw;
-        margin: 0% 2%;
-    }
-}
+
 
 html,body {
     width: 100%;
