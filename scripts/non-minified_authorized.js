@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+window.onload = function() {
 	if(window.location.href.includes("dashboard.html")) {
 		var valuesA = {user: getCookie("User")}; 
 		var xhttp = new XMLHttpRequest();
@@ -10,11 +10,23 @@ window.addEventListener("load", function() {
 				if(this.responseText == "false") {
 					console.log("Error C1: Report bug at crewcssa@gmail.com");
 				} else {
-					// Nothing??
-				}
-			} 
-		};
-		var xhttp = new XMLHttpRequest();
+					let e = JSON.parse(this.responseText).info;
+					"-" != e[5] &&
+						((document.getElementById("competition-registration").style.display = "none"),
+						(document.getElementById("signed-up").innerHTML =
+							"You have signed up for the <b>" +
+							JSON.parse(e[5]).Competition +
+							" </b>. The events in which you are in competing are " +
+							JSON.parse(e[5]).Events.EventA +
+							", " +
+							JSON.parse(e[5]).Events.EventB +
+							", " +
+							JSON.parse(e[5]).Events.EventC +
+							", " +
+							JSON.parse(e[5]).Events.EventD +
+							".")),
+						"-" != e[6] && ((document.getElementById("userinfo").style.borderStyle = "none"), (document.getElementById("referral").style.display = "none"));
+						var xhttp = new XMLHttpRequest();
 		xhttp.open("POST", "https://cssa-backend.herokuapp.com/indirectProfile", true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		var values = {Cookie: getCookie("email")}; 
@@ -35,8 +47,11 @@ window.addEventListener("load", function() {
 				}
 			} 
 		};
+				}
+			} 
+		};
 	}
-});
+}
 
 function create() {
 	let emailC = document.getElementById("email_c").value;
