@@ -226,6 +226,36 @@ const eventData = {
                     "link": "https://docs.google.com/document/d/1SH5KPmxstwGoKtnPYb0RGt2dG-DMyek3wPM2mRyZ1tk/edit?usp=sharing"
                 }
             ]
+        },
+        "Web Scraping": {
+            "name": "Web Scraping",
+            "image": "./images/Web Scraping Event Icon - Transparent.png",
+            "type": "",
+            "participants": "Individual",
+            "shortDescription": "Write code in any language that can extract information from a website without seeing it yourself.",
+            "description": "Write code in any language that can extract information from a website without seeing it yourself.",
+            "resources": [
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": "https://docs.google.com/document/d/1zwqEOWGel_SOtYWRHXtmi2xT7aRjjTRAHcIv50CDyl8/edit?usp=sharing"
+                }
+            ]
+        },
+        "Golf": {
+            "name": "Golf",
+            "image": "./images/Golf Event Icon - Transparent.png",
+            "type": "",
+            "participants": "Individual",
+            "shortDescription": "Given a short task, write the densest code possible that can solve the task but takes up the least number of character.",
+            "description": "Given a short task, write the densest code possible that can solve the task but takes up the least number of character.",
+            "resources": [
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": "https://docs.google.com/document/d/1g8VhU3HtQRkgkHrEkWYfB2iPAxM3Ct04dpDKT9BnT9I/edit?usp=sharing"
+                }
+            ]
         }
 	}
 };
