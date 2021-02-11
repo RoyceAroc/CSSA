@@ -10,16 +10,7 @@ window.addEventListener("load", function() {
 				if(this.responseText == "false") {
 					console.log("Error C1: Report bug at crewcssa@gmail.com");
 				} else {
-					let play = JSON.parse(this.responseText).info;
-					if(play[5] != "-") {
-						document.getElementById("competition-registration").style.display = "none";
-						document.getElementById("signed-up").innerHTML = "You have signed up for the <b>" + JSON.parse(play[5]).Competition+ " </b>. The events in which you are in competing are " + JSON.parse(play[5]).Events.EventA + ", " + JSON.parse(play[5]).Events.EventB + ", " +  JSON.parse(play[5]).Events.EventC + ", " + JSON.parse(play[5]).Events.EventD + ".";
-					} 
-					if(play[6] != "-") {
-						document.getElementById("userinfo").style.borderStyle = "none";
-						document.getElementById("referral").style.display = "none";
-						
-					} 
+					// Nothing??
 				}
 			} 
 		};
@@ -39,25 +30,11 @@ window.addEventListener("load", function() {
 					document.getElementById("updateC").value = valueArray[1];
 					document.getElementById("updateD").value = valueArray[0];
 					document.getElementById("updateE").value = valueArray[4];
+
+					firebaseAuth(valueArray[0], valueArray[1], valueArray[4]);
 				}
 			} 
 		};
-
-		document.getElementById("event1").addEventListener("change", function () {
-			validateEvent("event1");
-		});
-	
-		document.getElementById("event2").addEventListener("change", function () {
-			validateEvent("event2");
-		});
-	
-		document.getElementById("event3").addEventListener("change", function () {
-			validateEvent("event3");
-		});
-	
-		document.getElementById("event4").addEventListener("change", function () {
-			validateEvent("event4");
-		});
 	}
 });
 
@@ -328,13 +305,28 @@ function sendContact() {
 	}; 
 }
 
+var uid = "";
+
 function firebaseAuth(email, username, password) {
 	firebase.auth().createUserWithEmailAndPassword(email, password).then(function () {
 		firebase.auth().onAuthStateChanged(function (user) {
 			users.doc(user.uid).set({
 				
 			}, { merge: true }).then(() => {
-				window.location.href = "dashboard.html";
+				console.log(user.uid);
+
+				uid = user.uid;
+
+				if (!window.location.href.includes("dashboard")) {
+					window.location.href = "dashboard.html";
+				}
+						
+				users.doc(uid).get().then((doc) => {
+					event1 = doc.data().event1 ?? "None";
+					event2 = doc.data().event2 ?? "None";
+					event3 = doc.data().event3 ?? "None";
+					event4 = doc.data().event4 ?? "None";
+				});
 			}).catch((e) => {
 				console.log(e.message);
 
@@ -350,14 +342,114 @@ function firebaseAuth(email, username, password) {
 					users.doc(user.uid).set({
 
 					}, { merge: true }).then(() => {
-						window.location.href = "dashboard.html";
+						console.log(user.uid);
+
+						uid = user.uid;
+
+						if (!window.location.href.includes("dashboard")) {
+							window.location.href = "dashboard.html";
+						}
+						
+						users.doc(uid).get().then((doc) => {
+							event1 = doc.data().event1 ?? "None";
+							document.getElementById("event1").value = event1;
+
+							event2 = doc.data().event2 ?? "None";
+							document.getElementById("event2").value = event2;
+
+							event3 = doc.data().event3 ?? "None";
+							document.getElementById("event3").value = event3;
+
+							event4 = doc.data().event4 ?? "None";
+							document.getElementById("event4").value = event4;
+						});
 					}).catch((e) => {
 						console.log(e.message);
-						
+
 						alert("Something went wrong :/ Please refresh the page and try again!");
 					});
 				});
 			});
 		}
 	});
+}
+
+var event1 = "None";
+var event2 = "None";
+var event3 = "None";
+var event4 = "None";
+
+window.addEventListener("load", function() {
+	var event1El = document.getElementById("event1");
+	var event2El = document.getElementById("event2");
+	var event3El = document.getElementById("event3");
+	var event4El = document.getElementById("event4");
+
+	event1El.addEventListener("change", () => {
+		if ([event2, event3, event4].includes(event1El.value) && event1El.value != "None") {
+			event1El.value = event1;
+
+			alert("Please do not select a single event more than once!");
+		} else {
+			event1 = event1El.value;
+		}
+	});
+
+	event2El.addEventListener("change", () => {
+		if ([event1, event3, event4].includes(event2El.value) && event2El.value != "None") {
+			event2El.value = event2;
+
+			alert("Please do not select a single event more than once!");
+		} else {
+			event2 = event2El.value;
+		}
+	});
+
+	event3El.addEventListener("change", () => {
+		if ([event1, event2, event4].includes(event3El.value) && event3El.value != "None") {
+			event3El.value = event3;
+
+			alert("Please do not select a single event more than once!");
+		} else {
+			event3 = event3El.value;
+		}
+	});
+
+	event4El.addEventListener("change", () => {
+		if ([event1, event2, event3].includes(event4El.value) && event4El.value != "None") {
+			event4El.value = event4;
+
+			alert("Please do not select a single event more than once!");
+		} else {
+			event4 = event4El.value;
+		}
+	});
+
+});
+
+function eventsConfirm() {
+	if (event1 == "None" && event2 == "None" && event3 == "None" && event4 == "None") {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+function competitionRegistration() {
+	if (eventsConfirm()) {
+		users.doc(uid).set({
+			event1: event1,
+			event2: event2,
+			event3: event3,
+			event4: event4
+		}, { merge: true }).then(() => {
+			alert("Successfully submitted your competition registration!");
+		}).catch((e) => {
+			console.log(e.message);
+
+			alert("Something went wrong :/ Please refresh the page and try again!");
+		});
+	} else {
+		alert("Please select at least one event!");
+	}
 }

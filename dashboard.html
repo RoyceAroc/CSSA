@@ -18,7 +18,7 @@
         <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase.js"></script>
         
 		<script src="scripts/script.js"></script>
-        <script src="scripts/minified_authorized.js"></script>
+        <script src="scripts/non-minified_authorized.js"></script>
         
         <link rel="stylesheet" href="styles/dashboard.css">
         <link rel="stylesheet" type="text/css" href="styles/styles.css">
@@ -134,18 +134,18 @@
                     <p id="signed-up"></p>
                     <div id="competitions-content">
                         <div id="competition-registration">
-                            <h4>Competition Registration</h4>
+                            <h4>First Mini-Competition (3/1 to 3/31)</h4>
                         
-                            <form action="javascript:interestForm();">
+                            <form action="javascript:competitionRegistration();">
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="competitionInput">Competition</label>
                                     <select class="form-control" id="competitionInput">
-                                        <option>First Mini-Competition</option>
+                                        <option>First Mini-Competition (3/1 to 3/31)</option>
                                     </select>
                                 </div>
 
-                                <br>
+                                <br> -->
 
                                 <div class="form-group">
                                     <label for="event1">Event #1</label>
@@ -219,43 +219,10 @@
 
                                 <br>
 
-                                <div class="form-group">
-                                    <label>Which competition ranges would work best for you (competitors would be given a range of time to complete their events)? Select all that apply.</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="date1">&nbsp;
-                                        <label class="form-check-label" for="date1">
-                                            March 7 to March 21
-                                        </label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="date2">&nbsp;
-                                        <label class="form-check-label" for="date2">
-                                            March 14 to March 28
-                                        </label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="date3">&nbsp;
-                                        <label class="form-check-label" for="date3">
-                                            March 21 to April 4
-                                        </label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="date4">&nbsp;
-                                        <label class="form-check-label" for="date4">
-                                            April 1 to April 15
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <br>
-
                                 <center>
                                     <div style="height:60px;" class="field btn">
                                       <div class="btn-layer"></div>
-                                      <input type="submit" value="Submit">
+                                      <input id="submitCompetitionRegistration" type="submit" value="Submit">
                                     </div>
                                 </center>
 
