@@ -162,6 +162,8 @@ function onSignIn(googleUser) {
 						setCookie('User',valueArray[1],365);
 						setCookie('fName',valueArray[2],365);
 						setCookie('lName', valueArray[3], 365);
+
+						console.log(valueArray[0], valueArray[1], valueArray[4]);
 				
 						firebaseAuth(valueArray[0], valueArray[1], valueArray[4]);
 					} 
