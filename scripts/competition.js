@@ -1,57 +1,65 @@
 window.addEventListener('load', function () {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            populateCompetitionPage(xhttp.responseText);
-        }
-    };
-
-    xhttp.open("GET", "./xml/eventData.xml", true);
-    xhttp.send();
+    populateCompetitionPage()
 });
 
-function populateCompetitionPage(eventData) {
-    var parser = new DOMParser();
-    xmlDoc = parser.parseFromString(eventData, "text/xml");
 
-    for (events of xmlDoc.getElementsByTagName("events")) {
-        for (let i in events.childNodes) {
-            if (i % 2 == 1) {
-                let e = events.childNodes[i];
-    
-                let eventHTML = `
-                    <div class="event" onclick="window.location='event.html?event=${e.childNodes[1].innerHTML}'">
-                        <img class="event-image" style="" src="${e.childNodes[3].innerHTML}" alt="...">
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+let d = new Date();
+let year = d.getFullYear();
+let month = months[d.getMonth()];
+let day = days[d.getDay()];
+
+var currentMonth = d.getMonth();
+
+function populateCompetitionPage() {
+    for (k of Object.keys(eventData["events"])) {
+        let e = eventData["events"][k];
+        console.log(k)
+
+        let eventHTML = `
+            <div class="event" onclick="window.location='event.html?event=${e["name"]}'">
+                <img class="event-image" style="" src="${e["image"]}" alt="...">
+
+                <div id="event-text">
+                    <h4 id="event-title">${e["name"]}</h4>
+                    <p id="event-description">${e["shortDescription"]}</p>
+                </div>
+            </div>
+        `;
+
+        document.getElementById("eventsCollapsible").innerHTML += eventHTML;
+    }
+
+    calendar(d);
+};
+
+function calendar(startingDate) {
+    for (let i = 0; i < 35; i++) {
+        var currentDate = new Date(startingDate.getFullYear(), startingDate.getMonth(), startingDate.getDate() + i - startingDate.getDay() - 7)
+
+        document.getElementById(i).innerHTML = currentDate.getDate();
         
-                        <div id="event-text">
-                            <h4 id="event-title">${e.childNodes[1].innerHTML}</h4>
-                            <p id="event-description">${e.childNodes[9].innerHTML}</p>
-                        </div>
-                    </div>
-                `;
-        
-                document.getElementById("eventsCollapsible").innerHTML += eventHTML;
-            }
+        if (currentDate.getMonth() == startingDate.getMonth()) {
+            document.getElementById(i).style.backgroundColor = "#12121288"
+        } else {
+            document.getElementById(i).style.backgroundColor = "#00000000"
         }
     }
 
-    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    document.getElementById("calendar-date").innerHTML = `${months[startingDate.getMonth()]} ${startingDate.getFullYear()}`;
+}
 
-    let d = new Date();
-    let year = d.getFullYear();
-    let month = months[d.getMonth()];
-    let day = days[d.getDay()];
+function next() {
+    currentMonth++;
+    calendar(new Date(2021, currentMonth, (new Date(2021, currentMonth)).getDay()));
+}
 
-    let seed = 7 + d.getDay();
-
-    let startDate = d.getDate() - d.getDay() - 8;
-
-    for (let i = 0; i < 35; i++) {
-        document.getElementById(i).innerHTML = (Math.sign((startDate + i) % daysInMonth(d.getMonth(), d.getFullYear()) + 1) == 1) ? ((startDate + i) % daysInMonth(d.getMonth(), d.getFullYear()) + 1) : ((startDate + i) % daysInMonth(d.getMonth(), d.getFullYear()) + 1) + daysInMonth(d.getMonth(), d.getFullYear());
-    }
-
-};
+function previous() {
+    currentMonth--;
+    calendar(new Date(2021, currentMonth, (new Date(2021, currentMonth)).getDay()));
+}
 
 function daysInMonth (month, year) {
     return new Date(year, month, 0).getDate();
