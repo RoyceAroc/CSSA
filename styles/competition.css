@@ -196,7 +196,7 @@ html,body {
 }
 
 .event {  
-    border: solid 10px rgb(0, 151, 167); 
+    border: solid 4px rgb(0, 151, 167); 
     clip-path: polygon( 
       calc(0% + 5px) calc(0% + 5px), 
       calc(100% - 5px) calc(0% + 5px), 
