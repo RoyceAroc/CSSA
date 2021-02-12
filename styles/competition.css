@@ -6,7 +6,6 @@
 
 #sidebar {
     width: 20%;
-
     background-color:#2d3130;
 }
 
@@ -157,8 +156,6 @@
     flex-direction: row;
 }
 
-
-
 #competition-calendar-container {
     display: flex;
     flex-direction: row;
@@ -188,25 +185,64 @@ tr > td {
     text-align: right;
 }
 
-
-
-html,body {
-    width: 100%;
-    height: 100%;
-}
-
 .event {  
     border: solid 10px rgb(0, 151, 167); 
     clip-path: polygon( 
-      calc(0% + 5px) calc(0% + 5px), 
-      calc(100% - 5px) calc(0% + 5px), 
-      calc(100% - 5px) calc(100% - 5px), 
-      calc(0% + 5px) calc(100% - 5px) 
+        calc(0% + 5px) calc(0% + 5px), 
+        calc(100% - 5px) calc(0% + 5px), 
+        calc(100% - 5px) calc(100% - 5px), 
+        calc(0% + 5px) calc(100% - 5px) 
     );
     transition: clip-path 0.6s linear;
-  }
-  
-  .event:hover {
+}
+
+.event:hover {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     background-color: #211e1e;
-  }
+}
+  
+@media only screen and (max-width:1218px) {
+    #sidebar {
+        display: none;
+    }
+    #content {
+        width: 100%;
+    }
+
+    .event {
+        display: flow-root;
+        text-align: center;
+    }
+    #calendar-container {
+        zoom: 50%;
+    }
+    .competition-item-title {
+        zoom: 150%;
+    }
+    .competition-item-description {
+        zoom: 250%;
+    }
+    #month-navigation {
+        zoom: 200%;
+        width: 300px;
+        height: 50px;
+    }
+    #month-navigation > button {
+        padding: 10px;
+            background-color: #2d3130;
+            margin: 0% 2%;
+    }
+    #calendar-date {
+        zoom: 200%;
+    }
+    #competition-list-header {
+        zoom: 150%;
+    }
+    @media only screen and (min-width:1218px) {
+        #month-navigation > button {
+            background-color: #2d3130;
+            width: 3vw;
+            margin: 0% 2%;
+        }
+    }
+}
