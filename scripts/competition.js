@@ -18,13 +18,11 @@ function populateCompetitionPage() {
 
         let eventHTML = `
             <div class="event" onclick="window.location='event.html?event=${e["name"]}'">
-                <div class="event-content-wrapper">
-                    <img class="event-image" style="" src="${e["image"]}" alt="...">
+                <img class="event-image" style="" src="${e["image"]}" alt="...">
 
-                    <div class="event-text">
-                        <h4 class="event-title">${e["name"]}</h4>
-                        <p class="event-description">${e["shortDescription"]}</p>
-                    </div>
+                <div class="event-text">
+                    <h4 class="event-title">${e["name"]}</h4>
+                    <p class="event-description">${e["shortDescription"]}</p>
                 </div>
             </div>
         `;
