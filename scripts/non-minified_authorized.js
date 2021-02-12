@@ -27,26 +27,26 @@ window.onload = function() {
 							".")),
 						"-" != e[6] && ((document.getElementById("userinfo").style.borderStyle = "none"), (document.getElementById("referral").style.display = "none"));
 						var xhttp = new XMLHttpRequest();
-		xhttp.open("POST", "https://cssa-backend.herokuapp.com/indirectProfile", true);
-		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		var values = {Cookie: getCookie("email")}; 
-		xhttp.send(JSON.stringify(values));
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				if(this.responseText == "false") {
-					console.log("Error A1: Report bug at crewcssa@gmail.com");
-				} else {
-					let valueArray = JSON.parse(this.responseText).info;
-					document.getElementById("updateA").value = valueArray[2];
-					document.getElementById("updateB").value = valueArray[3];
-					document.getElementById("updateC").value = valueArray[1];
-					document.getElementById("updateD").value = valueArray[0];
-					document.getElementById("updateE").value = valueArray[4];
+						xhttp.open("POST", "https://cssa-backend.herokuapp.com/indirectProfile", true);
+						xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+						var values = {Cookie: getCookie("email")}; 
+						xhttp.send(JSON.stringify(values));
+						xhttp.onreadystatechange = function() {
+							if (this.readyState == 4 && this.status == 200) {
+								if(this.responseText == "false") {
+									console.log("Error A1: Report bug at crewcssa@gmail.com");
+								} else {
+									let valueArray = JSON.parse(this.responseText).info;
+									document.getElementById("updateA").value = valueArray[2];
+									document.getElementById("updateB").value = valueArray[3];
+									document.getElementById("updateC").value = valueArray[1];
+									document.getElementById("updateD").value = valueArray[0];
+									document.getElementById("updateE").value = valueArray[4];
 
-					firebaseAuth(valueArray[0], valueArray[1], valueArray[4]);
-				}
-			} 
-		};
+									firebaseAuth(valueArray[0], valueArray[1], valueArray[4]);
+								}
+							} 
+						};
 				}
 			} 
 		};
@@ -71,7 +71,7 @@ function create() {
 				var xhttp = new XMLHttpRequest();
 				xhttp.open("POST", "https://cssa-backend.herokuapp.com/checkEmail", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				xhttp.send(emailC); 
+				xhttp.send(emailC);
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
 						if(this.responseText == 1) {
