@@ -40,7 +40,7 @@
 #content {
     padding:2%;
     width: 80%;
-    margin-left: 2%;
+    margin-left: 1%;
 }
 
 #content > div {
@@ -179,11 +179,32 @@
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 1%;
+    padding: 1% 2% 0.5% 3%;
 }
 
 #month-navigation {
     display: flex;
     flex-direction: row;
+    text-align: center;
+}
+
+#month-navigation > button {
+    width: 4vw;
+    margin: 0% 3%;
+    border: none;
+    outline: none;
+    font-size: 1.5vw;
+    background-color: #2d3130;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#month-navigation > button:hover {
+    background-color: #282b28;
 }
 
 #competition-calendar-container {
@@ -197,10 +218,6 @@
     margin-left: 2%;
     margin-right: 1%;
     table-layout: fixed;
-}
-
-#competition-calendar > tr {
-    
 }
 
 th {
@@ -252,11 +269,11 @@ tr > td {
     #competition-list-header {
         zoom: 150%;
     }
-    @media only screen and (min-width:1218px) {
+    /* @media only screen and (min-width:1218px) {
         #month-navigation > button {
             background-color: #2d3130;
             width: 3vw;
             margin: 0% 2%;
         }
-    }
+    } */
 }
