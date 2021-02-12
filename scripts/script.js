@@ -31,6 +31,7 @@ function setActive() {
             break;
       }
 }
+
 window.addEventListener('load', function () {
     if (getCookie('email') != null) {
         if (window.location.href.includes("sign.html")) {
