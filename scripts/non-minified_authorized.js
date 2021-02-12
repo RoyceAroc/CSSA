@@ -11,42 +11,29 @@ window.onload = function() {
 					console.log("Error C1: Report bug at crewcssa@gmail.com");
 				} else {
 					let e = JSON.parse(this.responseText).info;
-					"-" != e[5] &&
-						((document.getElementById("competition-registration").style.display = "none"),
-						(document.getElementById("signed-up").innerHTML =
-							"You have signed up for the <b>" +
-							JSON.parse(e[5]).Competition +
-							" </b>. The events in which you are in competing are " +
-							JSON.parse(e[5]).Events.EventA +
-							", " +
-							JSON.parse(e[5]).Events.EventB +
-							", " +
-							JSON.parse(e[5]).Events.EventC +
-							", " +
-							JSON.parse(e[5]).Events.EventD +
-							".")),
-						"-" != e[6] && ((document.getElementById("userinfo").style.borderStyle = "none"), (document.getElementById("referral").style.display = "none"));
-						var xhttp = new XMLHttpRequest();
-						xhttp.open("POST", "https://cssa-backend.herokuapp.com/indirectProfile", true);
-						xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-						var values = {Cookie: getCookie("email")}; 
-						xhttp.send(JSON.stringify(values));
-						xhttp.onreadystatechange = function() {
-							if (this.readyState == 4 && this.status == 200) {
-								if(this.responseText == "false") {
-									console.log("Error A1: Report bug at crewcssa@gmail.com");
-								} else {
-									let valueArray = JSON.parse(this.responseText).info;
-									document.getElementById("updateA").value = valueArray[2];
-									document.getElementById("updateB").value = valueArray[3];
-									document.getElementById("updateC").value = valueArray[1];
-									document.getElementById("updateD").value = valueArray[0];
-									document.getElementById("updateE").value = valueArray[4];
+					"-" != e[5] && "-" != e[6] && ((document.getElementById("userinfo").style.borderStyle = "none"), (document.getElementById("referral").style.display = "none"));
+					
+					var xhttp = new XMLHttpRequest();
+					xhttp.open("POST", "https://cssa-backend.herokuapp.com/indirectProfile", true);
+					xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					var values = {Cookie: getCookie("email")}; 
+					xhttp.send(JSON.stringify(values));
+					xhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							if(this.responseText == "false") {
+								console.log("Error A1: Report bug at crewcssa@gmail.com");
+							} else {
+								let valueArray = JSON.parse(this.responseText).info;
+								document.getElementById("updateA").value = valueArray[2];
+								document.getElementById("updateB").value = valueArray[3];
+								document.getElementById("updateC").value = valueArray[1];
+								document.getElementById("updateD").value = valueArray[0];
+								document.getElementById("updateE").value = valueArray[4];
 
-									firebaseAuth(valueArray[0], valueArray[1], valueArray[4]);
-								}
-							} 
-						};
+								firebaseAuth(valueArray[0], valueArray[1], valueArray[4]);
+							}
+						} 
+					};
 				}
 			} 
 		};
