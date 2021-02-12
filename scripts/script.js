@@ -156,8 +156,8 @@ const eventData = {
             "image": "./images/Capture the Flag Event Icon - Transparent.png",
             "type": "Submission",
             "participants": "Individual",
-            "shortDescription": "Users must hide a secret (a string of text) somewhere on a website. All websites are hosted by the organization and given to other competitors, who must find the secrets.",
-            "description": "Users must hide a secret (a string of text) somewhere on a website. All websites are hosted by the organization and given to other competitors, who must find the secrets.",
+            "shortDescription": "Users must hide a secret somewhere on a website. All websites are hosted by the organization and given to other competitors, who must find the secrets.",
+            "description": "Users must hide a secret somewhere on a website. All websites are hosted by the organization and given to other competitors, who must find the secrets.",
             "resources": [
                 {
                     "title": "Event Guide",
@@ -251,8 +251,8 @@ const eventData = {
             "image": "./images/Web Scraping Event Icon - Transparent.png",
             "type": "",
             "participants": "Individual",
-            "shortDescription": "Write code in any language that can extract information from a website without seeing it yourself.",
-            "description": "Write code in any language that can extract information from a website without seeing it yourself.",
+            "shortDescription": "Write code that can extract information from a website without seeing it yourself, just by using clues, hints, and the website theme.",
+            "description": "Write code that can extract information from a website without seeing it yourself, just by using clues, hints, and the website theme.",
             "resources": [
                 {
                     "title": "Event Guide",

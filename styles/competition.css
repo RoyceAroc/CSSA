@@ -19,6 +19,7 @@
     display:flex;
     flex-direction: column;
 }
+
 #nav-box h4 {
     padding: 5% 15%;
     background-color:#0097a7;
@@ -68,23 +69,52 @@
 
 .event {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding: 2%;
     width: 45%;
     margin: 1%;
     background-color: rgb(27, 27, 27);
     cursor: pointer;
+    border: solid 4px rgb(0, 151, 167); 
+    clip-path: polygon( 
+        calc(0% + 5px) calc(0% + 5px), 
+        calc(100% - 5px) calc(0% + 5px), 
+        calc(100% - 5px) calc(100% - 5px), 
+        calc(0% + 5px) calc(100% - 5px) 
+    );
+    transition: clip-path 0.2s linear;
+}
+
+.event:hover {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    background-color: #211e1e;
+}
+
+.event-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .event-image {
     margin-right: 3%;
     width: 15vh;
     height: 15vh;
+    align-content: center;
+    align-self: center;
+    align-items: center;
 }
 
 .event-text {
     width: 70%;
-    vertical-align: middle;
+    font-size: 115%;
+    align-content: center;
+    align-self: center;
+    align-items: center;
+}
+
+.event-description {
+    margin: 1%;
 }
 
 #calendar-container {
@@ -183,22 +213,6 @@ tr > td {
     border: 1px solid white;
     padding: 1% 2% 10% 10%;
     text-align: right;
-}
-
-.event {  
-    border: solid 4px rgb(0, 151, 167); 
-    clip-path: polygon( 
-        calc(0% + 5px) calc(0% + 5px), 
-        calc(100% - 5px) calc(0% + 5px), 
-        calc(100% - 5px) calc(100% - 5px), 
-        calc(0% + 5px) calc(100% - 5px) 
-    );
-    transition: clip-path 0.2s linear;
-}
-
-.event:hover {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    background-color: #211e1e;
 }
   
 @media only screen and (max-width:1218px) {

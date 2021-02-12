@@ -2,7 +2,6 @@ window.addEventListener('load', function () {
     populateCompetitionPage()
 });
 
-
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -16,15 +15,16 @@ var currentMonth = d.getMonth();
 function populateCompetitionPage() {
     for (k of Object.keys(eventData["events"])) {
         let e = eventData["events"][k];
-        console.log(k)
 
         let eventHTML = `
             <div class="event" onclick="window.location='event.html?event=${e["name"]}'">
-                <img class="event-image" style="" src="${e["image"]}" alt="...">
+                <div class="event-content-wrapper">
+                    <img class="event-image" style="" src="${e["image"]}" alt="...">
 
-                <div id="event-text">
-                    <h4 id="event-title">${e["name"]}</h4>
-                    <p id="event-description">${e["shortDescription"]}</p>
+                    <div class="event-text">
+                        <h4 class="event-title">${e["name"]}</h4>
+                        <p class="event-description">${e["shortDescription"]}</p>
+                    </div>
                 </div>
             </div>
         `;
