@@ -74,6 +74,7 @@
     width: 45%;
     margin: 1%;
     background-color: rgb(27, 27, 27);
+    cursor: pointer;
 }
 
 .event-image {
