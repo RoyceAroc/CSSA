@@ -8,7 +8,6 @@ firebase.initializeApp({
     appId: "1:921024173703:web:46f4a35d815964ddf44a22",
     measurementId: "G-WBN11JNGTN"
 });
-
 firebase.analytics();
 
 var db = firebase.firestore();
@@ -16,6 +15,22 @@ db.enablePersistence();
 
 var users = db.collection("users");
 
+function setActive() {
+    switch (window.location.pathname.substring(window.location.pathname.lastIndexOf('/')+1)) {
+        case "about.html":
+          document.getElementsByClassName("nav-link")[1].classList.add("active");
+          break;
+        case "":
+            document.getElementsByClassName("nav-link")[0].classList.add("active");
+            break;
+        case "competition.html":
+            document.getElementsByClassName("nav-link")[2].classList.add("active");
+            break;
+        case "dashboard.html":
+            document.getElementsByClassName("nav-link")[3].classList.add("active");
+            break;
+      }
+}
 window.addEventListener('load', function () {
     if (getCookie('email') != null) {
         if (window.location.href.includes("sign.html")) {
@@ -25,6 +40,7 @@ window.addEventListener('load', function () {
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementsByTagName("nav")[0].innerHTML = xhttp.responseText;
+                    setActive();
                 } else if (this.readyState == 4 && this.status != 200) {
                     xhttp.send();
                 }
@@ -41,6 +57,7 @@ window.addEventListener('load', function () {
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementsByTagName("nav")[0].innerHTML = xhttp.responseText;
+                    setActive();
                 } else if (this.readyState == 4 && this.status != 200) {
                     xhttp.send();
                 }
@@ -50,7 +67,8 @@ window.addEventListener('load', function () {
             xhttp.send();
         }
     }
-   
+    
+    //alert(filename);
     var footerxhttp = new XMLHttpRequest();
     footerxhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
