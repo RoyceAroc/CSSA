@@ -157,11 +157,7 @@
     flex-direction: row;
 }
 
-#month-navigation > button {
-    background-color: #2d3130;
-    width: 3vw;
-    margin: 0% 2%;
-}
+
 
 #competition-calendar-container {
     display: flex;
@@ -190,4 +186,11 @@ tr > td {
     border: 1px solid white;
     padding: 1% 2% 10% 10%;
     text-align: right;
+}
+
+
+
+html,body {
+    width: 100%;
+    height: 100%;
 }
