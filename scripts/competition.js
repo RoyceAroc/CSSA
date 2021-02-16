@@ -13,6 +13,21 @@ let day = days[d.getDay()];
 var currentMonth = d.getMonth();
 
 function populateCompetitionPage() {
+    for (listEvent of Object.keys(calendarEvents["events"])) {
+        let listItemHTML = `
+            <div class="competition-item">
+                <div class="competition-item-text">
+                    <h5 class="competition-item-title">
+                        ${listEvent["name"]} (${(listEvent["start"] == listEvent["end"]) ? listEvent["start"] + "-" + listEvent["end"] : listEvent["start"]})
+                    </h5>
+                    <p class="competition-item-description">
+                        ${listEvent["description"]}
+                    </p>
+                </div>
+            </div>
+        `;
+    }
+
     for (k of Object.keys(eventData["events"])) {
         let e = eventData["events"][k];
 
@@ -34,6 +49,7 @@ function populateCompetitionPage() {
 };
 
 function calendar(startingDate) {
+
     for (let i = 0; i < 35; i++) {
         var currentDate = new Date(startingDate.getFullYear(), startingDate.getMonth(), startingDate.getDate() + i - startingDate.getDay() - 7)
 
@@ -62,3 +78,26 @@ function previous() {
 function daysInMonth (month, year) {
     return new Date(year, month, 0).getDate();
 }
+
+const calendarEvents = {
+    "events": {
+        "event0": {
+            "name": "First Mini-Competition Registration",
+            "description": "Register in the user dashboard for our first mini-competition!",
+            "start": "2/10",
+            "end": "2/28",
+        },
+        "event1": {
+            "name": "First Mini-Competition",
+            "description": "CSSA's first mini-competition! Participants are allowed to compete at any time of the month.",
+            "start": "3/1",
+            "end": "3/31",
+        },
+        "event2": {
+            "name": "First Mini-Competition Awards",
+            "description": "Awards will be streamed live (platform TBA) for everyone to watch.",
+            "start": "4/13",
+            "end": "4/13",
+        }
+    }
+};
