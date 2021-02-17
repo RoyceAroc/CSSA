@@ -29,7 +29,6 @@ window.onload = function() {
 								document.getElementById("updateC").value = valueArray[1];
 								document.getElementById("updateD").value = valueArray[0];
 								document.getElementById("updateE").value = valueArray[4];
-
 								firebaseAuth(valueArray[0], valueArray[1], valueArray[4]);
 							}
 						} 
@@ -76,8 +75,9 @@ function create() {
 										setCookie('User',usr,365);
 										setCookie('fName',fName,365);
 										setCookie('lName',lName,365);
-				
 										firebaseAuth(emailC, usr, pwd);
+										window.location = "dashboard.html";
+								
 									} 
 								} 
 							}; 
@@ -107,8 +107,9 @@ function login() {
 				setCookie('User',valueArray[1],365);
 				setCookie('fName',valueArray[2],365);
 				setCookie('lName', valueArray[3], 365);
-				
 				firebaseAuth(valueArray[0], valueArray[1], pwd);
+				window.location = "dashboard.html";
+			
 			}
 		} 
 	}; 
@@ -141,8 +142,9 @@ function onSignIn(googleUser) {
 						setCookie('User',valueArray[1],365);
 						setCookie('fName',valueArray[2],365);
 						setCookie('lName', valueArray[3], 365);
-				
+					
 						firebaseAuth(valueArray[0], valueArray[1], valueArray[4]);
+						window.location = "dashboard.html";
 					} 
 				}; 
 			} else 	{
@@ -160,8 +162,9 @@ function onSignIn(googleUser) {
 							setCookie('User',username,365);
 							setCookie('fName',profile.getGivenName(),365);
 							setCookie('lName', profile.getFamilyName(), 365);
-				
 							firebaseAuth(profile.getEmail(), username, password);
+							window.location = "dashboard.html";
+							
 						} 
 					} 
 				}; 
