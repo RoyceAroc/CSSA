@@ -129,7 +129,7 @@ function onSignIn(googleUser) {
 	xhttp.send(profile.getEmail()); 
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			if(this.responseText == 1) {
+			if(this.responseText == "1") {
 				//Account already exists | set profile
 				var xhttp = new XMLHttpRequest();
 				xhttp.open("POST", "https://cssa-backend.herokuapp.com/gleUsername", true);
