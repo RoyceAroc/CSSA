@@ -60,7 +60,7 @@ function create() {
 				xhttp.send(emailC);
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
-						if(this.responseText == 1) {
+						if(this.responseText == "1") {
 							alert("This email is already in use");
 						} else {
 							var values = {Email: emailC, Username: usr, First: fName, Last: lName ,  Password:pwd};
