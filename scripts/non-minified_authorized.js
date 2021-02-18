@@ -11,7 +11,10 @@ window.onload = function() {
 					console.log("Error C1: Report bug at crewcssa@gmail.com");
 				} else {
 					let e = JSON.parse(this.responseText).info;
-					"-" != e[5] && "-" != e[6] && ((document.getElementById("userinfo").style.borderStyle = "none"), (document.getElementById("referral").style.display = "none"));
+					if(e[6] != "-") {
+						document.getElementById("referral").style.display = "none";
+						document.getElementById("userinfo").style.borderStyle = "none";
+					}
 					
 					var xhttp = new XMLHttpRequest();
 					xhttp.open("POST", "https://cssa-backend.herokuapp.com/indirectProfile", true);
