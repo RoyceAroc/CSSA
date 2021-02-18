@@ -51,7 +51,7 @@ function create() {
 	xhttp.send(usr); 
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			if(this.responseText == 1) {
+			if(this.responseText == "1") {
 				alert("Username taken");
 			} else {
 				var xhttp = new XMLHttpRequest();
@@ -222,7 +222,7 @@ function refer() {
 	xhttp.send(a);
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			if(this.responseText == 1) {
+			if(this.responseText == "1") {
 				var values = {Refer: a, Init: getCookie("email")}; 
 				var xhttp = new XMLHttpRequest();
 				xhttp.open("POST", "https://cssa-backend.herokuapp.com/refer", true);
