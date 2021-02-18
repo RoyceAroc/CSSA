@@ -1,3 +1,28 @@
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
 window.onload = function() {
 	if(window.location.href.includes("dashboard.html")) {
 		var valuesA = {user: getCookie("User")}; 
@@ -188,7 +213,7 @@ function updateProfile() {
 		alert("Invalid Last Name");
 	} else if(c == "" || c.length > 50) {
 		alert("Invalid Username Format");
-	} else if(d = "" || d.length > 70) {
+	} else if(d == "" || d.length > 70) {
 		alert("Invalid Email Format");
 	} else if(e == "" || e.length > 50) {
 		alert("Invalid Password Format");
@@ -203,11 +228,12 @@ function updateProfile() {
 				if(this.responseText == "error") {
 					console.log("Error A2: Report bug at crewcssa@gmail.com");
 				} else {
+					
 					setCookie('email',d,365);
 					setCookie('User',c,365);
 					setCookie('fName',a,365);
 					setCookie('lName',b,365);
-				
+	
 					firebaseAuth(d, c, e);
 	
 					alert("Profile has been updated successfully!");
@@ -268,30 +294,7 @@ function signOut() {
 	window.location = "index.html";
 }
 
-function setCookie(name,value,days) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-}
 
-function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-}
-
-function eraseCookie(name) {   
-    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-}
 
 function sendContact() {
 	let a = document.getElementById("contact_name").value;
