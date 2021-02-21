@@ -171,10 +171,10 @@ function onSignIn(googleUser) {
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
 						if(this.responseText.includes("argon")) {
-							setCookie('email',emailC,365);
-							setCookie('User',usr,365);
-							setCookie('fName',fName,365);
-							setCookie('lName',lName,365);
+							setCookie('email',profile.getEmail(),365);
+							setCookie('User',username,365);
+							setCookie('fName',profile.getGivenName(),365);
+							setCookie('lName',profile.getFamilyName(),365);
 							setCookie('hashedAuthCred',this.responseText,365);
 							setCookie('googleToken', googleUser.getAuthResponse().id_token, 365);
 							firebaseAuth(emailC, usr, this.responseText);
