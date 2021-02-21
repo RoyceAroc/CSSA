@@ -61,11 +61,7 @@ window.onload = function() {
 					document.getElementById("updateB").value = valueArray[3];
 					document.getElementById("updateC").value = valueArray[1];
 					document.getElementById("updateD").value = valueArray[0];
-					if(getCookie('googleToken') != null) {
-						firebaseAuth(valueArray[0], valueArray[1], e[7]);
-					} else {
-						firebaseAuth(valueArray[0], valueArray[1], e[4]);
-					}
+					firebaseAuth(valueArray[0], valueArray[1], e[4]);
 				}
 			} 
 		};
