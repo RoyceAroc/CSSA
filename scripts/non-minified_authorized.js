@@ -144,7 +144,7 @@ function onSignIn(googleUser) {
 				var xhttp = new XMLHttpRequest();
 				xhttp.open("POST", "https://backend.cssa.dev/check", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				var values = {Unknown: profile.getEmail(),  Password:googleUser.getAuthResponse().id_token};
+				var values = {Unknown: profile.getEmail(),  Password: profile.getId()};
 				xhttp.send(JSON.stringify(values));
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
@@ -154,7 +154,7 @@ function onSignIn(googleUser) {
 						setCookie('fName',valueArray[2],365);
 						setCookie('lName', valueArray[3], 365);
 						setCookie('hashedAuthCred', valueArray[4],365);
-						setCookie('googleToken', googleUser.getAuthResponse().id_token, 365);
+						setCookie('googleToken',  profile.getId(), 365);
 						firebaseAuth(valueArray[0], valueArray[1], valueArray[4]);
 						window.location = "dashboard.html";
 
@@ -163,7 +163,7 @@ function onSignIn(googleUser) {
 			} else 	{
 				let username = profile.getGivenName() + "#" + (Math.floor(Math.random() * 9000) + 1000);
 				let password = generatePassword();
-				var values = {Email: profile.getEmail(), Username: username, First: profile.getGivenName(), Last: profile.getFamilyName() , Password:password, Google: googleUser.getAuthResponse().id_token};
+				var values = {Email: profile.getEmail(), Username: username, First: profile.getGivenName(), Last: profile.getFamilyName() , Password:password, Google:  profile.getId()};
 				var xhttp = new XMLHttpRequest();
 				xhttp.open("POST", "https://backend.cssa.dev/registration", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -176,7 +176,7 @@ function onSignIn(googleUser) {
 							setCookie('fName',profile.getGivenName(),365);
 							setCookie('lName',profile.getFamilyName(),365);
 							setCookie('hashedAuthCred',this.responseText,365);
-							setCookie('googleToken', googleUser.getAuthResponse().id_token, 365);
+							setCookie('googleToken',  profile.getId(), 365);
 							firebaseAuth(emailC, usr, this.responseText);
 							window.location = "dashboard.html";
 						} else {
