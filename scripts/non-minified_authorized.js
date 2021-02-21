@@ -1,3 +1,5 @@
+var globalSynchronizedPassword = "";
+
 function setCookie(name,value,days) {
     var expires = "";
     if (days) {
@@ -23,49 +25,51 @@ function eraseCookie(name) {
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
+function generatePassword() {
+    var length = 8,
+        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+        retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+        retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    return retVal;
+}
+
 window.onload = function() {
+	globalSynchronizedPassword = getCookie("hashedAuthCred");
 	if(window.location.href.includes("dashboard.html")) {
-		var valuesA = {user: getCookie("User")}; 
+		if(getCookie("googleToken") != null) {
+			var valuesA = {user: getCookie("User"), hashCred: getCookie("googleToken")}; 
+		} else {
+			var valuesA = {user: getCookie("User"), hashCred: getCookie("hashedAuthCred")}; 
+		}
 		var xhttp = new XMLHttpRequest();
-		xhttp.open("POST", "https://cssa-backend.herokuapp.com/getClientData", true);
+		xhttp.open("POST", "https://backend.cssa.dev/getClientData", true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send(JSON.stringify(valuesA));
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				if(this.responseText == "false") {
-					console.log("Error C1: Report bug at crewcssa@gmail.com");
+					console.log(this.responseText);
 				} else {
 					let e = JSON.parse(this.responseText).info;
-					if(e[6] != "-") {
+					if(e[5] != "-") {
 						document.getElementById("referral").style.display = "none";
 						document.getElementById("userinfo").style.borderStyle = "none";
 					}
-					
-					var xhttp = new XMLHttpRequest();
-					xhttp.open("POST", "https://cssa-backend.herokuapp.com/indirectProfile", true);
-					xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-					var values = {Cookie: getCookie("email")}; 
-					xhttp.send(JSON.stringify(values));
-					xhttp.onreadystatechange = function() {
-						if (this.readyState == 4 && this.status == 200) {
-							if(this.responseText == "false") {
-								console.log("Error A1: Report bug at crewcssa@gmail.com");
-							} else {
-								let valueArray = JSON.parse(this.responseText).info;
-								document.getElementById("updateA").value = valueArray[2];
-								document.getElementById("updateB").value = valueArray[3];
-								document.getElementById("updateC").value = valueArray[1];
-								document.getElementById("updateD").value = valueArray[0];
-								document.getElementById("updateE").value = valueArray[4];
-								firebaseAuth(valueArray[0], valueArray[1], valueArray[4]);
-							}
-						} 
-					};
+					let valueArray = JSON.parse(this.responseText).info;
+					document.getElementById("updateA").value = valueArray[2];
+					document.getElementById("updateB").value = valueArray[3];
+					document.getElementById("updateC").value = valueArray[1];
+					document.getElementById("updateD").value = valueArray[0];
+					firebaseAuth(valueArray[0], valueArray[1], globalSynchronizedPassword );
 				}
 			} 
 		};
 	}
 }
+
+
 
 function create() {
 	let emailC = document.getElementById("email_c").value;
@@ -73,71 +77,50 @@ function create() {
 	var fName = document.getElementById("f_name").value;
 	var lName = document.getElementById("l_name").value;
 	var pwd = document.getElementById("pwd").value;
+	var values = {Email: emailC, Username: usr, First: fName, Last: lName , Password:pwd, Google: "-"};
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "https://cssa-backend.herokuapp.com/checkUsername", true);
+	xhttp.open("POST", "https://backend.cssa.dev/registration", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send(usr); 
+	xhttp.send(JSON.stringify(values)); 
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			if(this.responseText == "1") {
-				alert("Username taken");
+			if(this.responseText.includes("argon")) {
+				setCookie('email',emailC,365);
+				setCookie('User',usr,365);
+				setCookie('fName',fName,365);
+				setCookie('lName',lName,365);
+				setCookie('hashedAuthCred',this.responseText,365);
+				firebaseAuth(emailC, usr, this.responseText);
+				window.location = "dashboard.html";
 			} else {
-				var xhttp = new XMLHttpRequest();
-				xhttp.open("POST", "https://cssa-backend.herokuapp.com/checkEmail", true);
-				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				xhttp.send(emailC);
-				xhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						if(this.responseText == "1") {
-							alert("This email is already in use");
-						} else {
-							var values = {Email: emailC, Username: usr, First: fName, Last: lName ,  Password:pwd};
-							var xhttp = new XMLHttpRequest();
-							xhttp.open("POST", "https://cssa-backend.herokuapp.com/registration", true);
-							xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-							xhttp.send(JSON.stringify(values)); 
-							xhttp.onreadystatechange = function() {
-								if (this.readyState == 4 && this.status == 200) {
-									if(this.responseText == "1") {
-										setCookie('email',emailC,365);
-										setCookie('User',usr,365);
-										setCookie('fName',fName,365);
-										setCookie('lName',lName,365);
-										firebaseAuth(emailC, usr, pwd);
-										window.location = "dashboard.html";
-								
-									} 
-								} 
-							}; 
-						}
-					} 
-				}; 
+				alert(this.responseText);
 			}
 		} 
-	}; 		
+	};  		
 }
+
 
 function login() {
 	var unknown = document.getElementById("s_username").value;
 	var pwd = document.getElementById("s_pwd").value;
 	var values = {Unknown: unknown,  Password:pwd};
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "https://cssa-backend.herokuapp.com/check", true);
+	xhttp.open("POST", "https://backend.cssa.dev/check", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send(JSON.stringify(values));
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			if(this.responseText == "false") {
-				alert("Invalid Information");
+			if(this.responseText == "Invalid Credentials" || this.responseText == "Account with that Username/Email Does Not Exist. Please create an account instead.") {
+				alert(this.responseText);
 			} else {
-				let valueArray = JSON.parse(this.responseText).info;
+			    let valueArray = JSON.parse(this.responseText).info;
 				setCookie('email',valueArray[0],365);
 				setCookie('User',valueArray[1],365);
 				setCookie('fName',valueArray[2],365);
 				setCookie('lName', valueArray[3], 365);
-				firebaseAuth(valueArray[0], valueArray[1], pwd);
+				setCookie('hashedAuthCred', valueArray[4],365);
+				firebaseAuth(valueArray[0], valueArray[1], valueArray[4]);
 				window.location = "dashboard.html";
-			
 			}
 		} 
 	}; 
@@ -158,11 +141,11 @@ function onSignIn(googleUser) {
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			if(this.responseText == "1") {
-				//Account already exists | set profile
 				var xhttp = new XMLHttpRequest();
-				xhttp.open("POST", "https://cssa-backend.herokuapp.com/gleUsername", true);
+				xhttp.open("POST", "https://backend.cssa.dev/check", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				xhttp.send(profile.getEmail()); 
+				var values = {Unknown: profile.getEmail(),  Password:googleUser.getAuthResponse().id_token};
+				xhttp.send(JSON.stringify(values));
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
 						let valueArray = JSON.parse(this.responseText).info;
@@ -170,32 +153,37 @@ function onSignIn(googleUser) {
 						setCookie('User',valueArray[1],365);
 						setCookie('fName',valueArray[2],365);
 						setCookie('lName', valueArray[3], 365);
-					
+						setCookie('hashedAuthCred', valueArray[4],365);
+						setCookie('googleToken', googleUser.getAuthResponse().id_token, 365);
 						firebaseAuth(valueArray[0], valueArray[1], valueArray[4]);
 						window.location = "dashboard.html";
+
 					} 
 				}; 
 			} else 	{
 				let username = profile.getGivenName() + "#" + (Math.floor(Math.random() * 9000) + 1000);
 				let password = generatePassword();
-				var values = {Email: profile.getEmail(), Username: username, First: profile.getGivenName(), Last: profile.getFamilyName() ,  Password:password};
+				var values = {Email: profile.getEmail(), Username: username, First: profile.getGivenName(), Last: profile.getFamilyName() , Password:password, Google: googleUser.getAuthResponse().id_token};
 				var xhttp = new XMLHttpRequest();
-				xhttp.open("POST", "https://cssa-backend.herokuapp.com/registrationA", true);
+				xhttp.open("POST", "https://backend.cssa.dev/registration", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send(JSON.stringify(values)); 
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
-						if(this.responseText == "1") {
-							setCookie('email',profile.getEmail(),365);
-							setCookie('User',username,365);
-							setCookie('fName',profile.getGivenName(),365);
-							setCookie('lName', profile.getFamilyName(), 365);
-							firebaseAuth(profile.getEmail(), username, password);
+						if(this.responseText.includes("argon")) {
+							setCookie('email',emailC,365);
+							setCookie('User',usr,365);
+							setCookie('fName',fName,365);
+							setCookie('lName',lName,365);
+							setCookie('hashedAuthCred',this.responseText,365);
+							setCookie('googleToken', googleUser.getAuthResponse().id_token, 365);
+							firebaseAuth(emailC, usr, this.responseText);
 							window.location = "dashboard.html";
-							
-						} 
+						} else {
+							alert(this.responseText);
+						}
 					} 
-				}; 
+				};  	
 			}
 		} 
 	}; 
@@ -206,7 +194,6 @@ function updateProfile() {
 	let b = document.getElementById("updateB").value;
 	let c = document.getElementById("updateC").value;
 	let d = document.getElementById("updateD").value;
-	let e = document.getElementById("updateE").value;
 	if(a == "" || a.length > 50) {
 		alert("Invalid First Name");
 	} else if(b == "" || b.length > 50) {
@@ -215,26 +202,34 @@ function updateProfile() {
 		alert("Invalid Username Format");
 	} else if(d == "" || d.length > 70) {
 		alert("Invalid Email Format");
-	} else if(e == "" || e.length > 50) {
-		alert("Invalid Password Format");
 	} else {
-		var values = {Scopecode: d, Username:c, FirstName:a, LastName: b, Credentials: e, Init: getCookie("email")}; 
+		let indexA = 0; let indexB = 0;
+		if(getCookie('email') == d) {
+			indexA = 1;
+		}
+		if(getCookie('User') == c) {
+			indexB = 1;
+		}
+		if(getCookie("googleToken") != null) {
+			var values = {Scopecode: d, Username:c, FirstName:a, LastName: b, Init: getCookie("email"), hashCred: getCookie("googleToken"), indexA: indexA, indexB: indexB}; 
+		} else {
+			var values = {Scopecode: d, Username:c, FirstName:a, LastName: b, Init: getCookie("email"), hashCred: getCookie("hashedAuthCred"), indexA: indexA, indexB: indexB};
+		}
 		var xhttp = new XMLHttpRequest();
-		xhttp.open("POST", "https://cssa-backend.herokuapp.com/updateProfile", true);
+		xhttp.open("POST", "https://backend.cssa.dev/updateProfile", true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send(JSON.stringify(values));
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				if(this.responseText == "error") {
-					console.log("Error A2: Report bug at crewcssa@gmail.com");
+				if((this.responseText == "Email taken. Please choose another email" || this.responseText == "Username taken. Please choose another username") || this.responseText == "error") {
+					alert(this.responseText);
 				} else {
-					
 					setCookie('email',d,365);
 					setCookie('User',c,365);
 					setCookie('fName',a,365);
 					setCookie('lName',b,365);
-	
-					firebaseAuth(d, c, e);
+						
+					firebaseAuth(d, c,globalSynchronizedPassword);
 	
 					alert("Profile has been updated successfully!");
 				}
@@ -246,15 +241,19 @@ function updateProfile() {
 function refer() {
 	let a = document.getElementById("referA").value;
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "https://cssa-backend.herokuapp.com/checkUsername", true);
+	xhttp.open("POST", "https://backend.cssa.dev/checkUsername", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send(a);
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			if(this.responseText == "1") {
-				var values = {Refer: a, Init: getCookie("email")}; 
+				if(getCookie("googleToken") != null) {
+					var values = {Refer: a, Init: getCookie("email"), hashCred: getCookie("googleToken")}; 
+				} else {
+					var values = {Refer: a, Init: getCookie("email"), hashCred: getCookie("hashedAuthCred")}; 
+				}
 				var xhttp = new XMLHttpRequest();
-				xhttp.open("POST", "https://cssa-backend.herokuapp.com/refer", true);
+				xhttp.open("POST", "https://backend.cssa.dev/refer", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send(JSON.stringify(values));
 				xhttp.onreadystatechange = function() {
@@ -272,16 +271,6 @@ function refer() {
 			}
 		} 
 	}; 
-}
-
-function generatePassword() {
-    var length = 8,
-        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-        retVal = "";
-    for (var i = 0, n = charset.length; i < length; ++i) {
-        retVal += charset.charAt(Math.floor(Math.random() * n));
-    }
-    return retVal;
 }
 
 function signOut() {
