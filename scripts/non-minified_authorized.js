@@ -36,7 +36,6 @@ function generatePassword() {
 }
 
 window.onload = function() {
-	globalSynchronizedPassword = getCookie("hashedAuthCred");
 	if(window.location.href.includes("dashboard.html")) {
 		if(getCookie("googleToken") != null) {
 			var valuesA = {user: getCookie("User"), hashCred: getCookie("googleToken")}; 
@@ -62,7 +61,11 @@ window.onload = function() {
 					document.getElementById("updateB").value = valueArray[3];
 					document.getElementById("updateC").value = valueArray[1];
 					document.getElementById("updateD").value = valueArray[0];
-					firebaseAuth(valueArray[0], valueArray[1], globalSynchronizedPassword );
+					if(getCookie(googleToken) != null) {
+						firebaseAuth(valueArray[0], valueArray[1], valueArray[7]);
+					} else {
+						firebaseAuth(valueArray[0], valueArray[1], valueArray[4]);
+					}
 				}
 			} 
 		};
@@ -177,7 +180,7 @@ function onSignIn(googleUser) {
 							setCookie('lName',profile.getFamilyName(),365);
 							setCookie('hashedAuthCred',this.responseText,365);
 							setCookie('googleToken',  profile.getId(), 365);
-							firebaseAuth(emailC, usr, this.responseText);
+							firebaseAuth(profile.getEmail(), username, this.responseText);
 							window.location = "dashboard.html";
 						} else {
 							alert(this.responseText);
