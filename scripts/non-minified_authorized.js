@@ -43,7 +43,7 @@ window.onload = function() {
 			var valuesA = {user: getCookie("User"), hashCred: getCookie("hashedAuthCred")}; 
 		}
 		var xhttp = new XMLHttpRequest();
-		xhttp.open("POST", "https://backend.cssa.dev/getClientData", true);
+		xhttp.open("POST", "https://cssa-backend.herokuapp.com/getClientData", true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send(JSON.stringify(valuesA));
 		xhttp.onreadystatechange = function() {
@@ -78,7 +78,7 @@ function create() {
 	var pwd = document.getElementById("pwd").value;
 	var values = {Email: emailC, Username: usr, First: fName, Last: lName , Password:pwd, Google: "-"};
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "https://backend.cssa.dev/registration", true);
+	xhttp.open("POST", "https://cssa-backend.herokuapp.com/registration", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send(JSON.stringify(values)); 
 	xhttp.onreadystatechange = function() {
@@ -104,7 +104,7 @@ function login() {
 	var pwd = document.getElementById("s_pwd").value;
 	var values = {Unknown: unknown,  Password:pwd};
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "https://backend.cssa.dev/check", true);
+	xhttp.open("POST", "https://cssa-backend.herokuapp.com/check", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send(JSON.stringify(values));
 	xhttp.onreadystatechange = function() {
@@ -141,7 +141,7 @@ function onSignIn(googleUser) {
 		if (this.readyState == 4 && this.status == 200) {
 			if(this.responseText == "1") {
 				var xhttp = new XMLHttpRequest();
-				xhttp.open("POST", "https://backend.cssa.dev/check", true);
+				xhttp.open("POST", "https://cssa-backend.herokuapp.com/check", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				var values = {Unknown: profile.getEmail(),  Password: profile.getId()};
 				xhttp.send(JSON.stringify(values));
@@ -164,7 +164,7 @@ function onSignIn(googleUser) {
 				let password = generatePassword();
 				var values = {Email: profile.getEmail(), Username: username, First: profile.getGivenName(), Last: profile.getFamilyName() , Password:password, Google:  profile.getId()};
 				var xhttp = new XMLHttpRequest();
-				xhttp.open("POST", "https://backend.cssa.dev/registration", true);
+				xhttp.open("POST", "https://cssa-backend.herokuapp.com/registration", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send(JSON.stringify(values)); 
 				xhttp.onreadystatechange = function() {
@@ -215,7 +215,7 @@ function updateProfile() {
 			var values = {Scopecode: d, Username:c, FirstName:a, LastName: b, Init: getCookie("email"), hashCred: getCookie("hashedAuthCred"), indexA: indexA, indexB: indexB};
 		}
 		var xhttp = new XMLHttpRequest();
-		xhttp.open("POST", "https://backend.cssa.dev/updateProfile", true);
+		xhttp.open("POST", "https://cssa-backend.herokuapp.com/updateProfile", true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send(JSON.stringify(values));
 		xhttp.onreadystatechange = function() {
@@ -240,7 +240,7 @@ function updateProfile() {
 function refer() {
 	let a = document.getElementById("referA").value;
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "https://backend.cssa.dev/checkUsername", true);
+	xhttp.open("POST", "https://cssa-backend.herokuapp.com/checkUsername", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send(a);
 	xhttp.onreadystatechange = function() {
@@ -252,7 +252,7 @@ function refer() {
 					var values = {Refer: a, Init: getCookie("email"), hashCred: getCookie("hashedAuthCred")}; 
 				}
 				var xhttp = new XMLHttpRequest();
-				xhttp.open("POST", "https://backend.cssa.dev/refer", true);
+				xhttp.open("POST", "https://cssa-backend.herokuapp.com/refer", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send(JSON.stringify(values));
 				xhttp.onreadystatechange = function() {
