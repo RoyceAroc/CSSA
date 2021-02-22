@@ -21,7 +21,7 @@ function populateCompetitionPage() {
             <div class="competition-item">
                 <div class="competition-item-text">
                     <h5 class="competition-item-title">
-                        ${listEventData["name"]} (${(listEventData["start"] == listEventData["end"]) ? listEventData["start"] + "-" + listEventData["end"] : listEventData["start"]})
+                        ${listEventData["name"]} (${(listEventData["start"] != listEventData["end"]) ? listEventData["start"] + "-" + listEventData["end"] : listEventData["start"]})
                     </h5>
                     <p class="competition-item-description">
                         ${listEventData["description"]}
