@@ -66,8 +66,7 @@ window.addEventListener("load", () => {
 			} 
 		};
 	}
-}
-
+});
 
 
 function create() {
