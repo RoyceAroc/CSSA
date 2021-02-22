@@ -162,7 +162,12 @@ function onSignIn(googleUser) {
 			} else 	{
 				let username = profile.getGivenName() + "#" + (Math.floor(Math.random() * 9000) + 1000);
 				let password = generatePassword();
-				var values = {Email: profile.getEmail(), Username: username, First: profile.getGivenName(), Last: profile.getFamilyName() , Password:password, Google:  profile.getId()};
+				if(profile.getFamilyName()) {
+					var values = {Email: profile.getEmail(), Username: username, First: profile.getGivenName(), Last: profile.getFamilyName() , Password:password, Google:  profile.getId()};
+				} else {
+					var values = {Email: profile.getEmail(), Username: username, First: profile.getGivenName(), Last: "-" , Password:password, Google:  profile.getId()};
+				}
+				
 				var xhttp = new XMLHttpRequest();
 				xhttp.open("POST", "https://cssa-backend.herokuapp.com/registration", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
