@@ -118,6 +118,16 @@ const eventData = {
                     "title": "Event Guide",
                     "type": "Event Guide",
                     "link": "https://docs.google.com/document/d/1u4dOU8KyRIKWLxVvLNTpYFSrJzWipUpNpsL-PrfpZzg/edit?usp=sharing"
+                },
+                {
+                    "title": "Algorithmic Thinking Overview",
+                    "type": "Lecture Slides",
+                    "link": "competition/viewable/Algorithmic Thinking Overview.pdf"
+                },
+                {
+                    "title": "Algorithmic Thinking Sample Questions",
+                    "type": "Lecture Slides",
+                    "link": "competition/viewable/Algorithmic Thinking Sample Questions.pdf"
                 }
             ]
         },
