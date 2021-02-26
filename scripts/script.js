@@ -128,6 +128,11 @@ const eventData = {
                     "title": "Algorithmic Thinking Sample Questions",
                     "type": "Lecture Slides",
                     "link": "competition/viewable/Algorithmic Thinking/Algorithmic Thinking Sample Questions.pdf"
+                },
+                {
+                    "title": "Algorithmic Thinking Lecture Video #1",
+                    "type": "Videos",
+                    "link": "g9oWz2YzCFM"
                 }
             ]
         },

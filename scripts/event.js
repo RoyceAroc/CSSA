@@ -24,12 +24,26 @@ function populateEventPage() {
 
     var createdTypes = [];
 
+    `
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/g9oWz2YzCFM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    `
+
     for (const resource of event["resources"]) {
-        let resourceHTML = `
-            <div class="resource" onclick="window.open('${resource["link"]}')">
-                &rarr;            <a>${resource["title"]}</a>
-            </div>
-        `;
+        var resourceHTML = ``;
+
+        if (resource["type"] == "Videos") {
+            resourceHTML = `
+                <div class="resource ${resource["type"].split(" ").join("-")}"">
+                    <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/${resource["link"]}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            `;
+        } else {
+            resourceHTML = `
+                <div class="resource ${resource["type"].split(" ").join("-")}" onclick="window.open('${resource["link"]}')">
+                    &rarr;            <a>${resource["title"]}</a>
+                </div>
+            `;
+        }
 
         if (!createdTypes.includes(resource["type"])) {
             let resourceTypeHTML = `
