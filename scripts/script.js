@@ -133,7 +133,12 @@ const eventData = {
                     "title": "Algorithmic Thinking Lecture Video #1",
                     "type": "Videos",
                     "link": "g9oWz2YzCFM"
-                }
+                }/*,
+                {
+                    "title": "Algorithmic Thinking Lecture Video #1",
+                    "type": "Videos",
+                    "link": "g9oWz2YzCFM"
+                }*/
             ]
         },
         "Programming Challenges": {
