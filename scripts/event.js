@@ -38,6 +38,8 @@ function populateEventPage() {
                 </div>
             `;
 
+            createdTypes += resource["type"];
+
             document.getElementById("resources").innerHTML += resourceTypeHTML;
         }
 
