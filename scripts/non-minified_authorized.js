@@ -35,7 +35,7 @@ function generatePassword() {
     return retVal;
 }
 
-window.addEventListener("load", () => {
+window.onload = function() {
 	if(window.location.href.includes("dashboard.html")) {
 		if(getCookie("googleToken") != null) {
 			var valuesA = {user: getCookie("User"), hashCred: getCookie("googleToken")}; 
@@ -66,7 +66,8 @@ window.addEventListener("load", () => {
 			} 
 		};
 	}
-});
+}
+
 
 
 function create() {
