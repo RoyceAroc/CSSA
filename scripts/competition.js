@@ -13,19 +13,24 @@ let day = days[d.getDay()];
 var currentMonth = d.getMonth();
 
 function populateCompetitionPage() {
+    var listEvents = calendarEvents["events"];
     for (listEvent of Object.keys(calendarEvents["events"])) {
+        var listEventData = listEvents[listEvent];
+
         let listItemHTML = `
             <div class="competition-item">
                 <div class="competition-item-text">
                     <h5 class="competition-item-title">
-                        ${listEvent["name"]} (${(listEvent["start"] == listEvent["end"]) ? listEvent["start"] + "-" + listEvent["end"] : listEvent["start"]})
+                        ${listEventData["name"]} (${(listEventData["start"] != listEventData["end"]) ? listEventData["start"] + "-" + listEventData["end"] : listEventData["start"]})
                     </h5>
                     <p class="competition-item-description">
-                        ${listEvent["description"]}
+                        ${listEventData["description"]}
                     </p>
                 </div>
             </div>
         `;
+
+        document.getElementById("competition-list").innerHTML += listItemHTML;
     }
 
     for (k of Object.keys(eventData["events"])) {

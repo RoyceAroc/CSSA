@@ -184,11 +184,11 @@ const eventData = {
             "shortDescription": "Design a website around a prompt that will be provided by the judges at each competition. Websites are judged based on aesthetics and functionality.",
             "description": "Design a website around a prompt that will be provided by the judges at each competition. Websites are judged based on aesthetics and functionality.",
             "resources": [
-                // {
-                //     "title": "Event Guide",
-                //     "type": "Event Guide",
-                //     "link": ""
-                // }
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": "https://docs.google.com/document/d/1fcBO3Ho2iekoCz3_5ZYVnNeiiejnoU2lMntv8uuYm4s/edit?usp=sharing"
+                }
             ]
         },
         "Cybersecurity": {
@@ -214,11 +214,11 @@ const eventData = {
             "shortDescription": "Given a long piece of code, find all bugs and fix them without running the code. Code is provided in C++, Java, Python, and JavaScript.",
             "description": "Given a long piece of code, find all bugs and fix them without running the code. Code is provided in C++, Java, Python, and JavaScript.",
             "resources": [
-                // {
-                //     "title": "Event Guide",
-                //     "type": "Event Guide",
-                //     "link": ""
-                // }
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": ""
+                }
             ]
         },
         "Tech Support": {
@@ -229,11 +229,11 @@ const eventData = {
             "shortDescription": "Talk to judges who present a case study involving a technology issue that must be fixed by providing instructions for the judges to follow.",
             "description": "Talk to judges who present a case study involving a technology issue that must be fixed by providing instructions for the judges to follow.",
             "resources": [
-                // {
-                //     "title": "Event Guide",
-                //     "type": "Event Guide",
-                //     "link": ""
-                // }
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": "https://docs.google.com/document/d/1d7GkwdmlpFwouJlx-slEHNR4zliDdcrNABeXpvJDLIo/edit?usp=sharing"
+                }
             ]
         },
         "Information Theory": {
