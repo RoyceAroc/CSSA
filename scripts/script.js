@@ -112,7 +112,7 @@ const eventData = {
             "type": "Tasks",
             "participants": "Individual",
             "shortDescription": "Given tasks, write pseudocode algorithms that solve the tasks most efficiently. Scoring is based on the time complexity (Big O) of the solutions.",
-            "description": "Given tasks, write pseudocode algorithms that solve the tasks most efficiently. Scoring is based on the time complexity (Big O) of the solutions.",
+            "description": "Competitors are tested on their general knowledge of algorithms and ability to develop and write algorithms in <b>pseudocode</b> that solves tasks efficiently. Coding languages can be used but will not result in the addition of extra points. Pseudocodes can be written in plain english as long as the graders understand the <i>gist</i> of what you are trying to say. <br><br> Event topics include the following <ul> <li>Time & Space Complexity Notations</li><li>Complexity Classes</li><li>Algorithm Reductions</li><li>Search Algorithms</li><li>Sorting Algorithms</li><li>Pathfindings Algorithms</li></ul>",
             "resources": [
                 {
                     "title": "Event Guide",
