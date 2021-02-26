@@ -117,17 +117,17 @@ const eventData = {
                 {
                     "title": "Event Guide",
                     "type": "Event Guide",
-                    "link": "https://docs.google.com/document/d/1u4dOU8KyRIKWLxVvLNTpYFSrJzWipUpNpsL-PrfpZzg/edit?usp=sharing"
+                    "link": "competition/viewable/Algorithmic Thinking/Algorithmic Thinking Event Guide.pdf"
                 },
                 {
                     "title": "Algorithmic Thinking Overview",
                     "type": "Lecture Slides",
-                    "link": "competition/viewable/Algorithmic Thinking Overview.pdf"
+                    "link": "competition/viewable/Algorithmic Thinking/Algorithmic Thinking Overview.pdf"
                 },
                 {
                     "title": "Algorithmic Thinking Sample Questions",
                     "type": "Lecture Slides",
-                    "link": "competition/viewable/Algorithmic Thinking Sample Questions.pdf"
+                    "link": "competition/viewable/Algorithmic Thinking/Algorithmic Thinking Sample Questions.pdf"
                 }
             ]
         },
