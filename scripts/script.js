@@ -133,12 +133,7 @@ const eventData = {
                     "title": "Algorithmic Thinking Lecture Video #1",
                     "type": "Videos",
                     "link": "g9oWz2YzCFM"
-                }/*,
-                {
-                    "title": "Algorithmic Thinking Lecture Video #1",
-                    "type": "Videos",
-                    "link": "g9oWz2YzCFM"
-                }*/
+                }
             ]
         },
         "Programming Challenges": {
@@ -194,11 +189,11 @@ const eventData = {
             "shortDescription": "Design a website around a prompt that will be provided by the judges at each competition. Websites are judged based on aesthetics and functionality.",
             "description": "Design a website around a prompt that will be provided by the judges at each competition. Websites are judged based on aesthetics and functionality.",
             "resources": [
-                // {
-                //     "title": "Event Guide",
-                //     "type": "Event Guide",
-                //     "link": ""
-                // }
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": "https://docs.google.com/document/d/1fcBO3Ho2iekoCz3_5ZYVnNeiiejnoU2lMntv8uuYm4s/edit?usp=sharing"
+                }
             ]
         },
         "Cybersecurity": {
@@ -239,11 +234,11 @@ const eventData = {
             "shortDescription": "Talk to judges who present a case study involving a technology issue that must be fixed by providing instructions for the judges to follow.",
             "description": "Talk to judges who present a case study involving a technology issue that must be fixed by providing instructions for the judges to follow.",
             "resources": [
-                // {
-                //     "title": "Event Guide",
-                //     "type": "Event Guide",
-                //     "link": ""
-                // }
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": "https://docs.google.com/document/d/1d7GkwdmlpFwouJlx-slEHNR4zliDdcrNABeXpvJDLIo/edit?usp=sharing"
+                }
             ]
         },
         "Information Theory": {
