@@ -142,13 +142,13 @@ const eventData = {
             "type": "Tasks",
             "participants": "Team of 2",
             "shortDescription": "Write algorithmic or heuristic code to solve multiple short tasks made around a common theme. C++, Java, Python, and Javascript are allowed.",
-            "description": "Write algorithmic or heuristic code to solve multiple short tasks made around a common theme. C++, Java, Python, and Javascript are allowed.",
+            "description": "Competitors will write algorithmic or heuristic code to solve multiple short tasks on the Hackerrank platform (<a style=\"color:white\" href=\"https://www.hackerrank.com/cssa\">hackerrank.com/cssa</a>). Coding languages such as C++, Java, Python, JavaScript, Scala, and Swift are allowed. <br><br> Event topics include the following <ul> <li>Complete Search</li><li>Sorting & Sets</li><li>Prefix Sums</li><li>Sorting & Searching</li><li>Graphs</li><li>Dynamic Programming</li><li>Trees</li><li>Miscellaneous Topics</li></ul>",
             "resources": [
-                // {
-                //     "title": "Event Guide",
-                //     "type": "Event Guide",
-                //     "link": ""
-                // }
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": "competition/viewable/Programming Challenges/Programming Challenges Event Guide.pdf"
+                }
             ]
         },
         "Data Science": {
