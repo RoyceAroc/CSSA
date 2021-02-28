@@ -219,11 +219,11 @@ const eventData = {
             "shortDescription": "Given a long piece of code, find all bugs and fix them without running the code. Code is provided in C++, Java, Python, and JavaScript.",
             "description": "Given a long piece of code, find all bugs and fix them without running the code. Code is provided in C++, Java, Python, and JavaScript.",
             "resources": [
-                // {
-                //     "title": "Event Guide",
-                //     "type": "Event Guide",
-                //     "link": ""
-                // }
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": "https://docs.google.com/document/d/1992P86eFAk3us7USDK7uZY3-QxN1FbdB6L66FkTF5Hk/edit?usp=sharing"
+                }
             ]
         },
         "Tech Support": {
