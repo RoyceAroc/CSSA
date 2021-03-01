@@ -68,19 +68,21 @@ window.addEventListener("load", () => {
 	}
 });
 
-
-
 function create() {
 	let emailC = document.getElementById("email_c").value;
 	var usr = document.getElementById("username").value;
 	var fName = document.getElementById("f_name").value;
 	var lName = document.getElementById("l_name").value;
 	var pwd = document.getElementById("pwd").value;
-	var values = {Email: emailC, Username: usr, First: fName, Last: lName , Password:pwd, Google: "-"};
+
+	var values = { Email: emailC, Username: usr, First: fName, Last: lName, Password: pwd, Google: "-" };
+	
 	var xhttp = new XMLHttpRequest();
+
 	xhttp.open("POST", "https://cssa-backend.herokuapp.com/registration", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send(JSON.stringify(values)); 
+	xhttp.send(JSON.stringify(values));
+
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			if(this.responseText.includes("argon")) {
@@ -88,8 +90,10 @@ function create() {
 				setCookie('User',usr,365);
 				setCookie('fName',fName,365);
 				setCookie('lName',lName,365);
-				setCookie('hashedAuthCred',this.responseText,365);
+				setCookie('hashedAuthCred', this.responseText, 365);
+				
 				firebaseAuth(emailC, usr, this.responseText);
+
 				window.location = "dashboard.html";
 			} else {
 				alert(this.responseText);
@@ -97,7 +101,6 @@ function create() {
 		} 
 	};  		
 }
-
 
 function login() {
 	var unknown = document.getElementById("s_username").value;
@@ -117,8 +120,10 @@ function login() {
 				setCookie('User',valueArray[1],365);
 				setCookie('fName',valueArray[2],365);
 				setCookie('lName', valueArray[3], 365);
-				setCookie('hashedAuthCred', valueArray[4],365);
+				setCookie('hashedAuthCred', valueArray[4], 365);
+				
 				firebaseAuth(valueArray[0], valueArray[1], valueArray[4]);
+
 				window.location = "dashboard.html";
 			}
 		} 
@@ -153,8 +158,10 @@ function onSignIn(googleUser) {
 						setCookie('fName',valueArray[2],365);
 						setCookie('lName', valueArray[3], 365);
 						setCookie('hashedAuthCred', valueArray[4],365);
-						setCookie('googleToken',  profile.getId(), 365);
+						setCookie('googleToken', profile.getId(), 365);
+						
 						firebaseAuth(valueArray[0], valueArray[1], valueArray[4]);
+
 						window.location = "dashboard.html";
 
 					} 
@@ -180,8 +187,10 @@ function onSignIn(googleUser) {
 							setCookie('fName',profile.getGivenName(),365);
 							setCookie('lName',profile.getFamilyName(),365);
 							setCookie('hashedAuthCred',this.responseText,365);
-							setCookie('googleToken',  profile.getId(), 365);
+							setCookie('googleToken', profile.getId(), 365);
+							
 							firebaseAuth(profile.getEmail(), username, this.responseText);
+
 							window.location = "dashboard.html";
 						} else {
 							alert(this.responseText);
