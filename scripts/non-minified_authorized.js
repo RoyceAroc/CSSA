@@ -1,5 +1,5 @@
 var globalSynchronizedPassword = "";
-
+var events = "";
 function setCookie(name,value,days) {
     var expires = "";
     if (days) {
@@ -61,8 +61,11 @@ window.addEventListener("load", () => {
 					document.getElementById("updateB").value = valueArray[3];
 					document.getElementById("updateC").value = valueArray[1];
 					document.getElementById("updateD").value = valueArray[0];
+					events = valueArray[6];
 					firebaseAuth(valueArray[0], valueArray[1], e[4]);
-					compassion(valueArray[6]);
+				
+				
+					
 				}
 			} 
 		};
@@ -319,14 +322,16 @@ function sendContact() {
 	}; 
 }
 
-var uid = "";
+
 
 function firebaseAuth(email, username, password) {
+	
 	firebase.auth().createUserWithEmailAndPassword(email, password).then(function () {
 		firebase.auth().onAuthStateChanged(function (user) {
 			users.doc(user.uid).set({
 				
 			}, { merge: true }).then(() => {
+				compassion(events, uid);
 				console.log(user.uid);
 
 				uid = user.uid;
@@ -348,18 +353,21 @@ function firebaseAuth(email, username, password) {
 			});
 		});
     }).catch(function (error) {
+		
         var errorCode = error.code;
 		
 		if (error.message == "The email address is already in use by another account.") {
+			
 			firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
 				firebase.auth().onAuthStateChanged(function (user) {
 					users.doc(user.uid).set({
 
 					}, { merge: true }).then(() => {
+						
 						console.log(user.uid);
 
 						uid = user.uid;
-
+						compassion(events, uid);
 						if (!window.location.href.includes("dashboard")) {
 							window.location.href = "dashboard.html";
 						}
@@ -385,7 +393,9 @@ function firebaseAuth(email, username, password) {
 				});
 			});
 		}
+		
 	});
+	
 }
 
 var event1 = "None";
@@ -468,14 +478,13 @@ function competitionRegistration() {
 	}
 }
 
-function compassion(events) {
+function compassion(events, uid) {
 	let eventNameArray = ["Algorithmic Thinking", "Programming Challenges", "Data Science", "Capture the Flag", "Website Design", "Cybersecurity", "Bug Smasher", "Tech Support", "Information Theory", "Web Scraping", "Golf"];
 	if(events != "-") {
-		event1 = eventNameArray[parseInt((events.split(',')[0] == "-1") ? "None" : events.split(',')[0])-1];
-		event2 = eventNameArray[parseInt((events.split(',')[1] == "-1") ? "None" : events.split(',')[1])-1];
-		event3 = eventNameArray[parseInt((events.split(',')[2] == "-1") ? "None" : events.split(',')[2])-1];
-		event4 = eventNameArray[parseInt((events.split(',')[3] == "-1") ? "None" : events.split(',')[3])-1];
-
+		event1 = eventNameArray[parseInt((events.split('~')[0] == "-1") ? "None" : events.split('~')[0])-1];
+		event2 = eventNameArray[parseInt((events.split('~')[1] == "-1") ? "None" : events.split('~')[1])-1];
+		event3 = eventNameArray[parseInt((events.split('~')[2] == "-1") ? "None" : events.split('~')[2])-1];
+		event4 = eventNameArray[parseInt((events.split('~')[3] == "-1") ? "None" : events.split('~')[3])-1];
 		users.doc(uid).set({
 			event1: event1,
 			event2: event2,
@@ -484,9 +493,9 @@ function compassion(events) {
 		}, { merge: true }).then(() => {
 			//Update database entry
 
-			var values = {Scopecode: getCookie("email"), Username:getCookie('User'), Init: getCookie("email"), hashCred: getCookie("hashedAuthCred"), indexA: 1, indexB: 1};
+			var values = {Scopecode: getCookie("email"), Username: getCookie('User'), Init: getCookie("email"), hashCred: getCookie("hashedAuthCred"), indexA: 1, indexB: 1};
 			var xhttp = new XMLHttpRequest();
-			xhttp.open("POST", "https://cssa-backend.herokuapp.com/updateInterestForm", true);
+			xhttp.open("POST", "https://CSSA-Backend-1.roycea.repl.co/updateInterestForm", true);
 			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhttp.send(JSON.stringify(values));
 			xhttp.onreadystatechange = function() {
@@ -494,16 +503,9 @@ function compassion(events) {
 					if((this.responseText == "Email taken. Please choose another email" || this.responseText == "Username taken. Please choose another username") || this.responseText == "error") {
 						alert(this.responseText);
 					} else {
-						setCookie('email',d,365);
-						setCookie('User',c,365);
-						setCookie('fName',a,365);
-						setCookie('lName',b,365);
-							
-						firebaseAuth(d, c,globalSynchronizedPassword);
-		
-						alert("Profile has been updated successfully!");
+						
 					}
-				}
+				} 
 			}; 
 
 		}).catch((e) => {
