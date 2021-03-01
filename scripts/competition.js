@@ -82,10 +82,10 @@ function daysInMonth (month, year) {
 const calendarEvents = {
     "events": {
         "event0": {
-            "name": "First Mini-Competition Registration",
+            "name": "First Mini-Competition Registration Opens",
             "description": "Register in the user dashboard for our first mini-competition!",
             "start": "2/10",
-            "end": "2/28",
+            "end": "2/10",
         },
         "event1": {
             "name": "First Mini-Competition",
