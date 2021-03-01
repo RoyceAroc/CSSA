@@ -90,7 +90,7 @@ const calendarEvents = {
         "event1": {
             "name": "First Mini-Competition",
             "description": "CSSA's first mini-competition! Participants are allowed to compete at any time of the month.",
-            "start": "3/8",
+            "start": "3/1",
             "end": "3/31",
         },
         "event2": {

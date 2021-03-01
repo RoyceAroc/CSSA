@@ -8,6 +8,7 @@ firebase.initializeApp({
     appId: "1:921024173703:web:46f4a35d815964ddf44a22",
     measurementId: "G-WBN11JNGTN"
 });
+
 firebase.analytics();
 
 var db = firebase.firestore();
