@@ -471,10 +471,10 @@ function competitionRegistration() {
 function compassion(events) {
 	let eventNameArray = ["Algorithmic Thinking", "Programming Challenges", "Data Science", "Capture the Flag", "Website Design", "Cybersecurity", "Bug Smasher", "Tech Support", "Information Theory", "Web Scraping", "Golf"];
 	if(events != "-") {
-		event1 = eventNameArray[parseInt((events.split(',')[0] == -1) ? "None" : events.split(',')[0])-1];
-		event2 = eventNameArray[parseInt((events.split(',')[1] == -1) ? "None" : events.split(',')[1])-1];
-		event3 = eventNameArray[parseInt((events.split(',')[2] == -1) ? "None" : events.split(',')[2])-1];
-		event4 = eventNameArray[parseInt((events.split(',')[3] == -1) ? "None" : events.split(',')[3])-1];
+		event1 = eventNameArray[parseInt((events.split(',')[0] == "-1") ? "None" : events.split(',')[0])-1];
+		event2 = eventNameArray[parseInt((events.split(',')[1] == "-1") ? "None" : events.split(',')[1])-1];
+		event3 = eventNameArray[parseInt((events.split(',')[2] == "-1") ? "None" : events.split(',')[2])-1];
+		event4 = eventNameArray[parseInt((events.split(',')[3] == "-1") ? "None" : events.split(',')[3])-1];
 
 		users.doc(uid).set({
 			event1: event1,
