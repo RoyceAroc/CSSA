@@ -495,7 +495,7 @@ function compassion(events, uid) {
 
 			var values = {Scopecode: getCookie("email"), Username: getCookie('User'), Init: getCookie("email"), hashCred: getCookie("hashedAuthCred"), indexA: 1, indexB: 1};
 			var xhttp = new XMLHttpRequest();
-			xhttp.open("POST", "https://CSSA-Backend-1.roycea.repl.co/updateInterestForm", true);
+			xhttp.open("POST", "https://cssa-backend.herokuapp.com/updateInterestForm", true);
 			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhttp.send(JSON.stringify(values));
 			xhttp.onreadystatechange = function() {
