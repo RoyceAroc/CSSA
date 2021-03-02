@@ -37,6 +37,7 @@ function generatePassword() {
 
 window.addEventListener("load", () => {
 	if(window.location.href.includes("dashboard.html")) {
+		$('#first-mini-comp').modal('show');
 		if(getCookie("googleToken") != null && getCookie("googleToken") != "") {
 			var valuesA = {user: getCookie("User"), hashCred: getCookie("googleToken")}; 
 		} else {
