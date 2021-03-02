@@ -374,16 +374,32 @@ function firebaseAuth(email, username, password) {
 						
 						users.doc(uid).get().then((doc) => {
 							event1 = doc.data().event1 ?? "None";
-							document.getElementById("event1").value = event1;
-
+							if(event1.includes("!")) {
+								document.getElementById("event1").value = "None";
+							} else {
+								document.getElementById("event1").value = event1;
+							}
+							
 							event2 = doc.data().event2 ?? "None";
-							document.getElementById("event2").value = event2;
-
+							if(event2.includes("!")) {
+								document.getElementById("event2").value = "None";
+							} else {
+								document.getElementById("event2").value = event2;
+							}
+							
 							event3 = doc.data().event3 ?? "None";
-							document.getElementById("event3").value = event3;
+							if(event3.includes("!")) {
+								document.getElementById("event3").value = "None";
+							} else {
+								document.getElementById("event3").value = event3;
+							}
 
 							event4 = doc.data().event4 ?? "None";
-							document.getElementById("event4").value = event4;
+							if(event4.includes("!")) {
+								document.getElementById("event3").value = "None";
+							} else {
+								document.getElementById("event4").value = event4;
+							}
 						});
 					}).catch((e) => {
 						console.log(e.message);
