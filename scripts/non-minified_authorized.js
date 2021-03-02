@@ -37,7 +37,7 @@ function generatePassword() {
 
 window.addEventListener("load", () => {
 	if(window.location.href.includes("dashboard.html")) {
-		if(getCookie("googleToken") != "null" && getCookie("googleToken") != "") {
+		if(getCookie("googleToken") != null && getCookie("googleToken") != "") {
 			var valuesA = {user: getCookie("User"), hashCred: getCookie("googleToken")}; 
 		} else {
 			var valuesA = {user: getCookie("User"), hashCred: getCookie("hashedAuthCred")}; 
@@ -227,7 +227,7 @@ function updateProfile() {
 		if(getCookie('User') == c) {
 			indexB = 1;
 		}
-		if(getCookie("googleToken") != "null" && getCookie("googleToken") != "") {
+		if(getCookie("googleToken") != null && getCookie("googleToken") != "") {
 			var values = {Scopecode: d, Username:c, FirstName:a, LastName: b, Init: getCookie("email"), hashCred: getCookie("googleToken"), indexA: indexA, indexB: indexB}; 
 		} else {
 			var values = {Scopecode: d, Username:c, FirstName:a, LastName: b, Init: getCookie("email"), hashCred: getCookie("hashedAuthCred"), indexA: indexA, indexB: indexB};
@@ -264,7 +264,7 @@ function refer() {
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			if(this.responseText == "1") {
-				if(getCookie("googleToken") != "null" && getCookie("googleToken") != "") {
+				if(getCookie("googleToken") != null && getCookie("googleToken") != "") {
 					var values = {Refer: a, Init: getCookie("email"), hashCred: getCookie("googleToken")}; 
 				} else {
 					var values = {Refer: a, Init: getCookie("email"), hashCred: getCookie("hashedAuthCred")}; 
@@ -292,7 +292,7 @@ function refer() {
 
 function signOut() {
 	onLoad();
-	eraseCookie('email');eraseCookie('User');eraseCookie('fName');eraseCookie('lName');eraseCookie('googleToken');
+	eraseCookie('email');eraseCookie('User');eraseCookie('fName');eraseCookie('lName');eraseCookie('googleToken');eraseCookie('hashedAuthCred');
 	var auth2 = gapi.auth2.getAuthInstance();
 	auth2.signOut().then(function () {
 		console.log("You have signed out!");
