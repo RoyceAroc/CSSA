@@ -37,7 +37,7 @@ function generatePassword() {
 
 window.addEventListener("load", () => {
 	if(window.location.href.includes("dashboard.html")) {
-		if(getCookie("googleToken") != null) {
+		if(getCookie("googleToken") != "null" && getCookie("googleToken") != "") {
 			var valuesA = {user: getCookie("User"), hashCred: getCookie("googleToken")}; 
 		} else {
 			var valuesA = {user: getCookie("User"), hashCred: getCookie("hashedAuthCred")}; 
@@ -227,7 +227,7 @@ function updateProfile() {
 		if(getCookie('User') == c) {
 			indexB = 1;
 		}
-		if(getCookie("googleToken") != null) {
+		if(getCookie("googleToken") != "null" && getCookie("googleToken") != "") {
 			var values = {Scopecode: d, Username:c, FirstName:a, LastName: b, Init: getCookie("email"), hashCred: getCookie("googleToken"), indexA: indexA, indexB: indexB}; 
 		} else {
 			var values = {Scopecode: d, Username:c, FirstName:a, LastName: b, Init: getCookie("email"), hashCred: getCookie("hashedAuthCred"), indexA: indexA, indexB: indexB};
@@ -264,7 +264,7 @@ function refer() {
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			if(this.responseText == "1") {
-				if(getCookie("googleToken") != null) {
+				if(getCookie("googleToken") != "null" && getCookie("googleToken") != "") {
 					var values = {Refer: a, Init: getCookie("email"), hashCred: getCookie("googleToken")}; 
 				} else {
 					var values = {Refer: a, Init: getCookie("email"), hashCred: getCookie("hashedAuthCred")}; 
@@ -292,7 +292,7 @@ function refer() {
 
 function signOut() {
 	onLoad();
-	eraseCookie('email');eraseCookie('User');eraseCookie('fName');eraseCookie('lName');
+	eraseCookie('email');eraseCookie('User');eraseCookie('fName');eraseCookie('lName');eraseCookie('googleToken');
 	var auth2 = gapi.auth2.getAuthInstance();
 	auth2.signOut().then(function () {
 		console.log("You have signed out!");
@@ -512,4 +512,15 @@ function compassion(events, uid) {
 			console.log(e.message);
 		});
 	}
+}
+
+function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
 }
