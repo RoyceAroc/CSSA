@@ -44,3 +44,95 @@
     font-weight: bolder;
     margin: 3% 0% 3% 0%;
 }
+
+#main li {
+    list-style: none;
+}
+
+.timeline-both-side {
+	float: left;
+	width: 96%;
+	margin: 20px 2% 50px;
+	position: relative;
+	box-sizing: border-box;
+}
+
+.timeline-both-side:before {
+	background-color: #0097a7;
+	bottom: 0;
+	content: " ";
+	left: 50%;
+	position: absolute;
+	top: 0;
+	width: 1px;
+}
+
+.timeline-both-side:after {
+	border-radius: 50%;
+	bottom: -18px;
+	content: "";
+	height: 18px;
+	left: 50.25%;
+	margin-left: -11px;
+	position: absolute;
+	width: 18px;
+	border: 2px solid #0097a7;
+}
+
+.timeline-both-side li {
+	position: relative;
+	float: left;
+	width: 100%;
+}
+
+.timeline-both-side li .border-line {
+	background-color: #0097a7;
+	font-size: 1.4em;
+	height: 1px;
+	left: 50%;
+	margin-left: -8%;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	width: 8%;
+	z-index: 100;
+}
+
+.timeline-both-side li.opposite-side .border-line {
+	left: auto;
+	right: 50%;
+	margin-left: 0;
+	margin-right: -8%;
+}
+
+.timeline-both-side li .border-line:before {
+	background-color: #0097a7;
+	content: "";
+	height: 7px;
+	position: absolute;
+	right: -4px;
+	top: -3px;
+	width: 7px;
+}
+
+.timeline-both-side li.opposite-side .border-line:before {
+	left: -4px;
+	right: auto;
+}
+
+.timeline-both-side li .timeline-description {
+   
+	border-radius: 2px;
+	background-color: #f1f1f1;
+	border: 1px solid #0097a7;
+	float: left;
+	font-size: 13px;
+	padding: 10px;
+	position: relative;
+	width: 42%;
+}
+
+.timeline-both-side li.opposite-side .timeline-description {
+	float: right;
+}
+
