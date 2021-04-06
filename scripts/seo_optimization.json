@@ -28,4 +28,42 @@
 	"@type": "Organization",
 	"url": "https://www.cssa.dev",
 	"logo": "https://www.cssa.dev/images/logo.png"
+}, {
+	"@context": "https://schema.org",
+	"@graph": 
+	[
+		{
+			"@type": "Person",
+			"name": "Royce Arockiasamy",
+			"jobTitle": "President"
+		}, {
+			"@type": "Person",
+			"name": "Chittebbayi Penugonda",
+			"jobTitle": "Operations Manager"
+		}, {
+			"@type": "Person",
+			"name": "Rasmit Devkota",
+			"jobTitle": "Web Designer"
+		}, {
+			"@type": "Person",
+			"name": "Nikhita Kunthu",
+			"jobTitle": "Social Media"
+		}, {
+			"@type": "Person",
+			"name": "Surya Anand",
+			"jobTitle": "Sponsorship Manager"
+		}, {
+			"@type": "Person",
+			"name": "Sophia Craig",
+			"jobTitle": "Outreach Officer"
+		}, {
+			"@type": "Person",
+			"name": "Ethan Mund",
+			"jobTitle": "Finance Officer"
+		}, {
+			"@type": "Person",
+			"name": "Jelovy Djaja",
+			"jobTitle": "Graphic Design"
+		}
+	]
 }]	
