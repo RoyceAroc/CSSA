@@ -59,6 +59,7 @@ body {
     .nav-item {
         text-align: right;
     }
+    
 }
 @media only screen and (min-width:1000px) {
     .button-out {
@@ -73,6 +74,9 @@ body {
     .nav-link:hover {
         color: white;
         border-bottom: 3px solid white;
+    }
+    nav {
+        height: 100px;   
     }
     
 }
@@ -92,9 +96,6 @@ nav #logo-header{
     position: relative;
 }
 
-nav {
-    height: 100px;   
-}
 
 .main-section{
     position: relative;
