@@ -92,3 +92,37 @@ nav #logo-header{
     position: relative;
 }
 
+nav {
+    height: 100px;   
+}
+
+.main-section{
+    position: relative;
+   top:0px;
+}
+
+.nav-link {
+    font-weight: bold;
+   
+    zoom: 100%;
+}
+
+
+
+.nav-item .button {
+    background-color: transparent;
+    font-weight: bold;
+    color: #18C2CB;
+    border: 3px solid #18C2CB;
+    text-decoration: none;
+    padding: 10px;
+    height: 40px;
+    border-radius: 9px;
+    top: 7px;
+    position: relative;
+}
+
+.nav-item .button:hover {
+    background-color: #fff;
+    transition: 0.3s ease-out;
+}

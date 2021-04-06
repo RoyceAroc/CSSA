@@ -12,7 +12,7 @@
 #nav-box-pad {
     position: -webkit-sticky;
     position: sticky;
-    top: 0;
+    top: 70px;
 }
 
 #nav-box{
@@ -22,6 +22,8 @@
 
 #nav-box h4 {
     padding: 5% 15%;
+    height: 60%;
+
     background-color:#0097a7;
     margin:0;
 }

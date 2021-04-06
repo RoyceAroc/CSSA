@@ -60,3 +60,8 @@
     font-size: 120%;
     line-height: 150%;
 }
+
+.main-section{
+    position: relative;
+   top:50px;
+}

@@ -33,6 +33,8 @@ function setActive() {
       }
 }
 
+var setNavbarScroll = false;
+
 window.addEventListener('load', function () {
     if (getCookie('email') != null) {
         if (window.location.href.includes("sign.html")) {
@@ -69,8 +71,6 @@ window.addEventListener('load', function () {
             xhttp.send();
         }
     }
-    
-    //alert(filename);
     var footerxhttp = new XMLHttpRequest();
     footerxhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -82,6 +82,45 @@ window.addEventListener('load', function () {
 
     footerxhttp.open("GET", "footer.html", true);
     footerxhttp.send();
+
+    setNavbarScroll = true;
+});
+
+$(window).scroll(function() {
+    var height = $(window).scrollTop();
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        // No scrollby navbar for now -> Maybe in the future for mobile, iPad, and other devices
+    } else{
+        let control = document.getElementsByTagName("nav")[0];
+        if(setNavbarScroll) {
+            if(height  > 200) {
+                document.getElementsByClassName("main-section")[0].style.top = "120px";
+                document.getElementById("logo-header").style.zoom = "67%";
+               // document.getElementById("logo-header").childNodes[0].src = "images/scroll-header.png";
+                control.classList.add("fixed-top");
+                control.style.height = "70px";
+                control.style.backgroundColor = "#191B1A";
+                control.style.borderBottom = "1px solid white";
+                let navItems = document.getElementsByClassName("nav-link");
+                for(let i=0; i<navItems.length; i++) {
+                    navItems[i].style.zoom = "80%";
+                }
+                document.getElementsByClassName("button")[0].style.zoom = "90%";
+            } else {
+                document.getElementsByClassName("main-section")[0].style.top = "00px";
+                document.getElementById("logo-header").style.zoom = "100%";
+                document.getElementById("logo-header").childNodes[0].src = "images/header-logo.png";
+                control.style.height = "100px";
+                control.style.borderBottom = "none";
+                control.style.backgroundColor = "transparent";
+                control.classList.remove("fixed-top");
+                let navItems = document.getElementsByClassName("nav-link");
+                for(let i=0; i<navItems.length; i++) {
+                    navItems[i].style.zoom = "100%";
+                }
+            }
+        }
+    }
 });
 
 function display(elem) {
