@@ -17,7 +17,7 @@ db.enablePersistence();
 var users = db.collection("users");
 
 function setActive() {
-    switch (window.location.pathname.substring(window.location.pathname.lastIndexOf('/')+1)) {
+    switch (window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)) {
         case "about.html":
           document.getElementsByClassName("nav-link")[1].classList.add("active");
           break;
@@ -30,7 +30,7 @@ function setActive() {
         case "dashboard.html":
             document.getElementsByClassName("nav-link")[3].classList.add("active");
             break;
-      }
+    }
 }
 
 var setNavbarScroll = false;
@@ -41,6 +41,7 @@ window.addEventListener('load', function () {
             window.location.href = "dashboard.html";
         } else {
             var xhttp = new XMLHttpRequest();
+            
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementsByTagName("nav")[0].innerHTML = xhttp.responseText;
@@ -58,6 +59,7 @@ window.addEventListener('load', function () {
             window.location.href = "sign.html";
         } else {
             var xhttp = new XMLHttpRequest();
+
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementsByTagName("nav")[0].innerHTML = xhttp.responseText;
@@ -71,6 +73,7 @@ window.addEventListener('load', function () {
             xhttp.send();
         }
     }
+
     var footerxhttp = new XMLHttpRequest();
     footerxhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -88,34 +91,42 @@ window.addEventListener('load', function () {
 
 $(window).scroll(function() {
     var height = $(window).scrollTop();
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
         // No scrollby navbar for now -> Maybe in the future for mobile, iPad, and other devices
     } else{
         let control = document.getElementsByTagName("nav")[0];
-        if(setNavbarScroll) {
-            if(height  > 200) {
+
+        if (setNavbarScroll) {
+            if (height  > 200) {
                 document.getElementsByClassName("main-section")[0].style.top = "120px";
                 document.getElementById("logo-header").style.zoom = "67%";
-               // document.getElementById("logo-header").childNodes[0].src = "images/scroll-header.png";
+
                 control.classList.add("fixed-top");
                 control.style.height = "70px";
                 control.style.backgroundColor = "#191B1A";
                 control.style.borderBottom = "1px solid white";
+
                 let navItems = document.getElementsByClassName("nav-link");
-                for(let i=0; i<navItems.length; i++) {
+
+                for (let i=0; i<navItems.length; i++) {
                     navItems[i].style.zoom = "80%";
                 }
+
                 document.getElementsByClassName("button")[0].style.zoom = "90%";
             } else {
                 document.getElementsByClassName("main-section")[0].style.top = "00px";
                 document.getElementById("logo-header").style.zoom = "100%";
                 document.getElementById("logo-header").childNodes[0].src = "images/header-logo.png";
+
                 control.style.height = "100px";
                 control.style.borderBottom = "none";
                 control.style.backgroundColor = "transparent";
                 control.classList.remove("fixed-top");
+
                 let navItems = document.getElementsByClassName("nav-link");
-                for(let i=0; i<navItems.length; i++) {
+
+                for (let i=0; i<navItems.length; i++) {
                     navItems[i].style.zoom = "100%";
                 }
             }
@@ -135,12 +146,12 @@ $('.dropdown').on('hide.bs.dropdown', function(e){
     $(this).find('.dropdown-menu').first().stop(true, true).slideUp(400);
 });
 
-fetch('scripts/seo_optimization.json')
-.then(response => response.text())
-.then(structuredDataText => {
+fetch('scripts/seo_optimization.json').then(response => response.text()).then(structuredDataText => {
   const script = document.createElement('script');
+
   script.setAttribute('type', 'application/ld+json');
   script.textContent = structuredDataText;
+
   document.head.appendChild(script);
 });
 
