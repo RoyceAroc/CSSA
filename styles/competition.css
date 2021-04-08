@@ -23,7 +23,6 @@
 #nav-box h4 {
     padding: 5% 15%;
     height: 60%;
-
     background-color:#0097a7;
     margin:0;
 }
@@ -35,7 +34,6 @@
 }
 
 #nav-box > a:hover {
-
     background-color:#00000025;
 }
 
@@ -96,30 +94,48 @@
     margin-right: 3%;
     width: 15vh;
     height: 15vh;
-    align-content: center;
     align-self: center;
-    align-items: center;
 }
 
 .event-text {
     font-size: 115%;
-    align-content: center;
     align-self: center;
-    align-items: center;
 }
 
 .event-description {
     margin: 1%;
 }
 
-#calendar-container {
+#past-competitions{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.past-competition {
+    padding: 1.2%;
+    border: 3px solid white;
+}
+
+.past-competition > * {
+    margin: 1%;
+}
+
+#calendar-display-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#calendar-display-container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-top: 1%;
 }
 
-#competition-list-container {
+#calendar-list-container {
     display: flex;
     flex-direction: column;
     width: 40%;
@@ -128,20 +144,20 @@
     background-color: #2d3130;
 }
 
-#competition-list-header {
+#calendar-list-header {
     height: 15%;
     padding-top: 6%;
     text-align: center;
     background-color: #1b1b1b;
 }
 
-#competition-list {
+#calendar-list {
     display: flex;
     flex-direction: column;
     padding: 1% 3% 1% 3.2%;
 }
 
-.competition-item {
+.calendar-list-item {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -150,20 +166,20 @@
     background-color: darkslategray;
 }
 
-.competition-item-image {
+.calendar-list-item-image {
     width: 3vw;
     height: 3vw;
 }
 
-.competition-item-text {
+.calendar-list-item-text {
     margin-left: 1%;
 }
 
-.competition-item-description {
+.calendar-list-item-description {
     font-size: 0.92vw;
 }
 
-#calendar {
+#calendar-view {
     display: flex;
     flex-direction: column;
     width: 70%;
@@ -202,13 +218,13 @@
     background-color: #282b28;
 }
 
-#competition-calendar-container {
+#calendar-table-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-#competition-calendar {
+#calendar-table {
     width: 100%;
     margin-left: 2%;
     margin-right: 1%;
@@ -227,3 +243,43 @@ tr > td {
     text-align: right;
 }
   
+@media only screen and (max-width:1218px) {
+    #sidebar {
+        display: none;
+    }
+
+    #content {
+        width: 100%;
+    }
+
+    .event {
+        display: flow-root;
+        text-align: center;
+    }
+
+    #calendar-container {
+        zoom: 50%;
+    }
+
+    .list-item-title {
+        zoom: 150%;
+    }
+
+    .list-item-description {
+        zoom: 250%;
+    }
+
+    #month-navigation {
+        zoom: 200%;
+        width: 300px;
+        height: 50px;
+    }
+
+    #calendar-date {
+        zoom: 200%;
+    }
+
+    #calendar-list-header {
+        zoom: 150%;
+    }
+}
