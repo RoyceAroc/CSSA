@@ -41,7 +41,7 @@ window.addEventListener('load', function () {
             window.location.href = "dashboard.html";
         } else {
             var xhttp = new XMLHttpRequest();
-            
+
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementsByTagName("nav")[0].innerHTML = xhttp.responseText;
@@ -93,7 +93,7 @@ $(window).scroll(function() {
     var height = $(window).scrollTop();
 
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-        // No scrollby navbar for now -> Maybe in the future for mobile, iPad, and other devices
+        // No scrollby navbar for now -> Maybe in the future for mobile and other devices
     } else{
         let control = document.getElementsByTagName("nav")[0];
 
