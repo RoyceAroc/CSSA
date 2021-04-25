@@ -16,6 +16,7 @@
       <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
       <script src="https://kit.fontawesome.com/df7e7c41fe.js" crossorigin="anonymous"></script>
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
+      <script src="https://apis.google.com/js/api:client.js"></script>
 
       <script src="scripts/script.js"></script>
       <script src="scripts/non-minified_authorized.js"></script>
@@ -52,9 +53,9 @@
             </div>
             <div class="holder">
                <form action="javascript:login();" class="login">
-                  <center style="margin: 4% 0%">
-                     <div class="g-signin2" data-onsuccess="onSignIn" data-onfailure="onSignInFailure" data-theme="dark"></div>
-                  </center>
+                  <div class="google-auth" id="google-row">
+                     <img src="images/google-auth.png">
+                   </div>
                   <div class="or-thing">
                      <span>OR</span>
                   </div>
@@ -73,9 +74,10 @@
                   </div>
                </form>
                <form action="javascript:create();" class="signup">
-                  <center style="margin: 4% 0%">
-                     <div class="g-signin2" data-onsuccess="onSignIn" data-onfailure="onSignInFailure" data-theme="dark"></div>
-                  </center>
+                  <div class="google-auth" id="google-row-a">
+                     <img src="images/google-auth.png">
+                   </div>
+                 
                   <div class="or-thing">
                      <span>OR</span>
                   </div>
@@ -120,9 +122,9 @@
 				return false;
          });
          //Automatic cookie sign in irrespective
-         window.addEventListener("load", function() {
+         /*window.addEventListener("load", function() {
             document.querySelector(".abcRioButtonContents > span").innerHTML = "Google Sign In";
-         });
+         });*/
       </script>
       <br>
    </body>
