@@ -125,7 +125,7 @@ nav #logo-header{
 
 .nav-item .button:hover {
     background-color: #e4ede4;
-    opacity: 0.9;
+    opacity: 0.9; 
     transition: 0.3s ease-out;
 }
 

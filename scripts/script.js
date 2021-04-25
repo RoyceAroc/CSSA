@@ -344,3 +344,9 @@ const eventData = {
         }
 	}
 };
+
+function setLabel(label, text) {
+    $('#exampleModalLabel').text(label);
+    $('#label0B').text(text);
+    $('#setLabel').modal('show');
+}

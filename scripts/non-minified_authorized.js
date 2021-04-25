@@ -134,7 +134,7 @@ function create() {
 
 				window.location = "dashboard.html";
 			} else {
-				alert(this.responseText);
+				setLabel('Error', this.responseText);
 			}
 		}
 	};
@@ -158,7 +158,7 @@ function login() {
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			if (this.responseText == "Invalid Credentials" || this.responseText == "Account with that Username/Email Does Not Exist. Please create an account instead.") {
-				alert(this.responseText);
+				setLabel('Error', this.responseText);
 			} else {
 			    let valueArray = JSON.parse(this.responseText).info;
 
@@ -277,7 +277,7 @@ function attachSignin(element) {
 
 								window.location = "dashboard.html";
 							} else {
-								alert(this.responseText);
+								setLabel('Error', this.responseText);
 							}
 						} 
 					};
@@ -304,13 +304,13 @@ function updateProfile() {
 	let d = document.getElementById("updateD").value;
 
 	if (a == "" || a.length > 50) {
-		alert("Invalid First Name");
+		setLabel('Error', 'Invalid First Name');
 	} else if (b == "" || b.length > 50) {
-		alert("Invalid Last Name");
+		setLabel('Error', 'Invalid Last Name');
 	} else if (c == "" || c.length > 50) {
-		alert("Invalid Username Format");
+		setLabel('Error', 'Invalid Username Format');
 	} else if (d == "" || d.length > 70) {
-		alert("Invalid Email Format");
+		setLabel('Error', 'Invalid Email Format');
 	} else {
 		let indexA = 0; let indexB = 0;
 
@@ -350,7 +350,7 @@ function updateProfile() {
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				if((this.responseText == "Email taken. Please choose another email" || this.responseText == "Username taken. Please choose another username") || this.responseText == "error") {
-					alert(this.responseText);
+					setLabel('Error', this.responseText);
 				} else {
 					setCookie('email', d, 365);
 					setCookie('User', c, 365);
@@ -358,8 +358,7 @@ function updateProfile() {
 					setCookie('lName', b, 365);
 						
 					firebaseAuth(d, c, globalSynchronizedPassword);
-	
-					alert("Profile has been updated successfully!");
+					setLabel('Successful', 'Your profile has been updated!');
 				}
 			}
 		}; 
@@ -396,9 +395,8 @@ function refer() {
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
 						if(this.responseText == "error") {
-							console.log("Error A3: Report bug at crewcssa@gmail.com");
+							setLabel('Error', 'We are having trouble processing your request. Please try again later. If the problem persists, contact us at crewcssa@gmail.com.');
 						} else {
-							alert("Your referrer has an added token. Thank you!");
 							location.reload();
 						}
 					} 
@@ -408,7 +406,7 @@ function refer() {
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send(JSON.stringify(values));
 			} else {
-				alert("This user does not exist. Therefore, you cannot refer him");
+				setLabel('Error', 'The user you are trying to refer does not exist within our system. Please try again later. With more than five referrals, you will get the Referral VIP role on our community discord server.');
 			}
 		} 
 	}; 
@@ -454,7 +452,7 @@ function sendContact() {
 			if(this.responseText == "error") {
 				console.log("Error B1");
 			} else {
-				alert("You shall be contacted in 1-2 days with a response!");
+				setLabel('Successful', 'You shall be contacted within 1-2 days with a response. Thanks for your patience!');
 			}
 		} 
 	}; 
@@ -477,8 +475,7 @@ function firebaseAuth(email, username, password) {
 				}
 			}).catch((e) => {
 				console.log(e.message);
-
-				alert("Something went wrong :/ Please refresh the page and try again!");
+				setLabel('Error', 'Something went wrong :/ Please refresh the page and try again!');
 			});
 		});
     }).catch(function (error) {
@@ -495,8 +492,7 @@ function firebaseAuth(email, username, password) {
 						}
 					}).catch((e) => {
 						console.log(e.message);
-
-						alert("Something went wrong :/ Please refresh the page and try again!");
+						setLabel('Error', 'Something went wrong :/ Please refresh the page and try again!');
 					});
 				});
 			});
