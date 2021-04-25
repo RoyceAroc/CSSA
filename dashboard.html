@@ -33,8 +33,10 @@
             }
 
             function switchSection(elem1, elem2) {
-                document.getElementById(elem1).style.display = "flex";
-                document.getElementById(elem2).style.display = "none";
+                if(document.getElementById("preloader").style.display == "none") {
+                    document.getElementById(elem1).style.display = "flex";
+                    document.getElementById(elem2).style.display = "none";
+                }
             }
         </script>
 
@@ -57,20 +59,22 @@
             </div>
 
         
-		<div id="main">
+		<div id="main" style="min-height: 500px;">
             <div id="sidebar">
                 <div id="nav-box-pad">
                     <div id="nav-box">
-                        <h4>Contents</h4>
+                        <h4>Dashboard</h4>
                         <a onclick="switchSection('profile', 'competitions');">Profile</a>
                         <a onclick="switchSection('competitions', 'profile');">My Competitions</a>
                     </div>
                 </div>
             </div>
 
-            <div id="content">
-
-                <div id="profile">
+            <div id="content" style="position:relative;" >
+                <div id="preloader" style="display: none;">
+                    <div id="loader"></div>
+                </div>
+                <div style="min-height: 500px;display: none;" id="profile">
                     <h1>Profile</h1>
                     
                     <div id="profile-content">
@@ -104,8 +108,6 @@
 
                         </div>
 
-                        <!-- <hr style="color: white;"></hr> -->
-
                         <div id="referral" class="holder">
                             <h4>Referral</h4>
 
@@ -125,7 +127,7 @@
                     </div>
                 </div>
 
-                <div style="width:50%;" id="competitions">
+                <div style="width:50%; min-height: 500px;display: none;" id="competitions">
 
                     <h1>My Competitions</h1>
 

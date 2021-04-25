@@ -45,7 +45,14 @@ function generatePassword() {
 
 window.addEventListener("load", () => {
 	if (window.location.href.includes("dashboard.html")) {
-		$('#first-mini-comp').modal('show');
+		// $('#first-mini-comp').modal('show');
+		var completed = true;
+		
+		setTimeout(function() {
+			if(completed) {
+				document.getElementById('preloader').style.display = "block";
+			}
+		}, 2000);
 
 		if (getCookie("googleToken") != null && getCookie("googleToken") != "") {
 			var valuesA = {
@@ -82,6 +89,10 @@ window.addEventListener("load", () => {
 					events = valueArray[6];
 
 					firebaseAuth(valueArray[0], valueArray[1], e[4]);
+
+					document.getElementById("preloader").style.display = "none";
+					document.getElementById("profile").style.display = "block";
+					completed = false;
 				}
 			}
 		};
