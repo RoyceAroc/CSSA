@@ -62,7 +62,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div style="color:black;" class="modal-body">
-               <input type="text" id="email0B3" placeholder="ex: john@gmail.com"><br>
+               <input style="border: 1px solid black;" type="text" id="email0B3" placeholder="ex: john@gmail.com"><br>
                <button onclick="addedEmail()">Send Password Reset Email</button><br>
             </div>
             <div class="modal-footer">
@@ -162,12 +162,10 @@
 
          function addedEmail() {
             let a = document.getElementById("email0B3");
-            firebase.auth.sendPasswordResetEmail("emailAddress").then(() => {
-               $('#resetPassword').modal('hide');
-               setLabel('Email Sent', 'Please check your email');
+            firebase.auth().sendPasswordResetEmail("emailAddress").then(() => {
+               document.getElementById("email0B3").style.borderColor = "green";
             }).catch((error) => {
-               $('#resetPassword').modal('hide');
-               setLabel('Email does not exist', 'Email does not exist');
+               document.getElementById("email0B3").style.borderColor = "red";
             });
          }
       </script>
