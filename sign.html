@@ -71,6 +71,7 @@
 				</div>
 				<div style="color:black;" class="modal-body">
 					<input type="text" id="email0B3" placeholder="ex: john@gmail.com"><br>
+					<p id="textSubmission" style="margin:0;font-style:italic;"></p>
 					<button onclick="addedEmail()">Send Password Reset Email</button><br>
 				</div>
 				<div class="modal-footer">
@@ -178,9 +179,12 @@
          	console.log(a);
 			
 			firebase.auth().sendPasswordResetEmail(a).then(() => {
+				$("#textSubmission").text("Successful! Check your email and follow the steps to reset your password.");
+				$("#textSubmission").css("color", "green");
 				document.getElementById("email0B3").style.borderColor = "green";
 			}).catch((error) => {
-            console.log(error);
+				$("#textSubmission").text("Failure! The email you entered does not match in our system.");
+				$("#textSubmission").css("color", "red");
 				document.getElementById("email0B3").style.borderColor = "red";
 			});
 		}
