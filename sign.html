@@ -175,8 +175,8 @@
 
 		function addedEmail() {
 			let a = document.getElementById("email0B3").value;
-         console.log(a);
-
+         	console.log(a);
+			
 			firebase.auth().sendPasswordResetEmail(a).then(() => {
 				document.getElementById("email0B3").style.borderColor = "green";
 			}).catch((error) => {
