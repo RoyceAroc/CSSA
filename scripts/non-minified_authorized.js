@@ -462,6 +462,31 @@ function sendContact() {
 	xhttp.send(JSON.stringify(co));
 }
 
+function updatePassword(email, password, oobCode) {
+
+	var co = {
+		email: email,
+		password: password,
+		oobCode: oobCode
+	};
+
+	var xhttp = new XMLHttpRequest();
+
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			if(this.responseText == "1") {
+				setLabel('Successful', 'Your password has been changed. Please go back and try logging in.');
+			} else {
+				setLabel('Error', this.responseText.toString());
+			}
+		} 
+	}; 
+	
+	xhttp.open("POST", "https://backend.cssa.dev/changePassword", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(JSON.stringify(co));
+}
+
 function firebaseAuth(email, username, password) {
 	firebase.auth().createUserWithEmailAndPassword(email, password).then(function () {
 		firebase.auth().onAuthStateChanged(function (user) {
