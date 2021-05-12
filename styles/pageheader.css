@@ -9,6 +9,13 @@
     font-size: 100px;
 }
 
+@media only screen and (max-width:1000px) {
+    #title {
+        position: relative;
+	top: 60px;
+    }
+}
+
 #main {
     display: flex;
     background-color: #212423;
