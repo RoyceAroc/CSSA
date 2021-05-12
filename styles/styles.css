@@ -227,3 +227,7 @@ nav #logo-header{
 .google-auth img:hover {
     background-color: #faf9f5;
 }
+
+.object-premise {
+    min-height: 500px;
+}

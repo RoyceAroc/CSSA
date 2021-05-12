@@ -91,7 +91,7 @@ window.addEventListener("load", () => {
 					firebaseAuth(valueArray[0], valueArray[1], e[4]);
 
 					document.getElementById("preloader").style.display = "none";
-					document.getElementById("profile").style.display = "block";
+					document.getElementById("competitions").style.display = "block";
 					completed = false;
 				}
 			}
