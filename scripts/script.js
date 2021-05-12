@@ -129,6 +129,8 @@ $(window).scroll(function() {
                 for (let i=0; i<navItems.length; i++) {
                     navItems[i].style.zoom = "100%";
                 }
+
+                document.getElementsByClassName("button")[0].style.zoom = "100%";
             }
         }
     }
