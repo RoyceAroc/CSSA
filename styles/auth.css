@@ -15,6 +15,11 @@ span {
 	color: black;
 }
 .top-header {
+	position: relative;
+	top: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	color: black;
 	overflow: hidden;
 	max-width: 390px;
@@ -289,3 +294,4 @@ span.buttonText {
 		zoom: 170%;
 	}
 }
+

@@ -44,7 +44,7 @@ window.addEventListener('load', function () {
 
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementsByTagName("nav")[0].innerHTML = xhttp.responseText;
+                    document.getElementById("nav-identifer").innerHTML = xhttp.responseText;
                     setActive();
                 } else if (this.readyState == 4 && this.status != 200) {
                     xhttp.send();
@@ -62,7 +62,7 @@ window.addEventListener('load', function () {
 
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementsByTagName("nav")[0].innerHTML = xhttp.responseText;
+                    document.getElementById("nav-identifer").innerHTML = xhttp.responseText;
                     setActive();
                 } else if (this.readyState == 4 && this.status != 200) {
                     xhttp.send();

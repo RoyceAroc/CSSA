@@ -9,8 +9,12 @@ body {
     background-color: #191b1aff;
     font-family: 'Quicksand';
     margin: 0;
+    
 }
 
+body::-webkit-scrollbar {
+    display: none;
+  }
 .nav-link {
 
     text-transform: uppercase;
@@ -18,7 +22,7 @@ body {
     text-decoration: none;
     color: rgb(180, 180, 180);
     
-    border-bottom: 3px solid transparent;
+    border-bottom: 2px solid transparent;
 }
 
 
@@ -73,7 +77,7 @@ body {
     }
     .nav-link:hover {
         color: white;
-        border-bottom: 3px solid white;
+        border-bottom: 2px solid white;
     }
     nav {
         height: 100px;   
@@ -119,13 +123,12 @@ nav #logo-header{
     padding: 10px;
     height: 40px;
     border-radius: 9px;
-    top: 7px;
+    top: 9px;
     position: relative;
 }
 
 .nav-item .button:hover {
-    background-color: #e4ede4;
-    opacity: 0.9; 
+    background: rgba(255,255,255, 0.1);
     transition: 0.3s ease-out;
 }
 
