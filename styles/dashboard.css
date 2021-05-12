@@ -22,8 +22,6 @@ span {
 }
 
 .top-header .title {
-	position: relative;
-	top: 100px;
 	width: 50%;
 	font-size: 35px;
 	font-weight: 600;
@@ -277,25 +275,11 @@ span.buttonText {
 	margin-top: 5vh;
 }
 
-#profile {
-	display: flex;
-	flex-direction: column;
-}
 
-#profile-content, #competitions-content {
-	display: flex;
-	flex-direction: row;
-}
 
-#userinfo {
-	flex-grow: 4;
-	border-right: 2px solid rgb(196, 196, 196);
-}
 
 .field {
 	width: 60% !important;
-	display: flex;
-	flex-direction: row;
 }
 
 
@@ -305,10 +289,6 @@ span.buttonText {
 	width: 25% !important;
 }
 
-#referral {
-	flex-grow: 3;
-	margin-left: 17%;
-}
 
 #competitions {
 	display: none;

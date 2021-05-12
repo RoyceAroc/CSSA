@@ -34,7 +34,7 @@
 
             function switchSection(elem1, elem2) {
                 if(document.getElementById("preloader").style.display == "none") {
-                    document.getElementById(elem1).style.display = "flex";
+                    document.getElementById(elem1).style.display = "block";
                     document.getElementById(elem2).style.display = "none";
                 }
             }
@@ -48,6 +48,16 @@
 		gtag('js', new Date());
 		gtag('config', 'G-YGQJ626TH7');
 		</script>
+
+        <style>
+            @media only screen and (max-width:1218px) {
+            #sidebar {
+                display: block;
+                position: fixed;
+                z-index: 10000000;
+                right:0;
+            }
+        </style>
     </head>
 
 	<body>
@@ -88,8 +98,8 @@
                 <div id="nav-box-pad">
                     <div id="nav-box">
                         <h4>Dashboard</h4>
-                        <a onclick="switchSection('profile', 'competitions');">Profile</a>
-                        <a onclick="switchSection('competitions', 'profile');">My Competitions</a>
+                        <a onclick="switchSection('competitions', 'profile');">Registration</a>
+                        <a onclick="switchSection('profile', 'competitions');">Settings</a>
                     </div>
                 </div>
             </div>
@@ -97,6 +107,19 @@
             <div id="content" style="position:relative;" >
                 <div id="preloader" style="display: none;">
                     <div id="loader"></div>
+                </div>
+                <div style="width:50%; min-height: 500px;display: none;" id="competitions">
+
+                    <h1>My Competitions</h1>
+
+                    <p id="signed-up"></p>
+
+                    <div id="competitions-content">
+                        <div id="competition-registration">
+                            <h4>Competition Registration</h4>
+                            <strong>There are currently no competitions to register for!</strong>
+                        </div>
+                    </div>
                 </div>
                 <div style="min-height: 500px;display: none;" id="profile">
                     <h1>Profile</h1>
@@ -132,7 +155,7 @@
 
                         </div>
 
-                        <div id="referral" class="holder">
+                        <div style="margin-top: 50px;" id="referral" class="holder">
                             <h4>Referral</h4>
 
                             <form action="javascript:refer();" class="login">
@@ -147,20 +170,6 @@
                                 </div>
                             
                             </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="width:50%; min-height: 500px;display: none;" id="competitions">
-
-                    <h1>My Competitions</h1>
-
-                    <p id="signed-up"></p>
-
-                    <div id="competitions-content">
-                        <div id="competition-registration">
-                            <h4>Competition Registration</h4>
-                            <strong>There are currently no competitions to register for!</strong>
                         </div>
                     </div>
                 </div>

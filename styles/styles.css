@@ -14,7 +14,18 @@ body {
 
 body::-webkit-scrollbar {
     display: none;
-  }
+}
+
+::-moz-selection { 
+    color: white;
+    background: #0097a7;
+}
+  
+::selection {
+    color: white;
+    background: #0097a7;
+}
+
 .nav-link {
 
     text-transform: uppercase;
