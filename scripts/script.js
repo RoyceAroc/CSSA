@@ -94,7 +94,6 @@ $(window).scroll(function() {
     var height = $(window).scrollTop();
 
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-        $('link[rel=stylesheet][href~="https://unpkg.com/aos@next/dist/aos.css"]').remove();
         // No scrollby navbar for now -> Maybe in the future for mobile and other devices
         
     } else{
