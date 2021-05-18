@@ -33,6 +33,7 @@ function setActive() {
     }
 }
 
+
 var setNavbarScroll = false;
 
 window.addEventListener('load', function () {
@@ -93,14 +94,16 @@ $(window).scroll(function() {
     var height = $(window).scrollTop();
 
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        $('link[rel=stylesheet][href~="https://unpkg.com/aos@next/dist/aos.css"]').remove();
         // No scrollby navbar for now -> Maybe in the future for mobile and other devices
+        
     } else{
         let control = document.getElementsByTagName("nav")[0];
 
         if (setNavbarScroll) {
             if (height  > 200) {
                 document.getElementsByClassName("main-section")[0].style.top = "120px";
-                document.getElementById("logo-header").style.zoom = "67%";
+                document.getElementById("logo-header").innerHTML = "<img style=\"width:50px;\" src=\"images/logo.png\"/>";
 
                 control.classList.add("fixed-top");
                 control.style.height = "70px";
@@ -115,9 +118,18 @@ $(window).scroll(function() {
 
                 document.getElementsByClassName("button")[0].style.zoom = "90%";
             } else {
-                document.getElementsByClassName("main-section")[0].style.top = "00px";
-                document.getElementById("logo-header").style.zoom = "100%";
-                document.getElementById("logo-header").childNodes[0].src = "images/header-logo.png";
+                var path = window.location.pathname;
+                var page = path.split("/").pop();
+                if (window.location.href.includes("index.html") || page == "") {
+                    document.getElementsByClassName("main-section")[0].style.top = "50px";
+                } else {
+                    document.getElementsByClassName("main-section")[0].style.top = "0px";
+                }
+
+                document.getElementById("logo-header").innerHTML = 
+                `
+                <img src="images/header-logo.png" style="height: 90px;" alt="CSSA Header Logo">
+                `;
 
                 control.style.height = "100px";
                 control.style.borderBottom = "none";

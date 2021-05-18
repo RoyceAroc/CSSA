@@ -2,7 +2,7 @@ window.addEventListener('load', function () {
     var canvasDiv = document.getElementById('particle-canvas');
     var options = {
         particleColor: '#0097a7',
-        background: 'back.png',
+        background: 'images/back.png',
         interactive: true,
         speed: 'medium',
         density: 'medium'
