@@ -304,3 +304,7 @@ span.buttonText {
 #nav-box a:hover {
 	cursor: pointer;
 }
+
+#content {
+	min-height: 50vh;
+}

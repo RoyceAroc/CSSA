@@ -17,13 +17,12 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
         
-		<script src="scripts/script.js"></script>
-        <script src="scripts/authorized.js"></script>
         
         <link rel="stylesheet" href="styles/dashboard.css">
         <link rel="stylesheet" type="text/css" href="styles/styles.css">
         <link rel="stylesheet" type="text/css" href="styles/competition.css">
         <link rel="stylesheet" type="text/css" href="styles/pageheader.css">
+        <link rel="stylesheet" type="text/css" href="styles/footer.css">
 
         <link rel="icon" href="images/favicon.ico">
 
@@ -50,23 +49,27 @@
 		</script>
 
         <style>
-            @media only screen and (max-width:1218px) {
-            #sidebar {
-                display: block;
-                position: absolute;
-                z-index: 10000000;
-                right:0;
-            }
             body {
-                background-color: #212423;
-            }
-            #content {
-                zoom:120%;
-            }
-            #footer {
                 display: none;
             }
-        }
+            @media only screen and (max-width:1218px) {
+                #sidebar {
+                    display: block;
+                    position: absolute;
+                    z-index: 100;
+                    right:0;
+                    width: 200px;
+                }
+                body {
+                    background-color: #212423;
+                }
+                #content {
+                    zoom:120%;
+                }
+                #footer {
+                    display: none;
+                }
+            }
         </style>
     </head>
 
@@ -87,16 +90,31 @@
         </div>
         <div class="main-section">
             <div id="header">
-                <nav class="navbar navbar-expand-lg">
-                    <a id="logo-header" href="/"><img src="images/header-logo.png" style="height: 90px;" alt="CSSA Header Logo"></a>
-                    <div class="container"> 
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#compNav">
-                            <i class="fa fa-bars open-icon"></i>
+                <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+                    <div class="container-fluid">
+                        <a class="navbar-brand"  href="/">
+                            <img src="images/logo.png" class="d-inline-block align-text-top">
+                          </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ham" aria-controls="ham" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse" id="compNav">
-                            <ul id="nav-identifer" class="navbar-nav mx-auto mt-2 mt-lg-0">
+                        <div class="collapse navbar-collapse" id="ham">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="/">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../about.html">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../competition.html">Competition</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="../dashboard.html">Dashboard</a>
+                                </li>
                             </ul>
-                        </div>
+                            <a id="navbar-login"></a>
+                        </div>      
                     </div>
                 </nav>
                 <h1 id="title">Dashboard</h1>
@@ -126,8 +144,95 @@
 
                     <div id="competitions-content">
                         <div id="competition-registration">
-                            <h4>Competition Registration</h4>
-                            <strong>There are currently no competitions to register for!</strong>
+                            <h4>Summer Competition 2021 (7/1 - 7/31)</h4>
+                            <form action="javascript:competitionRegistration();">
+
+                                <div class="form-group">
+                                    <label for="event1">Event #1</label>
+                                    <select  class="form-control" id="event1">
+                                        <option value="None">None</option>
+                                        <option value="Algorithmic Thinking">Algorithmic Thinking</option>
+                                        <option value="Programming Challenges">Programming Challenges</option>
+                                        <option value="Data Science">Data Science</option>
+                                        <option value="Website Design">Website Design</option>
+                                        <option value="Cybersecurity">Cybersecurity</option>
+                                        <option value="Bug Smasher">Bug Smasher</option>
+                                        <option value="Information Theory">Information Theory</option>
+                                        <option value="Golf">Golf</option>
+                                        <option value="SysAdmin">SysAdmin</option>
+                                        <option value="Networking">Networking</option>
+                                        <option value="Computer Science Math">Computer Science Math</option>
+                                    </select>
+                                </div>
+
+                               
+
+                                <div class="form-group">
+                                    <label for="event2">Event #2</label>
+                                    <select  class="form-control" id="event2">
+                                        <option value="None">None</option>
+                                        <option value="Algorithmic Thinking">Algorithmic Thinking</option>
+                                        <option value="Programming Challenges">Programming Challenges</option>
+                                        <option value="Data Science">Data Science</option>
+                                        <option value="Website Design">Website Design</option>
+                                        <option value="Cybersecurity">Cybersecurity</option>
+                                        <option value="Bug Smasher">Bug Smasher</option>
+                                        <option value="Information Theory">Information Theory</option>
+                                        <option value="Golf">Golf</option>
+                                        <option value="SysAdmin">SysAdmin</option>
+                                        <option value="Networking">Networking</option>
+                                        <option value="Computer Science Math">Computer Science Math</option>
+                                    </select>
+                                </div>
+
+                                
+                                <div class="form-group">
+                                    <label for="event3">Event #3</label>
+                                    <select  class="form-control" id="event3">
+                                        <option value="None">None</option>
+                                        <option value="Algorithmic Thinking">Algorithmic Thinking</option>
+                                        <option value="Programming Challenges">Programming Challenges</option>
+                                        <option value="Data Science">Data Science</option>
+                                        <option value="Website Design">Website Design</option>
+                                        <option value="Cybersecurity">Cybersecurity</option>
+                                        <option value="Bug Smasher">Bug Smasher</option>
+                                        <option value="Information Theory">Information Theory</option>
+                                        <option value="Golf">Golf</option>
+                                        <option value="SysAdmin">SysAdmin</option>
+                                        <option value="Networking">Networking</option>
+                                        <option value="Computer Science Math">Computer Science Math</option>
+                                    </select>
+                                </div>
+
+                               
+
+                                <div class="form-group">
+                                    <label for="event4">Event #4</label>
+                                    <select  class="form-control" id="event4">
+                                        <option value="None">None</option>
+                                        <option value="Algorithmic Thinking">Algorithmic Thinking</option>
+                                        <option value="Programming Challenges">Programming Challenges</option>
+                                        <option value="Data Science">Data Science</option>
+                                        <option value="Website Design">Website Design</option>
+                                        <option value="Cybersecurity">Cybersecurity</option>
+                                        <option value="Bug Smasher">Bug Smasher</option>
+                                        <option value="Information Theory">Information Theory</option>
+                                        <option value="Golf">Golf</option>
+                                        <option value="SysAdmin">SysAdmin</option>
+                                        <option value="Networking">Networking</option>
+                                        <option value="Computer Science Math">Computer Science Math</option>
+                                    </select>
+                                </div>
+
+                                <center>
+                                    <br>
+                                    <div style="height:60px;" class="field btn">
+                                      <div class="btn-layer"></div>
+                                      <input id="submitCompetitionRegistration" type="submit" value="Submit">
+                                    </div>
+                                </center>
+
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -185,7 +290,75 @@
                 </div>
             </div>
 		</div>
-      
 	</body>
-    <footer id="footer"></footer>
+    <script>
+        window.addEventListener('load', function () {
+            if (getCookie('email') == null) {
+                window.location.href = "sign.html";
+            } else {
+                $("body").css("display", "block");
+            }
+        });
+    </script>
+    <script src="scripts/script.js"></script>
+        <script src="scripts/authorized.js"></script>
+        <footer style="margin-top: -10px;">
+            <div class="row">
+                <div class="col-0 col-md-1"></div>
+                <div class="col-md-12 col-lg-4" style="padding-right: 50px;">
+                    <div class="col-sm">
+                        <div id="logo">
+                            <div class="cssa-logo">
+                                <img src="images/header-logo.png" alt="CSSA">
+                            </div>
+                            <br>
+                            <div class="over">
+                                <p>CSSA stands for Computer Science Student Association. It is an organization that focuses on developing computer science skills
+                                    through competitions and events. Competitors compete in multiple competitions per year and gain a chance to win amazing prizes. Join today!
+                                </p>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-md-12 col-lg-3" style="padding-right: 50px;">
+                    <div id="contact-info">
+                        <h4>Pages</h4>
+                        <p>
+                            <a class="footlink" href="/">Home</a><br>
+                            <a class="footlink" href="about.html">About</a><br>
+                            <a class="footlink" href="competition.html">Competition</a>
+                        </p>
+                        <h4>Contact Info</h4>
+                        <p>
+                            Email: crewcssa@gmail.com
+                            <br>
+                            <i class="fab fa-instagram" onclick="window.open('https://www.instagram.com/official.cssa/')"></i>
+                            <i class="fab fa-discord" onclick="window.open('https://discord.gg/xkVJwWZeds')"></i>
+                        </p>
+                        
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4" style="padding-right: 50px;">
+                    <form  action="javascript:sendContact();" id="form">
+                        <h4 style="text-align: center;" class="title">
+                            REACH OUT TO US!
+                        </h4>
+                
+                        <input maxlength="50" type="text" id="contact_name" placeholder="Name" required/>
+                        
+                        <input maxlength="70" type="email" id="contact_email" placeholder="Email" required/>
+                        
+                        <textarea maxlength="8000" type="text" id="contact_message" placeholder="Message" required></textarea>
+                        
+                        <button type="submit">SEND</button>
+                    </form>
+                </div>
+            </div>
+            <hr style="color: white"><p>© Copyright 2021 Computer Science Student Association. All Rights Reserved</p>
+        </footer>
+        <script>
+            window.onload = function() {
+                setLabel("Registration for the 2021 Summer Competition is now open!", "Registration ends on June 30th at 11:59 PM. You may choose up to 4 events to compete in.");
+            }
+        </script>
 </html>

@@ -1,7 +1,9 @@
 #header {
-    padding-bottom: 10vh;
+    position: absolute;
+    width: 100%;
+    top:-100px;
     text-align: center;
-    z-index: -1;
+    z-index: 1000000;
     background-image: url('../images/particlebackground.png');
 }
 
@@ -9,14 +11,26 @@
     font-size: 100px;
 }
 
-@media only screen and (max-width:1000px) {
-    #title {
-        position: relative;
-	top: 60px;
+@media only screen and (max-width:992px) {
+    #main {
+        display: flex;
+        padding-top: 270px;
+        background-color: #212423;
+        zoom: 130%;
+    }
+    #header { 
+        padding-top: 270px;
+        padding-bottom: 50px;
     }
 }
-
-#main {
-    display: flex;
-    background-color: #212423;
+@media only screen and (min-width:992px) {
+    #main {
+        display: flex;
+        padding-top: 200px;
+        background-color: #212423;
+    }
+    #header {
+        padding-top: 120px;
+        padding-bottom: 50px;
+    }
 }

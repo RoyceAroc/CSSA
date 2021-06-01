@@ -56,3 +56,26 @@
 .Videos {
     padding-bottom: 30px;
 }
+@media only screen and (max-width:992px) {
+    #main {
+        display: flex;
+        padding-top: 270px;
+        background-color: #212423;
+        zoom: 130%;
+    }
+    #header { 
+        padding-top: 270px;
+        padding-bottom: 50px;
+    }
+}
+@media only screen and (min-width:992px) {
+    #main {
+        display: flex;
+        padding-top: 40px;
+        background-color: #212423;
+    }
+    #header {
+        padding-top: 120px;
+        padding-bottom: 50px;
+    }
+}

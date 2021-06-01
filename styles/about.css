@@ -136,3 +136,8 @@
 	float: right;
 }
 
+@media only screen and (max-width:992px) {
+    .founders-info {
+        zoom: 150%;
+    }
+}

@@ -7,7 +7,7 @@
 
 
 
-@media only screen and (max-width:1000px) {
+@media only screen and (max-width:992px) {
     .header {
         height: 100%;
     }
@@ -30,8 +30,28 @@
     .model-content-b {
         padding-bottom: 5%;
     }
+    .sponsors {
+        zoom: 150%;
+    }
+    .header {
+        padding-top: 100px!important;
+    }
+    .logos {
+        display: none!important;
+    } 
+    .mob-logos {
+        display: block;
+        background-color: white;
+        width: 80%;
+        position: relative;
+        padding: 30px;
+        border-radius: 10px;
+        left: 10%;
+        margin-bottom: 20px;
+        margin-top: -20px;
+    }   
 }
-@media only screen and (min-width:1000px) {
+@media only screen and (min-width:992px) {
     .header {
         height: 70vh;
     }
@@ -48,6 +68,12 @@
     .model-content-b {
         padding-top: 5%;
     }
+    .logos {
+        display: block;
+    }  
+    .mob-logos {
+        display: none;
+    } 
 }
 
 #particle-canvas{
@@ -110,5 +136,3 @@
     position: relative;
    top:50px;
 }
-
-

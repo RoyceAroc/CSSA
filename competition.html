@@ -24,6 +24,7 @@
         <link rel="stylesheet" type="text/css" href="styles/styles.css">
         <link rel="stylesheet" type="text/css" href="styles/competition.css">
         <link rel="stylesheet" type="text/css" href="styles/pageheader.css">
+        <link rel="stylesheet" type="text/css" href="styles/footer.css">
 
         <link rel="icon" href="images/favicon.ico">
 
@@ -54,16 +55,31 @@
         </div>
         <div class="main-section">
             <div id="header">
-                <nav class="navbar navbar-expand-lg">
-                    <a id="logo-header" href="/"><img src="images/header-logo.png" style="height: 90px;" alt="CSSA Header Logo"></a>
-                    <div class="container"> 
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#compNav">
-                            <i class="fa fa-bars open-icon"></i>
+                <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+                    <div class="container-fluid">
+                        <a class="navbar-brand"  href="/">
+                            <img src="images/logo.png" class="d-inline-block align-text-top">
+                          </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ham" aria-controls="ham" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse" id="compNav">
-                            <ul id="nav-identifer" class="navbar-nav mx-auto mt-2 mt-lg-0">
+                        <div class="collapse navbar-collapse" id="ham">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="/">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../about.html">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="../competition.html">Competition</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../dashboard.html">Dashboard</a>
+                                </li>
                             </ul>
-                        </div>
+                            <a id="navbar-login"></a>
+                        </div>      
                     </div>
                 </nav>
                 <h1 id="title">Competition </h1>
@@ -274,7 +290,60 @@
         </div>
         
         
-        <footer id="footer"></footer>
+        <footer style="margin-top: -10px;">
+            <div class="row">
+                <div class="col-0 col-md-1"></div>
+                <div class="col-md-12 col-lg-4" style="padding-right: 50px;">
+                    <div class="col-sm">
+                        <div id="logo">
+                            <div class="cssa-logo">
+                                <img src="images/header-logo.png" alt="CSSA">
+                            </div>
+                            <br>
+                            <div class="over">
+                                <p>CSSA stands for Computer Science Student Association. It is an organization that focuses on developing computer science skills
+                                    through competitions and events. Competitors compete in multiple competitions per year and gain a chance to win amazing prizes. Join today!
+                                </p>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-md-12 col-lg-3" style="padding-right: 50px;">
+                    <div id="contact-info">
+                        <h4>Pages</h4>
+                        <p>
+                            <a class="footlink" href="/">Home</a><br>
+                            <a class="footlink" href="about.html">About</a><br>
+                            <a class="footlink" href="competition.html">Competition</a>
+                        </p>
+                        <h4>Contact Info</h4>
+                        <p>
+                            Email: crewcssa@gmail.com
+                            <br>
+                            <i class="fab fa-instagram" onclick="window.open('https://www.instagram.com/official.cssa/')"></i>
+                            <i class="fab fa-discord" onclick="window.open('https://discord.gg/xkVJwWZeds')"></i>
+                        </p>
+                        
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4" style="padding-right: 50px;">
+                    <form  action="javascript:sendContact();" id="form">
+                        <h4 style="text-align: center;" class="title">
+                            REACH OUT TO US!
+                        </h4>
+                
+                        <input maxlength="50" type="text" id="contact_name" placeholder="Name" required/>
+                        
+                        <input maxlength="70" type="email" id="contact_email" placeholder="Email" required/>
+                        
+                        <textarea maxlength="8000" type="text" id="contact_message" placeholder="Message" required></textarea>
+                        
+                        <button type="submit">SEND</button>
+                    </form>
+                </div>
+            </div>
+            <hr style="color: white"><p>© Copyright 2021 Computer Science Student Association. All Rights Reserved</p>
+        </footer>
 </div>
 	</body>
 </html>
