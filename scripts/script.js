@@ -354,6 +354,51 @@ const eventData = {
                     "link": "https://docs.google.com/document/d/1g8VhU3HtQRkgkHrEkWYfB2iPAxM3Ct04dpDKT9BnT9I/edit?usp=sharing"
                 }
             ]
+        },
+        "SysAdmin": {
+            "name": "SysAdmin",
+            "image": "./images/SysAdmin Event Icon - Transparent.png",
+            "type": "",
+            "participants": "Individual",
+            "shortDescription": "Answer questions related to various system admin topics, including computer hardware, security policies, database management, networking, file storage, and servers.",
+            "description": "Answer questions related to various system admin topics, including computer hardware, security policies, database management, networking, file storage, and servers.",
+            "resources": [
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": "https://docs.google.com/document/d/1vtHLAzQk0qy_GQqlHM-WVFuUeElktxPXn8uqQ0LBL48/edit?usp=sharing"
+                }
+            ]
+        },
+        "Networking": {
+            "name": "Networking",
+            "image": "./images/Networking Event Icon - Transparent.png",
+            "type": "",
+            "participants": "Individual",
+            "shortDescription": "Answer questions related to various networking topics, including network topologies, network hardware, servers, communication, and network security.",
+            "description": "Answer questions related to various networking topics, including network topologies, network hardware, servers, communication, and network security.",
+            "resources": [
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": "https://docs.google.com/document/d/1SdsqFaOuGSk9fbUEJ7CtMQM2_Gpatrnztdub7glZg7g/edit?usp=sharing"
+                }
+            ]
+        },
+        "Computer Science Math": {
+            "name": "Computer Science Math",
+            "image": "./images/Computer Science Math Icon - Transparent.png",
+            "type": "",
+            "participants": "Individual",
+            "shortDescription": "Answer questions related to various computer science math topics, including algorithms, complexity, computability, formal languages, and logic.",
+            "description": "Answer questions related to various computer science math topics, including algorithms, complexity, computability, formal languages, and logic.",
+            "resources": [
+                {
+                    "title": "Event Guide",
+                    "type": "Event Guide",
+                    "link": "https://docs.google.com/document/d/12rd0LExwANKb4yoWp8eHnVYKtVQRtMF39EGXUQvd7QM/edit?usp=sharing"
+                }
+            ]
         }
 	}
 };
