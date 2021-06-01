@@ -16,7 +16,7 @@ span {
 }
 .top-header {
 	position: relative;
-	top: 100px;
+	top: 160px;
 	display: flex;
 	justify-content: center;
 	align-items: center;

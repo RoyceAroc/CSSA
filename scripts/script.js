@@ -16,63 +16,15 @@ db.enablePersistence();
 
 var users = db.collection("users");
 
-function setActive() {
-    switch (window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)) {
-        case "about.html":
-          document.getElementsByClassName("nav-link")[1].classList.add("active");
-          break;
-        case "":
-            document.getElementsByClassName("nav-link")[0].classList.add("active");
-            break;
-        case "competition.html":
-            document.getElementsByClassName("nav-link")[2].classList.add("active");
-            break;
-        case "dashboard.html":
-            document.getElementsByClassName("nav-link")[3].classList.add("active");
-            break;
-    }
-}
-
-
 var setNavbarScroll = false;
 
 window.addEventListener('load', function () {
     if (getCookie('email') != null) {
-        if (window.location.href.includes("sign.html")) {
-            window.location.href = "dashboard.html";
-        } else {
-            var xhttp = new XMLHttpRequest();
-
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("nav-identifer").innerHTML = xhttp.responseText;
-                    setActive();
-                } else if (this.readyState == 4 && this.status != 200) {
-                    xhttp.send();
-                }
-            };
-    
-            xhttp.open("GET", "navbarA.html", true);
-            xhttp.send();
-        }
+        document.getElementById("navbar-login").innerHTML = "Logout";
+        document.getElementById("navbar-login").setAttribute("href", "javascript:signOut();");
     } else {
-        if (window.location.href.includes("dashboard.html")) {
-            window.location.href = "sign.html";
-        } else {
-            var xhttp = new XMLHttpRequest();
-
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("nav-identifer").innerHTML = xhttp.responseText;
-                    setActive();
-                } else if (this.readyState == 4 && this.status != 200) {
-                    xhttp.send();
-                }
-            };
-
-            xhttp.open("GET", "navbarB.html", true);
-            xhttp.send();
-        }
+        document.getElementById("navbar-login").innerHTML = "Login";
+        document.getElementById("navbar-login").setAttribute("href", "sign.html");
     }
 
     var footerxhttp = new XMLHttpRequest();
@@ -95,53 +47,14 @@ $(window).scroll(function() {
 
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
         // No scrollby navbar for now -> Maybe in the future for mobile and other devices
-        
+        document.getElementsByClassName("navbar")[0].style.backgroundColor = "black";
     } else{
         let control = document.getElementsByTagName("nav")[0];
-
         if (setNavbarScroll) {
-            if (height  > 200) {
-                document.getElementsByClassName("main-section")[0].style.top = "120px";
-                document.getElementById("logo-header").innerHTML = "<img style=\"width:50px;\" src=\"images/logo.png\"/>";
-
-                control.classList.add("fixed-top");
-                control.style.height = "70px";
-                control.style.backgroundColor = "#191B1A";
-                control.style.borderBottom = "1px solid white";
-
-                let navItems = document.getElementsByClassName("nav-link");
-
-                for (let i=0; i<navItems.length; i++) {
-                    navItems[i].style.zoom = "80%";
-                }
-
-                document.getElementsByClassName("button")[0].style.zoom = "90%";
+            if (height  > 1) {
+                document.getElementsByClassName("navbar")[0].style.backgroundColor = "black";
             } else {
-                var path = window.location.pathname;
-                var page = path.split("/").pop();
-                if (window.location.href.includes("index.html") || page == "") {
-                    document.getElementsByClassName("main-section")[0].style.top = "50px";
-                } else {
-                    document.getElementsByClassName("main-section")[0].style.top = "0px";
-                }
-
-                document.getElementById("logo-header").innerHTML = 
-                `
-                <img src="images/header-logo.png" style="height: 90px;" alt="CSSA Header Logo">
-                `;
-
-                control.style.height = "100px";
-                control.style.borderBottom = "none";
-                control.style.backgroundColor = "transparent";
-                control.classList.remove("fixed-top");
-
-                let navItems = document.getElementsByClassName("nav-link");
-
-                for (let i=0; i<navItems.length; i++) {
-                    navItems[i].style.zoom = "100%";
-                }
-
-                document.getElementsByClassName("button")[0].style.zoom = "100%";
+                document.getElementsByClassName("navbar")[0].style.backgroundColor = "transparent";
             }
         }
     }

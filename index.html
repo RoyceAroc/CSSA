@@ -15,6 +15,8 @@
         <script src="https://kit.fontawesome.com/df7e7c41fe.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         <script src="scripts/script.js"></script>
         <script src="scripts/index.js"></script>
@@ -33,16 +35,31 @@
             gtag('config', 'G-YGQJ626TH7');
         </script>
     </head>
-    <nav class="navbar navbar-expand-lg">
-        <a id="logo-header" href="/"><img src="images/header-logo.png" style="height: 90px;" alt="CSSA Header Logo"></a>
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#compNav">
-            <i class="fa fa-bars open-icon"></i>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand"  href="/">
+                <img src="images/logo.png" class="d-inline-block align-text-top">
+              </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ham" aria-controls="ham" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="compNav">
-                <ul id="nav-identifer" class="navbar-nav mx-auto mt-2 mt-lg-0">
+            <div class="collapse navbar-collapse" id="ham">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../competition.html">Competition</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../dashboard.html">Dashboard</a>
+                    </li>
                 </ul>
-            </div>
+                <a id="navbar-login"></a>
+            </div>      
         </div>
     </nav>
     <body>
@@ -106,12 +123,50 @@
                         "background-color: white;color: #0097A7;" onclick="window.open('https://discord.gg/xkVJwWZeds')">Join the Discord</button>
                     </div>
                 </div>
+                <div style="background-color: #232423;padding: 2%;" class="row model">
+                    <div style="text-align: center;" class="sponsors">
+                        <h1 style="font-family: 'Bebas Neue', cursive; ">Our sponsors</h1><br>
+                        <center><div style="width: 80%;background-color: #EDE4E4; padding: 30px; border-radius: 2px; margin-auto;" class="logos">
+                            <div>
+                                <div class="image">
+                                    <a href="https://artofproblemsolving.com/company"><img style="width: 50%;" src="../images/promotions/logos/AoPS_Main_Logo.png"/></a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="image">
+                                    <a href="https://artofproblemsolving.com/company"><img style="width: 50%;" src="../images/promotions/logos/AoPS_Main_Logo.png"/></a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="image">
+                                    <a href="https://artofproblemsolving.com/company"><img style="width: 50%;" src="../images/promotions/logos/AoPS_Main_Logo.png"/></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div></center>
+                    <div class="mob-logos">
+                        <a href="https://artofproblemsolving.com/company"><img style="width: 50%;" src="../images/promotions/logos/AoPS_Main_Logo.png"/></a>
+                    </div>
+                </div>
             </div>
             <footer id="footer"></footer>
         </div>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
         <script>
-          AOS.init({duration:1000});
+        $('.logos').slick({
+            dots: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow:3,
+            slidesToScroll:3,
+            centerMode: true,
+            arrows: false,
+            autoplay: true,
+            autoplaySpeed: 1500,
+        });
+
+        AOS.init({duration:1000,once:true});
         </script>
     </body>
 </html>

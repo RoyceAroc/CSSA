@@ -3,6 +3,7 @@ footer {
     flex-direction: row;
     justify-content: space-evenly;
     padding: 2%;
+    border-top: 7px solid #0097a7;
     background-color:rgb(20, 22, 21);
 }
 .logos{
