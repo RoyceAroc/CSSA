@@ -1,3 +1,9 @@
+function setLabel(label, text) {
+    $('#exampleModalLabel').text(label);
+    $('#label0B').text(text);
+    $('#setLabel').modal('show');
+}
+
 firebase.initializeApp({
     apiKey: "AIzaSyAPTvz8weUBIMyjl6ekC1uegX-j4u2Z1sc",
     authDomain: "cssa-dev.firebaseapp.com",
@@ -274,9 +280,3 @@ const eventData = {
         }
 	}
 };
-
-function setLabel(label, text) {
-    $('#exampleModalLabel').text(label);
-    $('#label0B').text(text);
-    $('#setLabel').modal('show');
-}

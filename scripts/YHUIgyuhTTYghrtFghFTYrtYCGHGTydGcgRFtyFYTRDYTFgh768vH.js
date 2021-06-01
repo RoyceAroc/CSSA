@@ -498,6 +498,12 @@ function firebaseAuth(email, username, password) {
 				if (!window.location.href.includes("dashboard")) {
 					window.location.href = "dashboard.html";
 				}
+				users.doc(uid).get().then((doc) => {
+					event1 = doc.data().event1 ?? "None";
+					event2 = doc.data().event2 ?? "None";
+					event3 = doc.data().event3 ?? "None";
+					event4 = doc.data().event4 ?? "None";
+				});
 			}).catch((e) => {
 				console.log(e.message);
 				setLabel('Error', 'Something went wrong :/ Please refresh the page and try again!');
@@ -515,6 +521,37 @@ function firebaseAuth(email, username, password) {
 						if (!window.location.href.includes("dashboard")) {
 							window.location.href = "dashboard.html";
 						}
+
+						users.doc(uid).get().then((doc) => {
+							event1 = doc.data().event1 ?? "None";
+							if(event1.includes("!")) {
+								document.getElementById("event1").value = "None";
+							} else {
+								document.getElementById("event1").value = event1;
+							}
+							
+							event2 = doc.data().event2 ?? "None";
+							if(event2.includes("!")) {
+								document.getElementById("event2").value = "None";
+							} else {
+								document.getElementById("event2").value = event2;
+							}
+							
+							event3 = doc.data().event3 ?? "None";
+							if(event3.includes("!")) {
+								document.getElementById("event3").value = "None";
+							} else {
+								document.getElementById("event3").value = event3;
+							}
+
+							event4 = doc.data().event4 ?? "None";
+							if(event4.includes("!")) {
+								document.getElementById("event3").value = "None";
+							} else {
+								document.getElementById("event4").value = event4;
+							}
+						});
+
 					}).catch((e) => {
 						console.log(e.message);
 						setLabel('Error', 'Something went wrong :/ Please refresh the page and try again!');
@@ -524,6 +561,87 @@ function firebaseAuth(email, username, password) {
 		}
 	});
 }
+
+var event1 = "None";
+var event2 = "None";
+var event3 = "None";
+var event4 = "None";
+
+window.addEventListener("load", function() {
+	var event1El = document.getElementById("event1");
+	var event2El = document.getElementById("event2");
+	var event3El = document.getElementById("event3");
+	var event4El = document.getElementById("event4");
+
+	event1El.addEventListener("change", () => {
+		if ([event2, event3, event4].includes(event1El.value) && event1El.value != "None") {
+			event1El.value = event1;
+
+			alert("Please do not select a single event more than once!");
+		} else {
+			event1 = event1El.value;
+		}
+	});
+
+	event2El.addEventListener("change", () => {
+		if ([event1, event3, event4].includes(event2El.value) && event2El.value != "None") {
+			event2El.value = event2;
+
+			alert("Please do not select a single event more than once!");
+		} else {
+			event2 = event2El.value;
+		}
+	});
+
+	event3El.addEventListener("change", () => {
+		if ([event1, event2, event4].includes(event3El.value) && event3El.value != "None") {
+			event3El.value = event3;
+
+			alert("Please do not select a single event more than once!");
+		} else {
+			event3 = event3El.value;
+		}
+	});
+
+	event4El.addEventListener("change", () => {
+		if ([event1, event2, event3].includes(event4El.value) && event4El.value != "None") {
+			event4El.value = event4;
+
+			alert("Please do not select a single event more than once!");
+		} else {
+			event4 = event4El.value;
+		}
+	});
+
+});
+
+function eventsConfirm() {
+	if (event1 == "None" && event2 == "None" && event3 == "None" && event4 == "None") {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+function competitionRegistration() {
+	if (eventsConfirm()) {
+		users.doc(uid).set({
+			event1: event1,
+			event2: event2,
+			event3: event3,
+			event4: event4
+		}, { merge: true }).then(() => {
+			alert("Successfully submitted your competition registration!");
+		}).catch((e) => {
+			console.log(e.message);
+
+			alert("Something went wrong :/ Please refresh the page and try again!");
+		});
+	} else {
+		alert("Please select at least one event!");
+	}
+}
+
 
 function deleteAllCookies() {
     var cookies = document.cookie.split(";");
