@@ -9,8 +9,7 @@
 body {
     background-color: #191b1aff;
     font-family: 'Quicksand';
-    margin: 0;
-    
+    width: 100%;
 }
 
 body::-webkit-scrollbar {

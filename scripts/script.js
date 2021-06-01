@@ -18,7 +18,22 @@ var users = db.collection("users");
 
 var setNavbarScroll = false;
 
+
+
 window.addEventListener('load', function () {
+    var height = window.pageYOffset;
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        // No scrollby navbar for now -> Maybe in the future for mobile and other devices
+        document.getElementsByClassName("navbar")[0].style.backgroundColor = "black";
+    } else{
+        let control = document.getElementsByTagName("nav")[0];
+            if (height  > 1) {
+                document.getElementsByClassName("navbar")[0].style.backgroundColor = "black";
+            } else {
+                document.getElementsByClassName("navbar")[0].style.backgroundColor = "transparent";
+            }
+    }
+
     if (getCookie('email') != null) {
         document.getElementById("navbar-login").innerHTML = "Logout";
         document.getElementById("navbar-login").setAttribute("href", "javascript:signOut();");
@@ -26,21 +41,10 @@ window.addEventListener('load', function () {
         document.getElementById("navbar-login").innerHTML = "Login";
         document.getElementById("navbar-login").setAttribute("href", "sign.html");
     }
-
-    var footerxhttp = new XMLHttpRequest();
-    footerxhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("footer").outerHTML = footerxhttp.responseText;
-        } else if (this.readyState == 4 && this.status != 200) {
-            footerxhttp.send();
-        }
-    };
-
-    footerxhttp.open("GET", "footer.html", true);
-    footerxhttp.send();
-
+  
     setNavbarScroll = true;
 });
+
 
 $(window).scroll(function() {
     var height = $(window).scrollTop();

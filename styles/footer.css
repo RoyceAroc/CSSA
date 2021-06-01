@@ -1,56 +1,37 @@
-footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    padding: 2%;
-    border-top: 7px solid #0097a7;
-    background-color:rgb(20, 22, 21);
-}
-.logos{
-    display:flex;
-    flex-direction: row;
-
-    
-}
-#logo {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-}
 
 .over p{
     color:rgb(204, 204, 204)
 }
-.titlewrap{
-    height: 70px;
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
-}
+
 .fa-instagram, .fa-discord{
     font-size: 50px;
     cursor: pointer;
-    
 }
+
 .fa-instagram{
     color:rgb(216, 94, 94);
-    margin-right: 10px;
-    margin-top: 10px;
 }
+
 .fa-discord{
-    margin-top:10px;
     color:rgb(154, 82, 212)
 }
+
 #logo img {
     width: 70px;
     height:70px;
-    margin-right: 10px;
 }
 
-#contact-info {
-    text-align: left;
-    width: 30%;
-    margin-left: 7%;
+footer form input{
+    width: 100%;
+}
+
+footer form textarea{
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+footer form button {
+    width: 100%;
 }
 
 #contact-info .footlink{
@@ -63,16 +44,6 @@ footer {
 }
 #contact-info p{
     color: rgb(204, 204, 204);
-}
-#form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 30%
-}
-
-.title {
-    text-align: center;
 }
 
 footer input, textarea {
@@ -88,11 +59,37 @@ input::-webkit-input-placeholder, #message::-webkit-input-placeholder {
     font-size: 20px;
 }
 
-button {
+footer button {
     background-color: #0097a7;
-    margin-top: 2%;
     border-radius: 7px;
     border:none;
     padding: 2%;
-    
+}
+
+.cssa-logo img {
+    width: 300px!important;
+}
+
+footer .row {
+    text-align: left!important;
+}
+
+footer {
+    background-color: black!important;
+    border-top: 5px solid #0097a7;
+    padding-top:1%;
+    padding-bottom: 1%;
+    margin-top: 50px;
+    position: relative;
+    text-align: center;
+}
+
+@media only screen and (max-width:992px) {
+    footer {
+        zoom: 150%;
+        padding-top: 30px;
+        margin-top: 35px;
+        padding-left: 20%;
+        padding-right: 20%;
+    }
 }

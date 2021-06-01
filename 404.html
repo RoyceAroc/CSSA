@@ -21,17 +21,45 @@
 		<link rel="stylesheet" type="text/css" href="styles/styles.css">
 		<link rel="stylesheet" type="text/css" href="styles/about.css">
 		<link rel="stylesheet" typev="text/css" href="styles/pageheader.css">
+		<link rel="stylesheet" type="text/css" href="styles/footer.css">
 
 		<link rel="icon" href="images/favicon.ico">
 		
-			<!-- Global site tag (gtag.js) - Google Analytics -->
-			<script async src="https://www.googletagmanager.com/gtag/js?id=G-YGQJ626TH7%22%3E"></script>
-			<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'G-YGQJ626TH7');
-			</script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-YGQJ626TH7%22%3E"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-YGQJ626TH7');
+		</script>
+
+		<style>
+			@media only screen and (max-width:992px) {
+				#main {
+					display: flex;
+					padding-top: 120px;
+					padding-bottom: 20px;
+					background-color: #212423;
+					zoom: 130%;
+				}
+				#header { 
+					padding-top: 360px;
+					padding-bottom: 50px;
+				}
+			}
+			@media only screen and (min-width:992px) {
+				#main {
+					display: flex;
+					padding-top: 80px;
+					background-color: #212423;
+				}
+				#header {
+					padding-top: 180px;
+					padding-bottom: 50px;
+				}
+			}
+		</style>
 	</head>
 
 	<body>
@@ -50,16 +78,31 @@
             </div>
         </div>
 		<div id="header">
-            <nav class="navbar navbar-expand-lg">
-				<a id="logo-header" href="/"><img src="images/header-logo.png" style="height: 90px;" alt="CSSA Header Logo"></a>
-				<div class="container"> 
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#compNav">
-						<i class="fa fa-bars open-icon"></i>
+            <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+				<div class="container-fluid">
+					<a class="navbar-brand"  href="/">
+						<img src="images/logo.png" class="d-inline-block align-text-top">
+					</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ham" aria-controls="ham" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
 					</button>
-					<div class="collapse navbar-collapse" id="compNav">
-						<ul id="nav-identifer" class="navbar-nav mx-auto mt-2 mt-lg-0">
+					<div class="collapse navbar-collapse" id="ham">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="/">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="../about.html">About</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="../competition.html">Competition</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="../dashboard.html">Dashboard</a>
+							</li>
 						</ul>
-					</div>
+						<a id="navbar-login"></a>
+					</div>      
 				</div>
 			</nav>
             <h1 id="title">Page not found </h1>
