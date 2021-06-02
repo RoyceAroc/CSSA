@@ -577,7 +577,7 @@ window.addEventListener("load", function() {
 		if ([event2, event3, event4].includes(event1El.value) && event1El.value != "None") {
 			event1El.value = event1;
 
-			alert("Please do not select a single event more than once!");
+			setLabel("Error", "Please do not select a single event more than once!");
 		} else {
 			event1 = event1El.value;
 		}
@@ -587,7 +587,7 @@ window.addEventListener("load", function() {
 		if ([event1, event3, event4].includes(event2El.value) && event2El.value != "None") {
 			event2El.value = event2;
 
-			alert("Please do not select a single event more than once!");
+			setLabel("Error", "Please do not select a single event more than once!");
 		} else {
 			event2 = event2El.value;
 		}
@@ -597,7 +597,7 @@ window.addEventListener("load", function() {
 		if ([event1, event2, event4].includes(event3El.value) && event3El.value != "None") {
 			event3El.value = event3;
 
-			alert("Please do not select a single event more than once!");
+			setLabel("Error", "Please do not select a single event more than once!");
 		} else {
 			event3 = event3El.value;
 		}
@@ -607,7 +607,7 @@ window.addEventListener("load", function() {
 		if ([event1, event2, event3].includes(event4El.value) && event4El.value != "None") {
 			event4El.value = event4;
 
-			alert("Please do not select a single event more than once!");
+			setLabel("Error", "Please do not select a single event more than once!");
 		} else {
 			event4 = event4El.value;
 		}
@@ -631,14 +631,14 @@ function competitionRegistration() {
 			event3: event3,
 			event4: event4
 		}, { merge: true }).then(() => {
-			alert("Successfully submitted your competition registration!");
+			setLabel("Successful", "Successfully submitted your competition registration!");
 		}).catch((e) => {
 			console.log(e.message);
 
-			alert("Something went wrong :/ Please refresh the page and try again!");
+			setLabel("Error", "Something went wrong :/ Please refresh the page and try again!");
 		});
 	} else {
-		alert("Please select at least one event!");
+		setLabel("Error", "Please select at least one event!");
 	}
 }
 
