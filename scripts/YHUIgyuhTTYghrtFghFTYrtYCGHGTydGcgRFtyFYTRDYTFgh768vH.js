@@ -546,7 +546,7 @@ function firebaseAuth(email, username, password) {
 
 							event4 = doc.data().event4 ?? "None";
 							if(event4.includes("!")) {
-								document.getElementById("event3").value = "None";
+								document.getElementById("event4").value = "None";
 							} else {
 								document.getElementById("event4").value = event4;
 							}
