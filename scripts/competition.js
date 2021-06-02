@@ -85,16 +85,10 @@ function daysInMonth (month, year) {
 const calendarItems = {
     "items": {
         "item1": {
-            "name": "First Mini-Competition",
-            "description": "CSSA's first mini-competition! Participants are allowed to compete at any time of the month.",
-            "start": "3/1",
-            "end": "3/31",
-        },
-        "item2": {
-            "name": "First Mini-Competition Awards",
-            "description": "Results will be released on our website and Discord server.",
-            "start": "4/13",
-            "end": "4/13",
+            "name": "Summer Competition 2021",
+            "description": "CSSA's first full competition! Participants are allowed to compete at any time of the month.",
+            "start": "7/1",
+            "end": "7/31",
         }
     }
 };
