@@ -27,6 +27,14 @@ var setNavbarScroll = false;
 
 
 window.addEventListener('load', function () {
+    if(typeof InstallTrigger !== 'undefined') {
+        let navFirefox = document.getElementsByClassName("nav-link");
+        for(i=0; i<navFirefox.length; i++) {
+          navFirefox[i].style.fontWeight = "normal";
+        }
+        let loginFirefox = document.getElementById("navbar-login");
+        loginFirefox.style.fontWeight = "normal";
+    }
     var height = window.pageYOffset;
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
         // No scrollby navbar for now -> Maybe in the future for mobile and other devices
