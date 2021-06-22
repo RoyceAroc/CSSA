@@ -5,6 +5,8 @@
 
 .fa-instagram, .fa-discord{
     font-size: 50px;
+    padding-right: 10px;
+    padding-top: 13px;
     cursor: pointer;
 }
 
