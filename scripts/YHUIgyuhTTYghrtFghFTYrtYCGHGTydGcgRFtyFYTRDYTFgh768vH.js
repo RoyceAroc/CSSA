@@ -1,6 +1,6 @@
 var globalSynchronizedPassword = "";
 
-var events = "";
+var events = ""; var completed = true;
 
 function setCookie(name, value, days) {
 	var expires = "";
@@ -43,10 +43,15 @@ function generatePassword() {
 	return retVal;
 }
 
+function displayDashboard() {
+	document.getElementById("preloader").style.display = "none";
+	document.getElementById("competitions").style.display = "block";
+	completed = false;
+}
+
 window.addEventListener("load", () => {
 	if (window.location.href.includes("dashboard.html")) {
 		// $('#first-mini-comp').modal('show');
-		var completed = true;
 
 		setTimeout(function () {
 			if (completed) {
@@ -89,10 +94,6 @@ window.addEventListener("load", () => {
 					events = valueArray[6];
 
 					firebaseAuth(valueArray[0], valueArray[1], e[4]);
-
-					document.getElementById("preloader").style.display = "none";
-					document.getElementById("competitions").style.display = "block";
-					completed = false;
 				}
 			}
 		};
@@ -505,6 +506,8 @@ function firebaseAuth(email, username, password) {
 					event3 = doc.data().event3 ?? "None";
 					event4 = doc.data().event4 ?? "None";
 				});
+
+				displayDashboard();
 			}).catch((e) => {
 				console.log(e.message);
 				setLabel('Error', 'Something went wrong :/ Please refresh the page and try again!');
@@ -552,7 +555,8 @@ function firebaseAuth(email, username, password) {
 								document.getElementById("event4").value = event4;
 							}
 						});
-
+						
+						displayDashboard();
 					}).catch((e) => {
 						console.log(e.message);
 						setLabel('Error', 'Something went wrong :/ Please refresh the page and try again!');
