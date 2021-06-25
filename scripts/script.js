@@ -1,6 +1,6 @@
 function setLabel(label, text) {
     $('#exampleModalLabel').text(label);
-    $('#label0B').text(text);
+    $('#label0B').html(text);
     $('#setLabel').modal('show');
 }
 
