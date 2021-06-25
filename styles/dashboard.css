@@ -312,3 +312,8 @@ select {
 	cursor: pointer!important;
 }
 
+@media only screen and (max-width:1218px) {
+	.tooltip-btn {
+		display: none;
+	}
+}
