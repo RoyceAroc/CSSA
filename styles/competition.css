@@ -106,7 +106,7 @@
     margin: 1%;
 }
 
-#past-competitions{
+#past-competitions {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -120,6 +120,15 @@
 
 .past-competition > * {
     margin: 1%;
+}
+
+.past-competition-link {
+    color: white;
+    cursor: pointer;
+}
+
+.past-competition-link:hover {
+    color: #18C0C9;
 }
 
 #calendar-display-container {
