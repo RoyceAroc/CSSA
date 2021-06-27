@@ -85,6 +85,12 @@ function daysInMonth (month, year) {
 const calendarItems = {
     "items": {
         "item1": {
+            "name": "Registration Period",
+            "description": "Registration for the 2021 Summer Competition is open until the end of June",
+            "start": "6/1",
+            "end": "6/30",
+        },
+        "item2": {
             "name": "Summer Competition 2021",
             "description": "CSSA's first full competition! Participants are allowed to compete at any time of the month.",
             "start": "7/1",

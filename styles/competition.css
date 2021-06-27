@@ -253,6 +253,9 @@ tr > td {
 }
   
 @media only screen and (max-width:1218px) {
+    #calendar-container {
+        display: none;
+    }
     #sidebar {
         display: none;
     }
@@ -291,4 +294,8 @@ tr > td {
     #calendar-list-header {
         zoom: 150%;
     }
+}
+
+#main h1 {
+    color: #0097A7;
 }

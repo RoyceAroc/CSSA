@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>CSSA</title>	
+        <title>CSSA Dashboard</title>	
         <meta property="og:title" content="CSSA">
         <meta property="og:description" content="Official page of CSSA, Computer Science Student Association. Participants of all ages compete in seasonal competitions while advancing their skills in Computer Science.">
         <meta property="og:image" content="https://www.cssa.dev/images/logo.png">
@@ -144,7 +144,13 @@
 
                     <div id="competitions-content">
                         <div id="competition-registration">
-                            <h4>Summer Competition 2021 (7/1 - 7/31)</h4>
+                            <h4>Summer Competition 2021 (7/1 - 7/31) <button class="tooltip-btn" style="border-radius: 100%; width: 27px; height: 27px;border: none; outline: none;position: relative; top: -10px;"><i style="color: #0097A7; position: absolute;font-size: 17px; left: 7.5px; top: 7px" data-toggle="tooltip" title="You may select up to four events to compete in." class="fas fa-question"></i></button></h4>
+                            <script type="text/javascript">
+                                $(document).ready(function() {
+                                    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+                                });
+                            </script>
+                    
                             <form action="javascript:competitionRegistration();">
 
                                 <div class="form-group">
@@ -243,8 +249,8 @@
                     
                     <div id="profile-content">
                         <div id="userinfo" class="holder">
-                            <h4>Update Profile</h4>
-
+                            <h4>Update Profile <button data-toggle="tooltip" title="You cannot update your password" class="tooltip-btn" style="border-radius: 100%; width: 27px; height: 27px;border: none; outline: none;position: relative; top: -10px;"><i style="color: #0097A7; position: absolute;font-size: 17px; left: 7.5px; top: 7px" data-toggle="tooltip" title="You cannot update your password" class="fas fa-question"></i></button></h4> 
+                            
                             <form action="javascript:updateProfile();" class="login">
 
                                 <div class="field">
@@ -273,7 +279,7 @@
                         </div>
 
                         <div style="margin-top: 50px;" id="referral" class="holder">
-                            <h4>Referral</h4>
+                            <h4>Referral <button data-toggle="tooltip" title="Refer a friend to join CSSA and earn a special role on the discord server upon referring 5 or more friends" class="tooltip-btn" style="border-radius: 100%; width: 27px; height: 27px;border: none; outline: none;position: relative; top: -10px;"><i style="color: #0097A7; position: absolute;font-size: 17px; left: 7.5px; top: 7px" data-toggle="tooltip" title="Refer a friend to join CSSA and earn a special role on the discord server upon referring 5 or more friends" class="fas fa-question"></i></button></h4>
 
                             <form action="javascript:refer();" class="login">
 
@@ -358,9 +364,10 @@
             </div>
             <hr style="color: white"><p>© Copyright 2021 Computer Science Student Association. All Rights Reserved</p>
         </footer>
+        
         <script>
             window.onload = function() {
-                setLabel("Registration for the 2021 Summer Competition is now open!", "Registration ends on June 30th at 11:59 PM. You may choose up to 4 events to compete in.");
+              //  setLabel("Registration for the 2021 Summer Competition is now open!", "Registration ends on June 30th at 11:59 PM. You may choose up to 4 events to compete in. <br><br> Join our <a href=\"https://discord.gg/xkVJwWZeds\">Community Discord Server </a> to connect with people and get important competition updates. ");
             }
         </script>
 </html>

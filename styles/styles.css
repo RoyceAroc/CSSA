@@ -208,3 +208,8 @@ nav {
 .modal {
     z-index: 1000000000000000!important;
 }
+
+.modal-header .btn-close {
+    background-color: #0097a7;
+}
+
