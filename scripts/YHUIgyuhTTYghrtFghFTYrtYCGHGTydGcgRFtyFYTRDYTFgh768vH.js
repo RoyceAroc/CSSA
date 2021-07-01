@@ -9,6 +9,7 @@ function displayDashboard() {
 }
 
 window.addEventListener("load", () => {
+	$('#summerComp').modal('show');
 	if (window.location.href.includes("dashboard.html")) {
 		// $('#first-mini-comp').modal('show');
 
@@ -484,7 +485,7 @@ function firebaseAuth(email, username, password) {
 						if (!window.location.href.includes("dashboard")) {
 							window.location.href = "dashboard.html";
 						}
-
+/*
 						users.doc(uid).get().then((doc) => {
 							event1 = doc.data().event1 ?? "None";
 							if (event1.includes("!")) {
@@ -514,7 +515,7 @@ function firebaseAuth(email, username, password) {
 								document.getElementById("event4").value = event4;
 							}
 						});
-						
+						*/
 						displayDashboard();
 					}).catch((e) => {
 						console.log(e.message);
@@ -530,7 +531,7 @@ var event1 = "None";
 var event2 = "None";
 var event3 = "None";
 var event4 = "None";
-
+/*
 window.addEventListener("load", function () {
 	var event1El = document.getElementById("event1");
 	var event2El = document.getElementById("event2");
@@ -577,7 +578,7 @@ window.addEventListener("load", function () {
 		}
 	});
 
-});
+});*/
 
 function eventsConfirm(e1, e2, e3, e4) {
 	const events = [e1, e2, e3, e4];
@@ -641,3 +642,4 @@ function deleteAllCookies() {
 		document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
 	}
 }
+
