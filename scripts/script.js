@@ -374,3 +374,23 @@ const eventData = {
         }
 	}
 };
+
+
+
+// Cookie Consent Check
+function allowCookies() {
+    $("#cookieContainer").hide();
+    setCookie('allowCookie', true, 999999);
+}
+
+if(getCookie('allowCookie') == null) {
+    
+    let cookieContainer = document.createElement("div");
+    cookieContainer.innerHTML = `
+    <div id="cookieContainer" style="padding: 7px 10%; padding-top: 17px; padding-right: 20%;background-color: #232423;font-family: 'Quicksand'; border-top: 6px solid #0097A7; width: 100%; bottom:0; position: fixed; z-index: 10000000000000000000000000000000000000000000000000000000;"> 
+        <p> This website uses cookies to ensure you get the best experience on your website. By continuing to visit this site you agree to our use of cookies. </p>
+        <button class="cookies-btn" style="position: fixed; right:10%; bottom:1.4%; padding: 8px; border-radius: 10px; outline: none; background-color: transparent;color:#0097A7; border:2px solid #0097A7;" onclick="allowCookies();">GOT IT</button>
+    </div>
+    `;
+    document.getElementsByTagName("html")[0].appendChild(cookieContainer);
+}
