@@ -4,6 +4,47 @@ function setLabel(label, text) {
     $('#setLabel').modal('show');
 }
 
+function setCookie(name, value, days) {
+	var expires = "";
+
+	if (days) {
+		var date = new Date();
+		date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+		expires = "; expires=" + date.toUTCString();
+	}
+
+	document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function getCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+
+	for (var i = 0; i < ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+	}
+
+	return null;
+}
+
+function eraseCookie(name) {
+	document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+function generatePassword() {
+	var length = 8,
+		charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+		retVal = "";
+
+	for (var i = 0, n = charset.length; i < length; ++i) {
+		retVal += charset.charAt(Math.floor(Math.random() * n));
+	}
+
+	return retVal;
+}
+
 firebase.initializeApp({
     apiKey: "AIzaSyAPTvz8weUBIMyjl6ekC1uegX-j4u2Z1sc",
     authDomain: "cssa-dev.firebaseapp.com",
@@ -331,3 +372,23 @@ const eventData = {
         }
 	}
 };
+
+
+
+// Cookie Consent Check
+function allowCookies() {
+    $("#cookieContainer").hide();
+    setCookie('allowCookie', true, 999999);
+}
+
+if(getCookie('allowCookie') == null) {
+    
+    let cookieContainer = document.createElement("div");
+    cookieContainer.innerHTML = `
+    <div id="cookieContainer" style="padding: 7px 10%; padding-top: 17px; padding-right: 20%;background-color: #232423;font-family: 'Quicksand'; border-top: 6px solid #0097A7; width: 100%; bottom:0; position: fixed; z-index: 10000000000000000000000000000000000000000000000000000000;"> 
+        <p> This website uses cookies to ensure you get the best experience on your website. By continuing to visit this site you agree to our use of cookies. </p>
+        <button class="cookies-btn" style="position: fixed; right:10%; bottom:1.4%; padding: 8px; border-radius: 10px; outline: none; background-color: transparent;color:#0097A7; border:2px solid #0097A7;" onclick="allowCookies();">GOT IT</button>
+    </div>
+    `;
+    document.getElementsByTagName("html")[0].appendChild(cookieContainer);
+}

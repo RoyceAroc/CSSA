@@ -2,47 +2,6 @@ var globalSynchronizedPassword = "";
 
 var events = ""; var completed = true;
 
-function setCookie(name, value, days) {
-	var expires = "";
-
-	if (days) {
-		var date = new Date();
-		date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-		expires = "; expires=" + date.toUTCString();
-	}
-
-	document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
-
-function getCookie(name) {
-	var nameEQ = name + "=";
-	var ca = document.cookie.split(';');
-
-	for (var i = 0; i < ca.length; i++) {
-		var c = ca[i];
-		while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-	}
-
-	return null;
-}
-
-function eraseCookie(name) {
-	document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-}
-
-function generatePassword() {
-	var length = 8,
-		charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-		retVal = "";
-
-	for (var i = 0, n = charset.length; i < length; ++i) {
-		retVal += charset.charAt(Math.floor(Math.random() * n));
-	}
-
-	return retVal;
-}
-
 function displayDashboard() {
 	document.getElementById("preloader").style.display = "none";
 	document.getElementById("competitions").style.display = "block";
@@ -50,6 +9,7 @@ function displayDashboard() {
 }
 
 window.addEventListener("load", () => {
+	$('#summerComp').modal('show');
 	if (window.location.href.includes("dashboard.html")) {
 		// $('#first-mini-comp').modal('show');
 
@@ -525,7 +485,7 @@ function firebaseAuth(email, username, password) {
 						if (!window.location.href.includes("dashboard")) {
 							window.location.href = "dashboard.html";
 						}
-
+/*
 						users.doc(uid).get().then((doc) => {
 							event1 = doc.data().event1 ?? "None";
 							if (event1.includes("!")) {
@@ -555,7 +515,7 @@ function firebaseAuth(email, username, password) {
 								document.getElementById("event4").value = event4;
 							}
 						});
-						
+						*/
 						displayDashboard();
 					}).catch((e) => {
 						console.log(e.message);
@@ -571,7 +531,7 @@ var event1 = "None";
 var event2 = "None";
 var event3 = "None";
 var event4 = "None";
-
+/*
 window.addEventListener("load", function () {
 	var event1El = document.getElementById("event1");
 	var event2El = document.getElementById("event2");
@@ -618,7 +578,7 @@ window.addEventListener("load", function () {
 		}
 	});
 
-});
+});*/
 
 function eventsConfirm(e1, e2, e3, e4) {
 	const events = [e1, e2, e3, e4];
@@ -682,3 +642,4 @@ function deleteAllCookies() {
 		document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
 	}
 }
+
