@@ -24,8 +24,6 @@ var users = db.collection("users");
 
 var setNavbarScroll = false;
 
-
-
 window.addEventListener('load', function () {
     if(typeof InstallTrigger !== 'undefined') {
         let navFirefox = document.getElementsByClassName("nav-link");
