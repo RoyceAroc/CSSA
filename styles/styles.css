@@ -175,7 +175,7 @@ body::-webkit-scrollbar {
     cursor: pointer;
     padding: 7px 14px;
     border-radius: 10px;
-    border: 1px solid #17AFB7;
+    border: 3px solid #17AFB7;
     background-color: transparent;
     color: #17AFB7;
     width: 120px;
